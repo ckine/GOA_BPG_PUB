@@ -1,5 +1,3 @@
-
-
 # Hardware {#hardware}
 
 ## Remotely Piloted Aircraft (RPA){#RPA}
