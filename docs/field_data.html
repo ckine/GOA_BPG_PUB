@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Field Data Collection | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="Chapter 7 Field Data Collection | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Field Data Collection | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Field Data Collection | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  
+  
+  
+
+<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+
+
+<meta name="date" content="2022-04-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="PPP.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+<ul>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#contents"><i class="fa fa-check"></i>Contents</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>2</b> Hardware</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hardware.html"><a href="hardware.html#RPA"><i class="fa fa-check"></i><b>2.1</b> Remotely Piloted Aircraft (RPA)</a></li>
+<li class="chapter" data-level="2.2" data-path="hardware.html"><a href="hardware.html#sensors"><i class="fa fa-check"></i><b>2.2</b> Imaging Sensors</a></li>
+<li class="chapter" data-level="2.3" data-path="hardware.html"><a href="hardware.html#other_h"><i class="fa fa-check"></i><b>2.3</b> Other Hardware Considerations</a></li>
+<li class="chapter" data-level="2.4" data-path="hardware.html"><a href="hardware.html#workstation"><i class="fa fa-check"></i><b>2.4</b> Workstation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="geo_accuracy.html"><a href="geo_accuracy.html"><i class="fa fa-check"></i><b>3</b> Geometric Accuracy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="geo_accuracy.html"><a href="geo_accuracy.html#GCP"><i class="fa fa-check"></i><b>3.1</b> Ground Control Points (GCP)</a></li>
+<li class="chapter" data-level="3.2" data-path="geo_accuracy.html"><a href="geo_accuracy.html#RTK_wf"><i class="fa fa-check"></i><b>3.2</b> Real-Time Kinematic (RTK) Workflows</a></li>
+<li class="chapter" data-level="3.3" data-path="geo_accuracy.html"><a href="geo_accuracy.html#PPK_wf"><i class="fa fa-check"></i><b>3.3</b> Post-Processing Kinematic Workflows (PPK)</a></li>
+<li class="chapter" data-level="3.4" data-path="geo_accuracy.html"><a href="geo_accuracy.html#use_case"><i class="fa fa-check"></i><b>3.4</b> Determining Use-Case</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>4</b> Acquisition Planning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="planning.html"><a href="planning.html#takeoff"><i class="fa fa-check"></i><b>4.1</b> Takeoff Sites</a></li>
+<li class="chapter" data-level="4.2" data-path="planning.html"><a href="planning.html#flight_plan"><i class="fa fa-check"></i><b>4.2</b> Flight Planning Software</a></li>
+<li class="chapter" data-level="4.3" data-path="planning.html"><a href="planning.html#timing"><i class="fa fa-check"></i><b>4.3</b> Timing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="DPP.html"><a href="DPP.html"><i class="fa fa-check"></i><b>5</b> Digital Photogrammetric Processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="DPP.html"><a href="DPP.html#software"><i class="fa fa-check"></i><b>5.1</b> Software Choices</a></li>
+<li class="chapter" data-level="5.2" data-path="DPP.html"><a href="DPP.html#agisoft_wf"><i class="fa fa-check"></i><b>5.2</b> Agisoft Workflow Walk-Throughs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="DPP.html"><a href="DPP.html#imagery_org"><i class="fa fa-check"></i><b>5.2.1</b> Imagery Organization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="DPP.html"><a href="DPP.html#image_filt"><i class="fa fa-check"></i><b>5.2.2</b> Image filtering</a></li>
+<li class="chapter" data-level="5.2.3" data-path="DPP.html"><a href="DPP.html#image_align"><i class="fa fa-check"></i><b>5.2.3</b> Image Alignment</a></li>
+<li class="chapter" data-level="5.2.4" data-path="DPP.html"><a href="DPP.html#cloud_filt"><i class="fa fa-check"></i><b>5.2.4</b> Sparse Cloud Filtering</a></li>
+<li class="chapter" data-level="5.2.5" data-path="DPP.html"><a href="DPP.html#map_gen"><i class="fa fa-check"></i><b>5.2.5</b> Depth Map Generation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="DPP.html"><a href="DPP.html#map_filt"><i class="fa fa-check"></i><b>5.2.6</b> Depth Map Filtering</a></li>
+<li class="chapter" data-level="5.2.7" data-path="DPP.html"><a href="DPP.html#micasense"><i class="fa fa-check"></i><b>5.2.7</b> Multispectral (MicaSense)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="PPP.html"><a href="PPP.html"><i class="fa fa-check"></i><b>6</b> Photogrammetric Post-Processing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="PPP.html"><a href="PPP.html#software_PPP"><i class="fa fa-check"></i><b>6.1</b> Software choices</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="PPP.html"><a href="PPP.html#LAStools"><i class="fa fa-check"></i><b>6.1.1</b> LAStools</a></li>
+<li class="chapter" data-level="6.1.2" data-path="PPP.html"><a href="PPP.html#lidR"><i class="fa fa-check"></i><b>6.1.2</b> lidR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="PPP.html"><a href="PPP.html#wf_script"><i class="fa fa-check"></i><b>6.2</b> Workflows/Scripting</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="PPP.html"><a href="PPP.html#comp"><i class="fa fa-check"></i><b>6.2.1</b> Compression</a></li>
+<li class="chapter" data-level="6.2.2" data-path="PPP.html"><a href="PPP.html#tiling"><i class="fa fa-check"></i><b>6.2.2</b> Tiling and Buffering</a></li>
+<li class="chapter" data-level="6.2.3" data-path="PPP.html"><a href="PPP.html#noise_filt"><i class="fa fa-check"></i><b>6.2.3</b> Noise filtering</a></li>
+<li class="chapter" data-level="6.2.4" data-path="PPP.html"><a href="PPP.html#class"><i class="fa fa-check"></i><b>6.2.4</b> Classification</a></li>
+<li class="chapter" data-level="6.2.5" data-path="PPP.html"><a href="PPP.html#normal"><i class="fa fa-check"></i><b>6.2.5</b> Normalization</a></li>
+<li class="chapter" data-level="6.2.6" data-path="PPP.html"><a href="PPP.html#PC_normal"><i class="fa fa-check"></i><b>6.2.6</b> Point Cloud Normalization with Co-Occurring LiDAR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="PPP.html"><a href="PPP.html#data"><i class="fa fa-check"></i><b>6.3</b> Standard Data Products</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="PPP.html"><a href="PPP.html#DTM"><i class="fa fa-check"></i><b>6.3.1</b> Digital Terrain Model/Digital Elevation Model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="PPP.html"><a href="PPP.html#CHM"><i class="fa fa-check"></i><b>6.3.2</b> Canopy Height Model</a></li>
+<li class="chapter" data-level="6.3.3" data-path="PPP.html"><a href="PPP.html#metrics"><i class="fa fa-check"></i><b>6.3.3</b> Standardized Metrics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="field_data.html"><a href="field_data.html"><i class="fa fa-check"></i><b>7</b> Field Data Collection</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="field_data.html"><a href="field_data.html#stem_map"><i class="fa fa-check"></i><b>7.1</b> Stem Mapping Method 1: Distance and Azimuth</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="field_data.html"><a href="field_data.html#instrument"><i class="fa fa-check"></i><b>7.1.1</b> Instrument Calibration</a></li>
+<li class="chapter" data-level="7.1.2" data-path="field_data.html"><a href="field_data.html#methods"><i class="fa fa-check"></i><b>7.1.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="field_data" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Field Data Collection</h1>
+<p>Two methods have been developed and implemented for collecting stem-mapped field measurements. These methods produce georeferenced field information, which can be later used to train and validate predictive models. The first method – distance and azimuth – is suitable for most forested conditions and is the most generalizable of the two methods. The second method – direct to image – was developed specifically for collecting field data for regenerating openings and may therefore be limited in its applicability elsewhere.</p>
+<div id="stem_map" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Stem Mapping Method 1: Distance and Azimuth</h2>
+<p>This method was designed to be executed by three people for 100 m<sup>2</sup> circular plots. However, having a fourth team member that can float between roles as needed and help carry gear is also feasible. A summary of required equipment is provided in Table 3.</p>
+<table>
+<caption><strong>Table 3.</strong> Required equipment. All prices are listed in Canadian Dollars (CAD).</caption>
+<colgroup>
+<col width="33%" />
+<col width="22%" />
+<col width="28%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Equipment Name</strong></th>
+<th><strong>Quantity</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Cost</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rangefinder</td>
+<td>1</td>
+<td>Rangefinders can be used to measure both distance to the plot centre and the heights of individual trees when a height pole cannot be used. Survey grade rangefinders such as the <a href="https://lasertech.com/product/trupulse-360-r-laser-rangefinder/">TruPulse 360 series</a> [33] are capable of providing 360.0 degree azimuth measurements which are critical for describing tree location relative to the Trimble GNSS plot centre. <br><br>Cheaper rangefinders ($300-500) typically do not have the ability to record azimuth. In this case, a GPS/GNSS or compass could be used. This, however, would immensely slow down the plot mensuration process.</td>
+<td>~<a href="https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285">$2200</a> [34]</td>
+</tr>
+<tr class="even">
+<td>Rangefinder Foliage Filter</td>
+<td>1</td>
+<td>Using a <a href="https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360">foliage filter</a> [35] can help avoid false measurements from branches and leaves between you (at the plot centre) and the target tree. Attaching this filter to a TruPulse rangefinder and switching the rangefinder into FLT mode makes measurements only possible when reflecting off a reflective target such as that on a high-visibility jacket.<br><br>Have a team member hold a target against the stem and use the foliage filter when dealing with dense vegetation conditions.</td>
+<td><a href="https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360">$87</a></td>
+</tr>
+<tr class="odd">
+<td>Tripod and Mounting bracket for Rangefinder</td>
+<td>1</td>
+<td>Mounting the RangeFinder on a tripod at plot centre will greatly increase the accuracy and consistency of azimuth and distance measurements, which is critical to make these data useful in combination with remotely sensed imagery. Set this tripod directly above where you recorded plot centre and ensure it does not move throughout the plot sampling process.</td>
+<td>Bracket: <a href="https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835">$137</a> [36]<br><br>Tripod: ~$100-300</td>
+</tr>
+<tr class="even">
+<td>Clipboard/iPad for data entry</td>
+<td>1</td>
+<td>Data can be recorded on a spreadsheet (either physical or digital). Many prefer the flexibility and reliability of pencil and paper. However, these require time consuming data entry back at the office. If using a clipboard avoid metal ones as these may interfere with GPS/GNSS measurements or the compass in your rangefinder. Otherwise an iPad or tablet can be used to record data digitally.</td>
+<td>~$10-300</td>
+</tr>
+<tr class="odd">
+<td>Differential GNSS System (Trimble Geo 7x)</td>
+<td>1 (Highly recommended)</td>
+<td>We highly recommended using a GNSS unit capable of being differentially corrected as points recorded with standard handheld GPS/GNSS units can vary 5-20m depending on satellite positioning and other factors. After correction, accuracies of 1-100 cm can be achieved under open skies. This highly accurate plot centre serves as the reference for all geo-located trees and as such, its accuracy determines how field-mapped trees align with trees in remote sensing data. You will need the Handheld Trimble unit [37], a monopod or tripod for mounting, a GNSS antenna [38], the mounting bracket, and the required cables. We recommend carrying these in a pelican case to ensure all components are present and to avoid damage.</td>
+<td>~<a href="https://geospatial.trimble.com/products-and-solutions/trimble-geo-7x#product-downloads">$10,000-20,000</a></td>
+</tr>
+<tr class="even">
+<td>Garmin GPS</td>
+<td>1</td>
+<td>A standard recreational grade handheld GPS can be very useful in the stem mapping process for locating plots, recording observations, and providing redundancy for your differential locations. Record your tracks throughout your time in the block as these can be useful to see what areas were witnessed by on-ground observers.</td>
+<td>~$250</td>
+</tr>
+<tr class="odd">
+<td>Vertex</td>
+<td>1* (Optional)</td>
+<td>A vertex can be used to more accuracy record tree heights. These systems use a two part sonic system to measure distance. They require a transponder to be placed on the target such as the tree stem. These systems are not able to record azimuth and as such are not a replacement but can be used in tandem by other team members to record tree heights if available.</td>
+<td><a href="https://www.forestry-suppliers.com/product_pages/products.php?mi=1377">$2000</a> [39]</td>
+</tr>
+<tr class="even">
+<td>Compass</td>
+<td>1+</td>
+<td>The compass is mainly used to determine the four cardinal directions when laying out your circular plot.</td>
+<td>$30</td>
+</tr>
+<tr class="odd">
+<td>DBH Tapes</td>
+<td>At least 2</td>
+<td>DBH tapes are simple critical tools for any forest measurement process; record diameter at 1.3m (breast height). We recommend having as many team members equipped with DBH tapes as possible, allowing team members to efficiently collect DBH for trees around them during the plot. Remember to never store DBH tape while wet because they will quickly rust.</td>
+<td>~<a href="https://www.deakin.com/products/Details.aspx?p=641534&amp;c=1343&amp;g=5496">$150 each</a> [40]</td>
+</tr>
+<tr class="even">
+<td>Tape measures</td>
+<td>At least 2</td>
+<td>5-m measuring tapes can be used to collect distance information, heights of small trees, crown widths, record observations of disturbance agents, etc. Ensure at least one or two members of the crew have one on hand. We recommend metric tapes for consistency.</td>
+<td><a href="https://www.homedepot.ca/product/stanley-fatmax-fatmax-8m-26-ft-x-1-1-4-inch-tape-measure-metric-english-scale-/1000185066">$10-30</a> [41]</td>
+</tr>
+<tr class="odd">
+<td>Transect Tape or 30-m Logger’s Tape</td>
+<td>1</td>
+<td>A transect tape is useful for running larger distances. For example, plot radii. We recommend metric tapes for consistency.</td>
+<td>$30</td>
+</tr>
+<tr class="even">
+<td>Commercial Plot Cords</td>
+<td>1</td>
+<td>Plot cords are useful for standardizing plot radius. Alternatively, rope can be used. In this case, measure 5.64 m of rope with transect tape and cut three to four pieces of this length so each team member can help measure the plot radius. Note that rope may stretch, whereas commercial plot cords will not.</td>
+<td>$30</td>
+</tr>
+<tr class="odd">
+<td>Flagging tape</td>
+<td>1+ roll per plot</td>
+<td>Have flagging tape and sharpies on hand to record tree numbers for stems too small to apply paint. Having multiple colours can be useful when delineating plot boundaries or identifying multiple species.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Spray paint</td>
+<td>0.5-1 can per plot</td>
+<td>When numbering larger stems (10-15 cm+ DBH) paint can be a useful tool to quickly mark a tree and ensure it is not measured twice. Paint goes fast and can be lost or broken; ensure you bring more paint than you expect to use. Orange paint is best, however, blue or red can be used to avoid confusing future timber cruising or inventory efforts. A cheap ‘can-gun’ can be used for easier application of paint.</td>
+<td>$5-8 per can</td>
+</tr>
+<tr class="odd">
+<td>360 Camera</td>
+<td>1* (Optional)</td>
+<td>Taking 360 photographs at plot centre and the four cardinal directions can provide an excellent reference of plot conditions for use after sampling. When connected to GPS, these cameras can record geo-locations. These georeferenced photos can be helpful for identifying erroneous measurements and developing plot context. However, this is by no means necessary and standard cameras can be used instead.</td>
+<td><a href="https://www.amazon.ca/Ricoh-Theta-camera-Metallic-Gray/dp/B074W5BKYS?th=1">$900</a> [42]</td>
+</tr>
+<tr class="even">
+<td>Batteries</td>
+<td>Many</td>
+<td>Ensure you have extra batteries for anything that requires them; note that some Rangefinders (TruPulse 360R) require non standard battery types such as <a href="https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277">CR123As</a>. Garmin Handhelds can rapidly consume AA batteries, so always pack extras as lacking batteries can be a frustrating day-ending blunder.</td>
+<td><a href="https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277">$20</a> [43]</td>
+</tr>
+</tbody>
+</table>
+<div id="instrument" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Instrument Calibration</h3>
+<p>Both the Rangefinder and Vertex require regular calibration to ensure precision and accuracy. This typically involves measuring a known length along a flat surface (for example, a road) and measuring this distance while in calibration mode. Typically, this is length is 10.0 m. We recommend conducting calibration at least once a day before sampling in the field.</p>
+<p>Vertexes use sound to measure and as such are sensitive to changes in air temperature. Changing temperatures will slightly change the speed at which the sound travels through the air and as such, measurements taken at the beginning of the day when temperatures are cooler can differ from measurements taken in the afternoon. Conducting a morning and mid-day calibration can help avoid these inconsistencies.</p>
+<p>Before beginning the calibration process always refer to the specific manual for your Rangefinder or Vertex. YouTube can be a useful resource for help when learning to operate and calibrate these tools.</p>
+</div>
+<div id="methods" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Methods</h3>
+Plot Setup Overview:
+<ol>
+<li>
+Layout plot boundary
+</li>
+<li>
+Record differential GNSS plot centre
+</li>
+<li>
+Enumerate and mark trees
+</li>
+<li>
+Take and record tree measurements (person one/two)
+</li>
+<li>
+Simultaneously record heights (person three)
+</li>
+</ol>
+Team member roles:
+<ol>
+<li>
+Data recorder
+</li>
+<li>
+DBH measurer
+</li>
+<li>
+Tree height measurer
+</li>
+</ol>
+<p>The job of the data recorder is to remain at plot centre. From this position, they will begin each plot by recording plot centre location measurements with the GNSS unit. At least 180 readings (approximately 3 minutes) should be taken at plot centre with the Trimble Geo 7x. In between GNSS point measurements, they should setup up the tripod for the range finder while recording tree information as it is communicated by the DBH and tree height measurers. Once GNSS measurements are complete, they will begin recording horizontal distance and azimuth to each measured tree, relative to plot centre.</p>
+<p>For each measured tree, the DBH measurer will place the vertex transponder at DBH height prior to recording DBH. Once the vertex transponder is placed on a tree by the DBH measurer, the tree height measurer will ideally locate themselves 1.5 tree lengths away from the measured tree. However, this may be difficult to do in practice. Measured trees should be tagged so as to ensure they are not measured twice. Enumerating measured trees with spray paint is useful for this. In addition to their aforementioned duties, the DBH and tree height measurers may communicate tree species or any other pertinent information to the tree recorder.</p>
+<p>Within a geographic information system (GIS), horizontal distance and azimuth for each measured tree can then be used with the geolocated plot centre to create point features for each measured tree. Enumerated field notes must then be entered as attributes for these point features. Even with advanced GNSS equipment, it is likely that the positions of tree point features will need to be manually adjusted so as to align with remotely sensed data. This requirement, and the need for transcribing hand-written field notes, are the greatest limitations of this stem mapping method.</p>
+</div>
+</div>
+<div id="stem_map_image" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Stem Mapping Method 2: Direct-to-Image</h2>
+Required equipment:
+<ul>
+<li>
+A GPS-enabled mobile device (smart phone or tablet) with a stylus<sup>1</sup>
+</li>
+<li>
+One or more external power banks(s) - CAD $30-$200
+</li>
+<li>
+A telescopic height measurement pole (at least 5 m total length)<sup>2</sup> - <a href="https://www.deakin.com/products/Details.aspx?p=640782&amp;c=1356&amp;g=5561">CAD $106</a> [44]
+</li>
+<li>
+Spray paint or flagging tape
+</li>
+<li>
+DBH tape
+</li>
+<li>
+A free-standing umbrella<sup>3</sup>
+</li>
+</ul>
+Team member roles:
+Team member roles:
+<ol>
+<li>
+Smart phone/tablet operator
+</li>
+<li>
+Height pole operator
+</li>
+</ol>
+<p>In its most rudimentary form, this method for stem mapping may be carried out with as few as two people to record tree location, species, and height. DBH may also be recorded (as described below). However, in regenerating openings, this will not be feasible for all trees. Additional personnel should be considered depending on which measurements are being taken.</p>
+<p>This method for stem mapping relies on recently acquired fine spatial resolution imagery (at least 5 cm ground sampling distance is recommended), loaded onto a smartphone or tablet with a compatible stylus. Therefore, for this method to function, imagery data must be collected and processed prior to the collection of field data. This method also relies on mapping software, used with the stylus to record tree information. We recommend Avenza Maps Pro software for this [45], which requires a paid subscription. Additionally, using the recently acquired imagery and a GIS, plot locations should be determined and created as shapefiles which can then be uploaded to the mobile device and overlaid upon the imagery. Additional DAP products such as canopy height models or digital elevation models may also be useful and can be loaded into Avenza Maps at the discretion of the user.</p>
+<p>Images with plot boundaries overlaid are displayed in Avenza Maps along with the user’s GPS-determined location. Cardinal directions are also estimated. An internet connection is not required for this. The GPS location as determined by the mobile device is not likely to be accurate beyond 3-5 m under ideal conditions, and should only be used as a guide. Rather than relying purely on GPS location, the user should use distinct landmarks such as stumps, fallen logs, isolated trees, distinct clusters of trees, or any other unique features in addition to GPS-estimated location in order to determine their position relative to the displayed imagery. Due to the need to identify distinct landmarks, this method for stem mapping may not be suitable for sites with dense, closed canopies or homogenous cover.</p>
+<p>Once a plot is located, the team should begin by identifying a distinct tree or cluster of trees which is located near the border of the plot. Create a new layer whose name allows the user to identify which plot this layer will belong to. Point features may then be created and precisely dropped on tree crown centres. Once created, the user may record attribute information for that tree such as species, height, and DBH. For plots containing multiple tree species of interest, we recommend designating a unique colour or shape to the point features representing each species so as to help the team keep track of where they are within the plot. This can be done on the fly. Additionally, the mobile device’s camera may be used to capture complex or anomalous situations. These pictures can be attached to tree points along with notes, which may be useful later on.</p>
+<p>Upon locating a tree and creating a point feature to represent it, the second team member is to place the height measurement pole at the base of the tree as evenly as possible. Position the pole so that it faces the mobile device operator and begin to expand it, keeping it as close to the trunk of the tree as possible. Ensure that each subsequent segment of the pole is fully expanded before expanding the next segment. The mobile device operator can then confirm the straightness of the pole and begin to record the tree’s height. Afterward, DBH may be measured and communicated by the height pole operator. If the pole is evenly secured against the tree and free-standing, DBH may be recorded while the mobile device operator records height. Once measured, each tree should be enumerated and tagged. This method for stem-mapping has the advantage of bypassing the need to transform distance and azimuth measurements for tree locations into point features. As such, tree location errors may be greatly reduced. However, it is important to note that while tree points recorded with this method will be extremely true to the imagery used to create them, they may not completely align with other co-occurring datasets. Therefore, a high degree of planning is required by this method as all datasets to be used with the collected field data should be processed before heading into the field. Finally, this method for stem-mapping also has the benefit of bypassing the need for hand-written field notes, subsequent data entry, and errors associated with both of these processes.</p>
+<hr>
+<p><sup>1</sup>The storage capacity and processing power of the device should be considered as fine spatial resolution imagery, associated plot boundary shapefiles, and newly created tree point layers will need to be displayed at once. We used a Samsung Galaxy Note 10+, with a 64-bit Octo-core processor, 12 gigabytes random access memory (RAM), 256 gigabytes internal storage, and a 4300 milliampere-hour (mAh) battery. Battery life lasted for approximately 6-8 hours of continuous use and was extended with a 5000 mAh external power bank. This device has a screen size of 7.5 x 15.9 cm and an integrated stylus. Screen magnification was enabled through the device’s accessibility settings, allowing the user to precisely locate tree crown centres. The use of tablets with larger screens may be preferable. However, these devices are less portable than smartphones. Finally, we recommend securing the device’s stylus to the mobile device with string.</p>
+<p><sup>2</sup>If sites with older, taller trees are deemed appropriate for this approach, a Vertex or Rangefinder may be used for trees over 8 m in height.</p>
+<p><sup>3</sup>In addition to shielding the mobile device from hazards such as rain, the umbrella will be useful for blocking sunlight, affording the mobile device operator a better view of the screen. Depending on brightness conditions, this may be required to adequately locate trees. Any regular umbrella may be attached to a stake or pole to allow it to stand freely. A screen cover may also be used to remove the influence of sunlight. However, this will not protect the screen from rain.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="PPP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/7.0-Field-Data-Collection.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

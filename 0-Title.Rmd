@@ -1,0 +1,160 @@
+```{r, echo=FALSE, eval=FALSE}
+bookdown::render_book('index.Rmd')
+```
+
+# Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\cover.png")
+```
+
+## How to cite this report: {-#cite_report}
+Chadwick, A. J.; Goodbody, T. R. H.; Bater, C. W.; Martens, L. A.; Nuijten, R. J. G.; Smith-Tripp, S.; Grubinger, S.; Irwin, L.; Arkin, J.; Hervieux, A.; and Coops, N.C. 2022. “Best Practice Guide to Acquisition of 3D Imagery from RPAS,” Department of Forest Resource Management, Faculty of Forestry, University of British Columbia, Vancouver, British Columbia.
+
+## Contents {-#contents} 
+<p>[1.0 Introduction](#intro)</p> 
+<p>[2.0 Hardware](#hardware)</p>
+
+<p style="text-indent: 5%"> [2.1 Remotely Piloted Aircraft (RPA)](#RPA)</p>
+
+<p style="text-indent: 5%"> [2.2 Imaging Sensors](#sensors)</p>
+
+<p style="text-indent: 5%"> [2.3 Other Hardware Considerations](#other_h)</p>
+
+<p style="text-indent: 5%"> [2.4 Workstation](#workstation)</p>
+
+[3.0 Geometric Accuracy](#geo_accuracy)
+
+<p style="text-indent: 5%">[3.1 Ground Control Points (GCP)](#GCP)</p>
+
+<p style="text-indent: 5%">[3.2 Real-Time Kinematic (RTK) Workflows](#RTK_wf)</p>
+
+<p style="text-indent: 5%">[3.3 Post-Processing Kinematic Workflows (PPK)](#PPK_wf)</p>
+
+<p style="text-indent: 5%">[3.4 Determining Use-Case](#use_case)</p>
+
+[4.0 Acquisition Planning](#planning)
+
+<p style="text-indent: 5%">[4.1 Takeoff Sites](#takeoff)</p>
+
+<p style="text-indent: 5%">[4.2 Flight Planning Software](#flight_plan)</p>
+
+<p style="text-indent: 5%">[4.3 Timing](#timing)</p>
+
+[5.0 Digital Photogrammetric Processing](#DPP)
+
+<p style="text-indent: 5%">[5.1 Software Choices](#software)</p>
+
+<p style="text-indent: 5%">[5.2 Agisoft Workflow Walk-Throughs](#agisoft_wf)</p>
+
+<p style="text-indent: 10%">[5.2.1 Imagery Organization](#imagery_org)</p>
+
+<p style="text-indent: 10%">[5.2.2 Image filtering](#image_filt)</p>
+
+<p style="text-indent: 10%">[5.2.3 Image Alignment](#image_align)</p>
+
+<p style="text-indent: 10%">[5.2.4 Sparse Cloud Filtering](#cloud_filt)</p>
+
+<p style="text-indent: 10%">[5.2.5 Depth Map Generation](#map_gen)</p>
+
+<p style="text-indent: 10%">[5.2.6 Depth Map Filtering](#map_filt)</p>
+
+<p style="text-indent: 10%">[5.2.7 Multispectral (MicaSense)](#micasense)</p>
+
+[6.0 Photogrammetric Post-Processing](#PPP)
+
+<p style="text-indent: 5%">[6.1 Software choices](#software_PPP)</p>
+
+<p style="text-indent: 10%">[6.1.1 LAStools](#LAStools)</p>
+
+<p style="text-indent: 10%">[6.1.2 lidR](#lidR)</p>
+
+<p style="text-indent: 5%">[6.2 Workflows/Scripting](#wf_script)</p>
+
+<p style="text-indent: 10%">[6.2.1 Compression](#comp)</p>
+
+<p style="text-indent: 10%">[6.2.2 Tiling and Buffering](#tiling)</p>
+
+<p style="text-indent: 10%">[6.2.3 Noise filtering](#noise_filt)</p>
+
+<p style="text-indent: 10%">[6.2.4 Classification](#class)</p>
+
+<p style="text-indent: 10%">[6.2.5 Normalization](#normal)</p>
+
+<p style="text-indent: 10%">[6.2.6 Point Cloud Normalization with Co-Occurring LiDAR](#PC_normal)</p>
+
+<p style="text-indent: 5%">[6.3 Standard Data Products](#data)</p>
+
+<p style="text-indent: 10%">[6.3.1 Digital Terrain Model/Digital Elevation Model](#DTM)</p>
+
+<p style="text-indent: 10%">[6.3.2 Canopy Height Model](#CHM)</p>
+
+<p style="text-indent: 10%">[6.3.3 Standardized Metrics](#metrics)</p>
+
+[7.0 Field Data Collection](#field_data)
+
+<p style="text-indent: 5%">[7.1 Stem Mapping Method 1: Distance and Azimuth](#stem_map)</p>
+
+<p style="text-indent: 10%">[7.1.1 Instrument Calibration](#instrument)</p>
+
+<p style="text-indent: 10%">[7.1.2 Methods](#methods)</p>
+
+<p style="text-indent: 5%">[7.2 Stem Mapping Method 2: Direct-to-Image](#stem_map_image)</p>
+
+[8.0 Selected Bibliography of Relevant University of British Columbia Publications](#bibliography) 
+
+[9.0 References](#references)
+
+## Acknowledgements {-#acknowledgements} 
+We would like thank Barry White for his irreplaceable contributions towards envisioning and breathing life into the project that would eventually produce this report; and Alberta Agriculture and Forestry for funding.
+
+
+## Glossary {-#glossary} 
+<p>**RPA** -- remotely piloted aircraft.
+Otherwise known as unmanned aerial vehicles (UAV) or drones.</p>
+<p>**RPAS** -- remotely piloted aircraft systems.
+RPAS includes RPA as well as software, operating personnel, etc.
+Otherwise referred to as unmanned aerial systems (UAS).</p>
+<p>**GPS** -- global positioning system.
+Most GPS devices communicate with American GPS satellites to determine location information.</p>
+<p>**GNSS** -- global navigation satellite system.
+GNSS includes all navigation satellite constellations.
+Other constellations include the Russian GLONASS (Globalnaya Navigazionnaya Sputnikovaya Sistema), the European Union's Galileo.
+GNSS devices can communicate with other satellite constellations in addition to American GPS satellites.</p>
+<p>**Pixel** -- Short for pixel element, a pixel is the constituent element of images.
+Each pixel of an image contains numerical values known as digital brightness values.
+Conventional images contain three channels for red, green, and blue light.
+Digital brightness values determine how much red, green, and blue light should be displayed for each pixel.
+Digital brightness values typically range from 0-255, with 0 representing no brightness and 255 representing maximum brightness.</p>
+<p>**CHM** -- Canopy Height Model.
+A two-dimensional digital representation of canopy heights relative to a ground-level.</p>
+<p>**DEM** -- Digital Elevation Model.
+A two-dimensional digital representation of the surface of the Earth.
+DEM are single-channel images.
+Lower values correspond to lower elevations and higher values correspond to higher elevations.</p>
+<p>**DAP** -- Digital Aerial Photogrammetry.
+DAP is the process by which overlapping aerial images are used to derive three-dimensional point cloud data as well as orthorectified imagery products.</p>
+<p>**Downwelling light sensor (DLS)** -- An incident light sensor that directly connects to the MicaSense RedEdge camera.
+DLS collect information on ambient light during acquisition, which can be used to correct for sudden changes in light that may occur during acquisition.</p>
+<p>**GCP** -- Ground Control Point.
+GCPs are marked targets that are distributed throughout sites prior to acquisition.
+The locations of GCPs are recorded with GNSS devices.
+GCPs are located in RPAS imagery during photogrammetric processing and used to improve the geometric accuracy of DAP products.</p>
+<p>**Gimbal** -- an instrument which allows a sensor to maintain a constant position while mounted on a moving aircraft.</p>
+<p>**GPU** -- Graphics Processing Unit.
+GPU are used by computers to display graphics and render video.</p>
+<p>**ITC** -- Individual Tree Crown.</p>
+<p>**LiDAR** -- Light Detection and Ranging, otherwise known as airborne laser scanning (ALS) -- LiDAR emits light as laser pulses at targets and measures the time it takes for emitted light to return to the sensor.
+Each return is recorded as a point in 3-dimensional space.
+In the context of forestry, LiDAR is typically collected with piloted aircraft.</p>
+<p>**Nadir**- refers to the viewing angle directly below a sensor.</p>
+<p>**Orthomosaic** -- an orthorectified image produced by mosaicking images collected by an RPAS.
+A primary photogrammetric product.</p>
+<p>**PPK** -- Post-Processing Kinematic.
+PPK uses satellite carrier data from third-party base stations to apply differential corrections to GNSS data after it has been recorded.</p>
+<p>**RTK** -- Real-Time Kinematic.
+RTK systems use RPA GNSS to communicate with a transportable base station and differentially correct satellite carrier data in real time.</p>
+<p>**SFOC** -- Special Flight Operations Certificate.
+An SFOC allows for the operation of RPAS beyond basic or advanced drone pilot certificates.
+Pertinent to this report, an SFOC allows for RPAS to be operated beyond visual line of sight and at altitudes greater than 120 metres.
+See [here](https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations) [1] for more.</p>

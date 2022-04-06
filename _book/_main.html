@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown #bookdown:version# and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+
+
+<meta name="date" content="2022-04-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">Best Practice Guide to Acquisition of 3D Imagery from RPAS</h1>
+<p class="author"><em>Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops</em></p>
+<p class="date"><em>2022-04-01</em></p>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+<!--bookdown:toc2:start-->
+<!--bookdown:toc2:end-->
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<!--chapter:end:index.Rmd-->
+<p>#Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}</p>
+<p><img src="figures/cover.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>##How to cite this report: {#cite_report}
+Chadwick, A. J.; Goodbody, T. R. H.; Bater, C. W.; Martens, L. A.; Nuijten, R. J. G.; Smith-Tripp, S.; Grubinger, S.; Irwin, L.; Arkin, J.; Hervieux, A.; and Coops, N.C. 2022. “Best Practice Guide to Acquisition of 3D Imagery from RPAS,” Department of Forest Resource Management, Faculty of Forestry, University of British Columbia, Vancouver, British Columbia.</p>
+<p>##Acknowledgements {#acknowledgements}
+We would like thank Barry White for his irreplaceable contributions towards envisioning and breathing life into the project that would eventually produce this report; and Alberta Agriculture and Forestry for funding.</p>
+<p>##Contents {#contents}
+<a href="#1.0">1.0 Introduction</a>
+<a href="#2.0">2.0 Hardware</a></p>
+<p style="text-indent: 5%">
+<a href="#2.1">2.1 Remotely Piloted Aircraft (RPA)</a>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#2.2">2.2 Imaging Sensors</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#2.3">2.3 Other Hardware Considerations</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#2.4">2.4 Workstation</a></p>
+</p>
+<p><a href="#3.0">3.0 Geometric Accuracy</a></p>
+<p style="text-indent: 5%">
+<p><a href="#3.1">3.1 Ground Control Points (GCP)</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#3.2">3.2 Real-Time Kinematic (RTK) Workflows</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#3.3">3.3 Post-Processing Kinematic Workflows</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#3.4">3.4 Determining Use-Case</a></p>
+</p>
+<p><a href="#4.0">4.0 Acquisition Planning</a></p>
+<p style="text-indent: 5%">
+<p><a href="#4.1">4.1 Takeoff Sites</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#4.2">4.2 Flight Planning Software</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#4.3">4.3 Timing</a></p>
+</p>
+<p><a href="#5.0">5.0 Digital Photogrammetric Processing</a></p>
+<p style="text-indent: 5%">
+<p><a href="#5.1">5.1 Software Choices</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#5.2">5.2 Agisoft Workflow Walk-Throughs</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.1">5.2.1 Imagery Organization</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.2">5.2.2 Image filtering</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.3">5.2.3 Image Alignment</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.4">5.2.4 Sparse Cloud Filtering</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.5">5.2.5 Depth Map Generation</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.6">5.2.6 Depth Map Filtering</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#5.2.7">5.2.7 Multispectral (MicaSense)</a></p>
+</p>
+<p><a href="#6.0">6.0 Photogrammetric Post-Processing</a></p>
+<p style="text-indent: 5%">
+<p><a href="#6.1">6.1 Software choices</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.1.1">6.1.1 LAStools</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.1.1">6.1.2 lidR</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#6.2">6.2 Workflows/Scripting</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.1">6.2.1 Compression</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.2">6.2.2 Tiling and Buffering</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.3">6.2.3 Noise filtering</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.4">6.2.4 Classification</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.5">6.2.5 Normalization</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.2.6">6.2.6 Point Cloud Normalization with Co-Occurring LiDAR</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#6.3">6.3 Standard Data Products</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.3.1">6.3.1 Digital Terrain Model/Digital Elevation Model</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.3.2">6.3.2 Canopy Height Model</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#6.3.3">6.3.3 Standardized Metrics</a></p>
+</p>
+<p><a href="#7.0">7.0 Field Data Collection</a></p>
+<p style="text-indent: 5%">
+<p><a href="#7.1">7.1 Stem Mapping Method 1: Distance and Azimuth</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#7.1.1">7.1.1 Instrument Calibration</a></p>
+</p>
+<p style="text-indent: 10%">
+<p><a href="#7.1.2">7.1.2 Methods</a></p>
+</p>
+<p style="text-indent: 5%">
+<p><a href="#7.2">7.2 Stem Mapping Method 2: Direct-to-Image</a></p>
+</p>
+<p><a href="#8.0">8.0 Selected Bibliography of Relevant University of British Columbia Publications</a>
+<a href="#9.0">9.0 References</a></p>
+<p>##Glossary {#glossary}
+<em>RPA</em> – remotely piloted aircraft.
+Otherwise known as unmanned aerial vehicles (UAV) or drones.
+<em>RPAS</em> – remotely piloted aircraft systems.
+RPAS includes RPA as well as software, operating personnel, etc.
+Otherwise referred to as unmanned aerial systems (UAS).
+<em>GPS</em> – global positioning system.
+Most GPS devices communicate with American GPS satellites to determine location information.
+<em>GNSS</em> – global navigation satellite system.
+GNSS includes all navigation satellite constellations.
+Other constellations include the Russian GLONASS (Globalnaya Navigazionnaya Sputnikovaya Sistema), the European Union’s Galileo.
+GNSS devices can communicate with other satellite constellations in addition to American GPS satellites.
+<em>Pixel</em> – Short for pixel element, a pixel is the constituent element of images.
+Each pixel of an image contains numerical values known as digital brightness values.
+Conventional images contain three channels for red, green, and blue light.
+Digital brightness values determine how much red, green, and blue light should be displayed for each pixel.
+Digital brightness values typically range from 0-255, with 0 representing no brightness and 255 representing maximum brightness.
+<em>CHM</em> – Canopy Height Model.
+A two-dimensional digital representation of canopy heights relative to a ground-level.
+<em>DEM</em> – Digital Elevation Model.
+A two-dimensional digital representation of the surface of the Earth.
+DEM are single-channel images.
+Lower values correspond to lower elevations and higher values correspond to higher elevations.
+<em>DAP</em> – Digital Aerial Photogrammetry.
+DAP is the process by which overlapping aerial images are used to derive three-dimensional point cloud data as well as orthorectified imagery products.
+<em>Downwelling light sensor (DLS)</em> – An incident light sensor that directly connects to the MicaSense RedEdge camera.
+DLS collect information on ambient light during acquisition, which can be used to correct for sudden changes in light that may occur during acquisition.
+<em>GCP</em> – Ground Control Point.
+GCPs are marked targets that are distributed throughout sites prior to acquisition.
+The locations of GCPs are recorded with GNSS devices.
+GCPs are located in RPAS imagery during photogrammetric processing and used to improve the geometric accuracy of DAP products.
+<em>Gimbal</em> – an instrument which allows a sensor to maintain a constant position while mounted on a moving aircraft.
+<em>GPU</em> – Graphics Processing Unit.
+GPU are used by computers to display graphics and render video.<br />
+<em>ITC</em> – Individual Tree Crown.
+<em>LiDAR</em> – Light Detection and Ranging, otherwise known as airborne laser scanning (ALS) – LiDAR emits light as laser pulses at targets and measures the time it takes for emitted light to return to the sensor.
+Each return is recorded as a point in 3-dimensional space.
+In the context of forestry, LiDAR is typically collected with piloted aircraft.
+<em>Nadir</em>- refers to the viewing angle directly below a sensor.
+<em>Orthomosaic</em> – an orthorectified image produced by mosaicking images collected by an RPAS.
+A primary photogrammetric product.
+<em>PPK</em> – Post-Processing Kinematic.
+PPK uses satellite carrier data from third-party base stations to apply differential corrections to GNSS data after it has been recorded.
+<em>RTK</em> – Real-Time Kinematic.
+RTK systems use RPA GNSS to communicate with a transportable base station and differentially correct satellite carrier data in real time.
+<em>SFOC</em> – Special Flight Operations Certificate.
+An SFOC allows for the operation of RPAS beyond basic or advanced drone pilot certificates.
+Pertinent to this report, an SFOC allows for RPAS to be operated beyond visual line of sight and at altitudes greater than 120 metres.
+See <a href="https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations">here</a> [1] for more.</p>
+<!--chapter:end:0-Title.Rmd-->
+<p>#1.0 Introduction {-#1.0}
+Remotely piloted aerial systems (RPAS) have emerged as remote sensing platforms capable of capturing imagery at finer spatial resolutions than conventional aerial and spaceborne platforms. Along with the proliferation of commercially available RPAS has come an emergence of digital aerial photogrammetry (DAP) techniques, which have enabled the derivation of three-dimensional (3D) point cloud data from overlapping imagery. Members of the University of British Columbia’s Integrated Remote Sensing Studio Integrated Remote Sensing Studio (IRSS) have undertaken investigations into a wide range of forestry solutions utilizing orthomosaics and photogrammetric point clouds derived from fine spatial resolution RPAS imagery, and have since developed an expert knowledgebase on the use of RPAS and DAP technologies.</p>
+<p>In 2018, IRSS members began collaboration with partners at the Government of Alberta, with the ultimate goal of leveraging RPAS and DAP to deliver post-harvest inventory information in an accurate, consistent, and repeatable manner. We have since developed guidelines on how to best acquire and process RPAS-borne data to characterize regeneration 12-14 years post-harvest with DAP products. The following report is divided into three main sections. The report is a synthesis of knowledge and is presented as a best practices guide. While tailored towards regeneration approaches, the principles discussed in this report are likely to be useful for applications in other forest conditions.</p>
+<!--chapter:end:1.0-Introduction.Rmd-->
+<!--chapter:end:2.0-Hardware.Rmd-->
+<!--chapter:end:3.0-Geometric-Accuracy.Rmd-->
+<!--chapter:end:4.0-Acquisition-Planning.Rmd-->
+<!--chapter:end:5.0-Digital-Photogrammetric-Processing.Rmd-->
+<!--chapter:end:6.0-Photogrammetric-Post-Processing.Rmd-->
+<p>#7.0 Field Data Collection {-#7.0}</p>
+<p>##7.1 Stem Mapping Method 1: Distance and Azimuth {-#7.1}</p>
+<p>###7.1.1 Instrument Calibration {-#7.1.1}</p>
+<p>###7.1.2 Methods {-#7.1.2}</p>
+<p>##7.2 Stem Mapping Method 2: Direct-to-Image {-#7.2}</p>
+<!--chapter:end:7.0-Field-Data-Collection.Rmd-->
+<p>#8.0 Selected Bibliography of Relevant University of British Columbia Publications {-#8.0}</p>
+<!--chapter:end:8.0-Selected-Bibliography-of-Relevant-University-of-British-Columbia-Publications.Rmd-->
+<p>#9.0 References {-#9.0}</p>
+<!--chapter:end:9.0-References.Rmd-->
+<!--bookdown:body:end-->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+    </div>
+  </div>
+<!--bookdown:config-->
+
+</body>
+
+</html>

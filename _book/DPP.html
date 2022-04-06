@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  
+  
+  
+
+<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+
+
+<meta name="date" content="2022-04-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="planning.html"/>
+<link rel="next" href="PPP.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+<ul>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#contents"><i class="fa fa-check"></i>Contents</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>2</b> Hardware</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hardware.html"><a href="hardware.html#RPA"><i class="fa fa-check"></i><b>2.1</b> Remotely Piloted Aircraft (RPA)</a></li>
+<li class="chapter" data-level="2.2" data-path="hardware.html"><a href="hardware.html#sensors"><i class="fa fa-check"></i><b>2.2</b> Imaging Sensors</a></li>
+<li class="chapter" data-level="2.3" data-path="hardware.html"><a href="hardware.html#other_h"><i class="fa fa-check"></i><b>2.3</b> Other Hardware Considerations</a></li>
+<li class="chapter" data-level="2.4" data-path="hardware.html"><a href="hardware.html#workstation"><i class="fa fa-check"></i><b>2.4</b> Workstation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="geo_accuracy.html"><a href="geo_accuracy.html"><i class="fa fa-check"></i><b>3</b> Geometric Accuracy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="geo_accuracy.html"><a href="geo_accuracy.html#GCP"><i class="fa fa-check"></i><b>3.1</b> Ground Control Points (GCP)</a></li>
+<li class="chapter" data-level="3.2" data-path="geo_accuracy.html"><a href="geo_accuracy.html#RTK_wf"><i class="fa fa-check"></i><b>3.2</b> Real-Time Kinematic (RTK) Workflows</a></li>
+<li class="chapter" data-level="3.3" data-path="geo_accuracy.html"><a href="geo_accuracy.html#PPK_wf"><i class="fa fa-check"></i><b>3.3</b> Post-Processing Kinematic Workflows (PPK)</a></li>
+<li class="chapter" data-level="3.4" data-path="geo_accuracy.html"><a href="geo_accuracy.html#use_case"><i class="fa fa-check"></i><b>3.4</b> Determining Use-Case</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>4</b> Acquisition Planning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="planning.html"><a href="planning.html#takeoff"><i class="fa fa-check"></i><b>4.1</b> Takeoff Sites</a></li>
+<li class="chapter" data-level="4.2" data-path="planning.html"><a href="planning.html#flight_plan"><i class="fa fa-check"></i><b>4.2</b> Flight Planning Software</a></li>
+<li class="chapter" data-level="4.3" data-path="planning.html"><a href="planning.html#timing"><i class="fa fa-check"></i><b>4.3</b> Timing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="DPP.html"><a href="DPP.html"><i class="fa fa-check"></i><b>5</b> Digital Photogrammetric Processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="DPP.html"><a href="DPP.html#software"><i class="fa fa-check"></i><b>5.1</b> Software Choices</a></li>
+<li class="chapter" data-level="5.2" data-path="DPP.html"><a href="DPP.html#agisoft_wf"><i class="fa fa-check"></i><b>5.2</b> Agisoft Workflow Walk-Throughs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="DPP.html"><a href="DPP.html#imagery_org"><i class="fa fa-check"></i><b>5.2.1</b> Imagery Organization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="DPP.html"><a href="DPP.html#image_filt"><i class="fa fa-check"></i><b>5.2.2</b> Image filtering</a></li>
+<li class="chapter" data-level="5.2.3" data-path="DPP.html"><a href="DPP.html#image_align"><i class="fa fa-check"></i><b>5.2.3</b> Image Alignment</a></li>
+<li class="chapter" data-level="5.2.4" data-path="DPP.html"><a href="DPP.html#cloud_filt"><i class="fa fa-check"></i><b>5.2.4</b> Sparse Cloud Filtering</a></li>
+<li class="chapter" data-level="5.2.5" data-path="DPP.html"><a href="DPP.html#map_gen"><i class="fa fa-check"></i><b>5.2.5</b> Depth Map Generation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="DPP.html"><a href="DPP.html#map_filt"><i class="fa fa-check"></i><b>5.2.6</b> Depth Map Filtering</a></li>
+<li class="chapter" data-level="5.2.7" data-path="DPP.html"><a href="DPP.html#micasense"><i class="fa fa-check"></i><b>5.2.7</b> Multispectral (MicaSense)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="PPP.html"><a href="PPP.html"><i class="fa fa-check"></i><b>6</b> Photogrammetric Post-Processing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="PPP.html"><a href="PPP.html#software_PPP"><i class="fa fa-check"></i><b>6.1</b> Software choices</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="PPP.html"><a href="PPP.html#LAStools"><i class="fa fa-check"></i><b>6.1.1</b> LAStools</a></li>
+<li class="chapter" data-level="6.1.2" data-path="PPP.html"><a href="PPP.html#lidR"><i class="fa fa-check"></i><b>6.1.2</b> lidR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="PPP.html"><a href="PPP.html#wf_script"><i class="fa fa-check"></i><b>6.2</b> Workflows/Scripting</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="PPP.html"><a href="PPP.html#comp"><i class="fa fa-check"></i><b>6.2.1</b> Compression</a></li>
+<li class="chapter" data-level="6.2.2" data-path="PPP.html"><a href="PPP.html#tiling"><i class="fa fa-check"></i><b>6.2.2</b> Tiling and Buffering</a></li>
+<li class="chapter" data-level="6.2.3" data-path="PPP.html"><a href="PPP.html#noise_filt"><i class="fa fa-check"></i><b>6.2.3</b> Noise filtering</a></li>
+<li class="chapter" data-level="6.2.4" data-path="PPP.html"><a href="PPP.html#class"><i class="fa fa-check"></i><b>6.2.4</b> Classification</a></li>
+<li class="chapter" data-level="6.2.5" data-path="PPP.html"><a href="PPP.html#normal"><i class="fa fa-check"></i><b>6.2.5</b> Normalization</a></li>
+<li class="chapter" data-level="6.2.6" data-path="PPP.html"><a href="PPP.html#PC_normal"><i class="fa fa-check"></i><b>6.2.6</b> Point Cloud Normalization with Co-Occurring LiDAR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="PPP.html"><a href="PPP.html#data"><i class="fa fa-check"></i><b>6.3</b> Standard Data Products</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="PPP.html"><a href="PPP.html#DTM"><i class="fa fa-check"></i><b>6.3.1</b> Digital Terrain Model/Digital Elevation Model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="PPP.html"><a href="PPP.html#CHM"><i class="fa fa-check"></i><b>6.3.2</b> Canopy Height Model</a></li>
+<li class="chapter" data-level="6.3.3" data-path="PPP.html"><a href="PPP.html#metrics"><i class="fa fa-check"></i><b>6.3.3</b> Standardized Metrics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="field_data.html"><a href="field_data.html"><i class="fa fa-check"></i><b>7</b> Field Data Collection</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="field_data.html"><a href="field_data.html#stem_map"><i class="fa fa-check"></i><b>7.1</b> Stem Mapping Method 1: Distance and Azimuth</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="field_data.html"><a href="field_data.html#instrument"><i class="fa fa-check"></i><b>7.1.1</b> Instrument Calibration</a></li>
+<li class="chapter" data-level="7.1.2" data-path="field_data.html"><a href="field_data.html#methods"><i class="fa fa-check"></i><b>7.1.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="DPP" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Digital Photogrammetric Processing</h1>
+<p>DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) [23] are used to detect features of interest in images. These features are known as <em>key points</em>. Features which appear across multiple images, called <em>tie points</em>, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build <em>depth maps</em> for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/fig4.png" alt="Key point and Tie point matching [30]." width="100%" />
+<p class="caption">
+Figure 5.1: Key point and Tie point matching [30].
+</p>
+</div>
+<p>Each pixel of each image is then projected onto depth maps, which converts them into points in 3D space, which retain spectral information from the original pixel and comprise the <em>dense point cloud</em>. The software then stitches together the best available imagery for each point on the surfaces generated from the depth maps, creating a single image of entirely near-nadir views. This imagery can be manipulated spatially like any other georeferenced raster dataset.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figures/fig5.png" alt="A cross-section of a DAP point cloud in a planted spruce forest." width="100%" />
+<p class="caption">
+Figure 5.2: A cross-section of a DAP point cloud in a planted spruce forest.
+</p>
+</div>
+<div id="software" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Software Choices</h2>
+<p>Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research [24], [25]. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters.</p>
+</div>
+<div id="agisoft_wf" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Agisoft Workflow Walk-Throughs</h2>
+<div id="imagery_org" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Imagery Organization</h3>
+<p>Depending on the sensor and volume of data collected, imagery from planned flights may be saved across multiple subfolders, and empty folders may be created. The creation of empty folders typically only occurs for multispectral sensors such as the MicaSense, which cannot be fully integrated with RPA. Regardless, it is important to inspect imagery directories to ensure that they are organized and named consistently prior to adding data to Agisoft. Some manual reorganization may be required. For multispectral acquisitions, multiple spectral bands are usually stored subfolders within the same directory and are differentiated using suffixes (e.g. _1, _2, _3, _4, _5) that correspond to each spectral band. Ensure that all RPAS imagery is backed up prior to processing in Agisoft.</p>
+</div>
+<div id="image_filt" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Image filtering</h3>
+<p>Within the Agisoft MetaShape interface, it is possible to manually disable images so as to prevent them from being used in subsequent processing. Results will be improved by disabling images that are blurry or oblique, which may occur due to wind gusts or changes in flight path. It is also beneficial to eliminate images taken during takeoff and landing. Ideally, all images are taken from a near-nadir perspective and fall along a plane at a relatively constant distance from the surface of interest. For most RGB sensors, which can be fully integrated with the RPA, images will not be taken during takeoff and landing. However, blurry images may still be acquired as a result of unexpected changes in the flight path.</p>
+</div>
+<div id="image_align" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Image Alignment</h3>
+<p>Key alignment parameters determine the extent to which each image is downscaled and which image pairs will be tested for potential matches. The downscale parameter represents the length of a side of the square of pixels averaged together during downscaling. A value of 1, or <em>High</em>, matches images using every pixel. A value of 2, or <em>Medium</em>, averages 4 original pixels. A value of 0, or <em>Highest</em>, is used to denote an upscaling, and creates 4 pixels from each original pixel. Adjusting this parameter affects processing time and, in some cases, the number of images aligned. Images with poor overlap, minimal feature geometry, or images located along the edges of image sets will be especially affected by this parameter. A higher setting (or lower number) does not necessarily result in superior alignment.</p>
+<p>Generic preselection and reference preselection limit the number of image pairs that the algorithm searches for. Generic preselection uses downscaled images first to determine probable pairs, while reference preselection searches for matches which are located near one another. These settings can greatly increase processing speed without sacrificing quality. Key point and tie point limits set caps on the number of points which can be generated and matched, respectively. Increasing these values or setting them to 0 (unlimited) can increase processing time but can improve results in some cases.</p>
+</div>
+<div id="cloud_filt" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Sparse Cloud Filtering</h3>
+<p>Clusters of tie points are used to construct the depth maps. Therefore, the points included in the sparse cloud ultimately determine the quality of the depth maps, dense cloud, and elevation products. By eliminating erroneously matched points from the sparse cloud based on quality criteria and then resetting camera alignment, the quality of depth maps can be improved. The “gradual selection” tool in MetaShape offers several quality criteria to choose from; the “reconstruction uncertainty” option seems to be especially useful for forested scenes. A threshold between 15 and 50 seems to be effective in eliminating problematic points without losing useful data.</p>
+</div>
+<div id="map_gen" class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Depth Map Generation</h3>
+<p>Like image matching, the generation of depth maps is also pixel-based and can be downscaled. The degree of downscaling directly affects the detail of the dense point cloud. Downscaling the depth maps will dramatically increase processing time but will result in smoothed surfaces and compromise canopy structural metrics.</p>
+</div>
+<div id="map_filt" class="section level3" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Depth Map Filtering</h3>
+<p>Filtering of depth maps balances data loss with noise generation at the dense cloud level. Isolated noise points occurring beneath the ground surface are not detrimental to data quality, because they are typically eliminated after a ground model is created and the point cloud is normalized. Noise points and artifacts occurring at the tops of tree crowns are much more of a concern. The “mild” option for depth map filtering is the recommended setting, achieving a balance between elimination of erroneous outliers and flattening of canopy structure. This setting has been shown to perform well for tree detection and height estimates in open-canopy conifer forests [26].</p>
+</div>
+<div id="micasense" class="section level3" number="5.2.7">
+<h3><span class="header-section-number">5.2.7</span> Multispectral (MicaSense)</h3>
+<p>Multispectral and RGB imagery can be processed using similar workflows. It is often desirable to extract structural canopy information from high-resolution aerial RGB photography and calibrated spectral data from multispectral imagery acquired for the same site at the same time.</p>
+<p>When dealing with multispectral imagery, MetaShape groups corresponding images as multi-camera systems. Most of the processing is similar, however, the “Calibrate Reflectance” step is a key difference. This step can be performed before photo matching. Reflectance panel images can be located automatically, and will automatically be disabled for subsequent steps. If a downwelling light sensor (DLS) was used during flight, the use_sun_sensor tag should be set to true.</p>
+<p>The algorithms used in image matching are capable of operating between different image types, meaning that key points can be detected in single-band multispectral images and RGB photographs. The two datasets can be processed in separate chunks and aligned using “Align Chunks”; a low or medium accuracy is usually sufficient for this type of alignment. It is also possible to align RGB and MS imagery in a single chunk before exporting the aligned images to a new chunk and proceeding. This method can sometimes allow alignment of problematic image sets with poor geometry or insufficient overlap.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="planning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="PPP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/5.0-Digital-Photogrammetric-Processing.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

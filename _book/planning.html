@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Acquisition Planning | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="Chapter 4 Acquisition Planning | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Acquisition Planning | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Acquisition Planning | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  
+  
+  
+
+<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+
+
+<meta name="date" content="2022-04-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="geo_accuracy.html"/>
+<link rel="next" href="DPP.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+<ul>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#contents"><i class="fa fa-check"></i>Contents</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>2</b> Hardware</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hardware.html"><a href="hardware.html#RPA"><i class="fa fa-check"></i><b>2.1</b> Remotely Piloted Aircraft (RPA)</a></li>
+<li class="chapter" data-level="2.2" data-path="hardware.html"><a href="hardware.html#sensors"><i class="fa fa-check"></i><b>2.2</b> Imaging Sensors</a></li>
+<li class="chapter" data-level="2.3" data-path="hardware.html"><a href="hardware.html#other_h"><i class="fa fa-check"></i><b>2.3</b> Other Hardware Considerations</a></li>
+<li class="chapter" data-level="2.4" data-path="hardware.html"><a href="hardware.html#workstation"><i class="fa fa-check"></i><b>2.4</b> Workstation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="geo_accuracy.html"><a href="geo_accuracy.html"><i class="fa fa-check"></i><b>3</b> Geometric Accuracy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="geo_accuracy.html"><a href="geo_accuracy.html#GCP"><i class="fa fa-check"></i><b>3.1</b> Ground Control Points (GCP)</a></li>
+<li class="chapter" data-level="3.2" data-path="geo_accuracy.html"><a href="geo_accuracy.html#RTK_wf"><i class="fa fa-check"></i><b>3.2</b> Real-Time Kinematic (RTK) Workflows</a></li>
+<li class="chapter" data-level="3.3" data-path="geo_accuracy.html"><a href="geo_accuracy.html#PPK_wf"><i class="fa fa-check"></i><b>3.3</b> Post-Processing Kinematic Workflows (PPK)</a></li>
+<li class="chapter" data-level="3.4" data-path="geo_accuracy.html"><a href="geo_accuracy.html#use_case"><i class="fa fa-check"></i><b>3.4</b> Determining Use-Case</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>4</b> Acquisition Planning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="planning.html"><a href="planning.html#takeoff"><i class="fa fa-check"></i><b>4.1</b> Takeoff Sites</a></li>
+<li class="chapter" data-level="4.2" data-path="planning.html"><a href="planning.html#flight_plan"><i class="fa fa-check"></i><b>4.2</b> Flight Planning Software</a></li>
+<li class="chapter" data-level="4.3" data-path="planning.html"><a href="planning.html#timing"><i class="fa fa-check"></i><b>4.3</b> Timing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="DPP.html"><a href="DPP.html"><i class="fa fa-check"></i><b>5</b> Digital Photogrammetric Processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="DPP.html"><a href="DPP.html#software"><i class="fa fa-check"></i><b>5.1</b> Software Choices</a></li>
+<li class="chapter" data-level="5.2" data-path="DPP.html"><a href="DPP.html#agisoft_wf"><i class="fa fa-check"></i><b>5.2</b> Agisoft Workflow Walk-Throughs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="DPP.html"><a href="DPP.html#imagery_org"><i class="fa fa-check"></i><b>5.2.1</b> Imagery Organization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="DPP.html"><a href="DPP.html#image_filt"><i class="fa fa-check"></i><b>5.2.2</b> Image filtering</a></li>
+<li class="chapter" data-level="5.2.3" data-path="DPP.html"><a href="DPP.html#image_align"><i class="fa fa-check"></i><b>5.2.3</b> Image Alignment</a></li>
+<li class="chapter" data-level="5.2.4" data-path="DPP.html"><a href="DPP.html#cloud_filt"><i class="fa fa-check"></i><b>5.2.4</b> Sparse Cloud Filtering</a></li>
+<li class="chapter" data-level="5.2.5" data-path="DPP.html"><a href="DPP.html#map_gen"><i class="fa fa-check"></i><b>5.2.5</b> Depth Map Generation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="DPP.html"><a href="DPP.html#map_filt"><i class="fa fa-check"></i><b>5.2.6</b> Depth Map Filtering</a></li>
+<li class="chapter" data-level="5.2.7" data-path="DPP.html"><a href="DPP.html#micasense"><i class="fa fa-check"></i><b>5.2.7</b> Multispectral (MicaSense)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="PPP.html"><a href="PPP.html"><i class="fa fa-check"></i><b>6</b> Photogrammetric Post-Processing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="PPP.html"><a href="PPP.html#software_PPP"><i class="fa fa-check"></i><b>6.1</b> Software choices</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="PPP.html"><a href="PPP.html#LAStools"><i class="fa fa-check"></i><b>6.1.1</b> LAStools</a></li>
+<li class="chapter" data-level="6.1.2" data-path="PPP.html"><a href="PPP.html#lidR"><i class="fa fa-check"></i><b>6.1.2</b> lidR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="PPP.html"><a href="PPP.html#wf_script"><i class="fa fa-check"></i><b>6.2</b> Workflows/Scripting</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="PPP.html"><a href="PPP.html#comp"><i class="fa fa-check"></i><b>6.2.1</b> Compression</a></li>
+<li class="chapter" data-level="6.2.2" data-path="PPP.html"><a href="PPP.html#tiling"><i class="fa fa-check"></i><b>6.2.2</b> Tiling and Buffering</a></li>
+<li class="chapter" data-level="6.2.3" data-path="PPP.html"><a href="PPP.html#noise_filt"><i class="fa fa-check"></i><b>6.2.3</b> Noise filtering</a></li>
+<li class="chapter" data-level="6.2.4" data-path="PPP.html"><a href="PPP.html#class"><i class="fa fa-check"></i><b>6.2.4</b> Classification</a></li>
+<li class="chapter" data-level="6.2.5" data-path="PPP.html"><a href="PPP.html#normal"><i class="fa fa-check"></i><b>6.2.5</b> Normalization</a></li>
+<li class="chapter" data-level="6.2.6" data-path="PPP.html"><a href="PPP.html#PC_normal"><i class="fa fa-check"></i><b>6.2.6</b> Point Cloud Normalization with Co-Occurring LiDAR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="PPP.html"><a href="PPP.html#data"><i class="fa fa-check"></i><b>6.3</b> Standard Data Products</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="PPP.html"><a href="PPP.html#DTM"><i class="fa fa-check"></i><b>6.3.1</b> Digital Terrain Model/Digital Elevation Model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="PPP.html"><a href="PPP.html#CHM"><i class="fa fa-check"></i><b>6.3.2</b> Canopy Height Model</a></li>
+<li class="chapter" data-level="6.3.3" data-path="PPP.html"><a href="PPP.html#metrics"><i class="fa fa-check"></i><b>6.3.3</b> Standardized Metrics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="field_data.html"><a href="field_data.html"><i class="fa fa-check"></i><b>7</b> Field Data Collection</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="field_data.html"><a href="field_data.html#stem_map"><i class="fa fa-check"></i><b>7.1</b> Stem Mapping Method 1: Distance and Azimuth</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="field_data.html"><a href="field_data.html#instrument"><i class="fa fa-check"></i><b>7.1.1</b> Instrument Calibration</a></li>
+<li class="chapter" data-level="7.1.2" data-path="field_data.html"><a href="field_data.html#methods"><i class="fa fa-check"></i><b>7.1.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="planning" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Acquisition Planning</h1>
+<p>When planning RPAS acquisitions on harvest openings, operators must plan for additional risks, beyond what is typical of forest field work. Important considerations include takeoff and landing sites, line-of-sight, flight obstacles, inclement weather, and terrain.</p>
+<div id="takeoff" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Takeoff Sites</h2>
+<p>Before leaving the office, it is important to consult the most up to date imagery and inventory data to determine potential takeoff sites for your acquisition. Shapefiles for the site of interest can be converted to a .kml format and easily loaded into Google Earth (Figure 3). We recommend working with other layers such as roadways, powerline infrastructure, canopy height models, and elevation models to optimize your site planning efforts (Table 2).</p>
+<p>When planning takeoff sites via Google Earth, consider the age of satellite imagery, which can be determined with the historical timeline button (Figure 3). By adjusting the time slider, one may be able to see years with clear images where pullouts and potential takeoff sites are more visible. Keep in mind that older imagery will be less reliable as regrowth and erosion occurs on deactivated roads. Proposed takeoff locations can be saved with pins which can be exported as KMLs for use in your geographic information system (GIS) mapping software of choice. When you arrive on site, perform a reconnaissance of the potential takeoff sites and select the most appropriate based on flight considerations (Table 2).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/fig3.png" alt="Site planning for RPAS data acquisition with Google Earth. The historic timeline button (1) and time slider are highlighted in red." width="100%" />
+<p class="caption">
+Figure 4.1: Site planning for RPAS data acquisition with Google Earth. The historic timeline button (1) and time slider are highlighted in red.
+</p>
+</div>
+<table>
+<caption><strong>Table 2.</strong> Site planning considerations for determining appropriate takeoff points and best practices for conducting active flights.</caption>
+<colgroup>
+<col width="39%" />
+<col width="17%" />
+<col width="25%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Site Planning Considerations</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Managing the Risk</strong></th>
+<th><strong>Data Sources</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nearby Roadway Infrastructure</td>
+<td>Keep in mind active traffic on roads; roadways must be kept clear, dust from traffic can damage equipment or impact line-of-site.</td>
+<td>Have at least one radio tuned to the nearest road channel to anticipate incoming traffic. Communicate with local operators beforehand to identify industrial activity in the area. Choose takeoff sites located away from active roadways when possible.</td>
+<td><a href="https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer">Alberta Provincial roads database</a> [12]<br><br>Local operators<br><br><a href="https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html">Alberta Road Channels</a> [13]</td>
+</tr>
+<tr class="even">
+<td>Maintaining Line-of-site</td>
+<td>Select the takeoff site where you and your team will have the best view of the RPA while it is in-flight.</td>
+<td>Choose take-off sites clear of tall vegetation and ideally located on elevated positions with a good view of the block. Deploy team members equipped radios to elevated/clear positions to maintain visual line of sight.</td>
+<td><a href="https://www.google.com/earth/download/gep/agree.html?hl=en-GB">Google Earth</a>, Canopy Height models, Digital Elevation models</td>
+</tr>
+<tr class="odd">
+<td>Obstacles</td>
+<td>Be mindful of obstacles such as trees and powerlines which may contact the RPA; particularly during a flyaway event</td>
+<td>Identify hazards when generating flight plans and ensure the path of the RPA does not intersect. Do not rely on built-in obstacle avoidance, actively watch the system and video transmission while being ready to take control of the aircraft at any point.<br><br>Make sure to set return to home height to a height that will allow the RPA to clear obstacles before returning home</td>
+<td><a href="https://www.google.com/earth/download/gep/agree.html?hl=en-GB">Google Earth</a>, Canopy Height models, Digital Elevation models, provincial infrastructure (powerline) layers.</td>
+</tr>
+<tr class="even">
+<td>Changes in elevation</td>
+<td>When deploying the RPAS, be mindful of changes in ground elevation across the survey area. It is always best to take off from the highest point and allow the system to work downhill.</td>
+<td>Some RPAS are equipped with terrain following software; this function is essential when working on sites with significant slope to both maintain consistent image acquisition conditions (aboveground altitude), and keep the RPA away from potential obstacles. Digital elevation models (dem) can be loaded into flight planning software to allow the RPA to adjust altitude accordingly. Provide the most accurate and highest spatial resolution DEM available.<br><br>Any obstacles or terrain that is located between the RPA and controller will reduce/disrupt the signal strength.</td>
+<td>Digital elevation models:<br><br><a href="https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a">Alberta Provincial DEM (25m)</a> [14]<br><br>Available LIDAR DEM (Ideal)</td>
+</tr>
+</tbody>
+</table>
+<p>Depending on the RPAS being used, the block boundary, and potential site KML files as well as digital elevation models (DEM) (.tif) can be easily copied to the memory card or controller and loaded into on-board flight planning software. It should be noted that DJI RPAS typically require that files use the WGS 1984 geographic coordinate system (i.e. latitude/longitude; WKID: 4326 Authority: EPSG); coordinate system conversion of vector and raster data can be done in most common GIS software (<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm"><em>ArcMap</em></a> [15], <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm"><em>ArcGis Pro</em></a> [16], <a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html"><em>QGIS</em></a> [17]). In Canada, most spatial data are referenced to North American Datum 1983 original (NAD83 (original)), or North American Datum of 1983 of the Canadian Spatial Reference System (NAD83(CSRS)). For conversion between coordinate systems (e.g. NAD83 to WGS84), consult geographic transformation tables (e.g. <a href="https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf">ESRI</a> [18]) to ensure that the proper geographic transformation is employed – this is especially important when high spatial accuracy is desired.</p>
+</div>
+<div id="flight_plan" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Flight Planning Software</h2>
+<p>There are various software packages available for automating RPAS acquisitions, including ODM [19], Pix4D [20], Drone Deploy [21], Map Pilot (drones made easy) [4], and DJI GS Pro [10]. We almost exclusively use Map Pilot. Some of the software is free to use, but accessing all of the features necessary to carry out flights in the manner described above requires some kind of subscription or one time payment. Any of the software will allow the user to specify how high the RPA flies above ground and the level of overlap desired. Most flight planning software will also offer services which process RPAS data into orthomosaics and DAP point clouds. In general, we recommend that users process their own data, which will almost always result in higher quality outputs and reduce costs. When choosing a flight software, the user should ensure that the RPA is supported by the software. Most DJI RPA that allow the user to control the drone with a tablet can be flown by any software, but there is typically a delay between new RPA being released and their incorporation with flight planning software. When choosing a software package, it is important to pick one that includes some kind of terrain following feature, ideally one that allows the user to upload a user defined DEM. If the user does not own high quality DEMs, any software that allows for terrain following should have an option to allow the user to download a coarse resolution DEM.</p>
+<p>As we are most familiar with Map Pilot, we will describe a basic workflow for planning and carrying out automated flights using this software. Map Pilot is proprietary and requires a subscription purchased from their website. We recommend subscribing to Map Pilot Pro. Once the account is set up, the user can download and login to the software on any tablet (we use iPads). Make sure to plan your flights before going into the field, as a data connection is required to download all of the necessary files.</p>
+Flight planning with Map Pilot:
+<ol>
+<li>
+Locate the <em>Settings</em> menu
+</li>
+<li>
+Select the RPA from the <em>Flight Camera Model</em> field
+</li>
+<li>
+Return to the main screen
+</li>
+<li>
+Click <em>Create New Flight</em>
+</li>
+<li>
+Navigate to where the flight will take place using the provided satellite imagery
+</li>
+<li>
+Double tap a location to set the takeoff point
+</li>
+<li>
+Tap and hold three more spots to complete the flight path polygon
+</li>
+</ol>
+<p>Once the polygon has been created, vertices may be added and adjusted to ensure that the area of interest is within the polygon. We recommend making the polygon slightly larger than necessary to make sure that areas near the polygon’s boundaries are suitably covered. Flight polygons may also be made in advance. In this case, KML files can be sent to the tablet by email. However, it may be desirable to modify flight polygons in field following reconnaissance of the acquisition site.</p>
+<p>After your polygon is created, tap the drop down menu on the top of the screen to set your mission type, altitude, and overlap. We recommend 90% forward and 85% lateral overlap for the generation of high quality DAP point clouds. If only orthomosaics are required, 80% forward and 80% lateral overlap will suffice. For most flights, a normal mission type is suitable, but for higher quality, you can set the mission type to grid, which will essentially have the drone fly the acquisition area twice using perpendicular flight patterns. Once all of these parameters have been set, click the tab on the lower left of the screen to open the terrain awareness function. Click the top of this menu to load in the DEM. After everything has been set, click the save icon on the top left of the screen to save your mission. This is essential to do as it also downloads the imagery and DEM so you can use these data offline when you are in the field. As long as everything has been downloaded, you will then be able to adjust all of these flight parameters in the field before you collect your data. To actually fly your saved mission, you only need to connect the drone to the tablet, open the software, and select your mission. The software should recognize the drone as being connected, allowing you to click “take off”, which should launch the drone and cause it to follow the preset flight path. When the battery is running low, it should return to home on its own. The drone should be able to land itself, but we recommend pausing the flight and landing the drone manually. Once the battery has been changed, you can select “take off” again, and the drone will return to its last waypoint to continue the mission. For more details, numerous tutorials that can be found here.</p>
+</div>
+<div id="timing" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Timing</h2>
+<p>With regard to weather conditions, overcast skies reduce the effects of intense brightness and are therefore ideal. However, consistent weather throughout each acquisition is the most important factor with regard to illumination conditions. Attention should be paid to sun position. Acquiring data when the sun is at its highest point minimizes issues related to shadow and occlusion. Planning for illumination conditions is important. Tools such as <a href="http://suncalc.net/#/51.508,-0.125,2/2022.03.28/16:23">SunCalc</a> [22] can help prepare for optimized flight times and conditions.</p>
+<p>Additionally, seasonality and the phenological state of target vegetation should be considered. Imagery captured in the early Spring, after snow-melt, but prior to deciduous green-up (leaf-off conditions), is especially useful for differentiating deciduous and coniferous species. Under these conditions, coniferous species are likely to be the only green objects in the captured imagery. Leaf-off deciduous individuals will however be difficult to discern in imagery. Leaf-off conditions may be helpful for developing DEM during photogrammetric processing (Section 5.0) as the absence of foliage may provide more ground points. There is however, also a possibility that leafless deciduous structures may impair depth map production (discussed in Photogrammetric Processing), which could lead to terrain being erroneously raised in places. Finally, while the effect of snow is relatively uncertain, photogrammetric software may be confused when snow occurs in tree crowns and on the ground.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="geo_accuracy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="DPP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/4.0-Acquisition-Planning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

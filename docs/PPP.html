@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Photogrammetric Post-Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="Chapter 6 Photogrammetric Post-Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Photogrammetric Post-Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Photogrammetric Post-Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  
+  
+  
+
+<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+
+
+<meta name="date" content="2022-04-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="DPP.html"/>
+<link rel="next" href="field_data.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+<ul>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#contents"><i class="fa fa-check"></i>Contents</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="title.html"><a href="title.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>2</b> Hardware</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hardware.html"><a href="hardware.html#RPA"><i class="fa fa-check"></i><b>2.1</b> Remotely Piloted Aircraft (RPA)</a></li>
+<li class="chapter" data-level="2.2" data-path="hardware.html"><a href="hardware.html#sensors"><i class="fa fa-check"></i><b>2.2</b> Imaging Sensors</a></li>
+<li class="chapter" data-level="2.3" data-path="hardware.html"><a href="hardware.html#other_h"><i class="fa fa-check"></i><b>2.3</b> Other Hardware Considerations</a></li>
+<li class="chapter" data-level="2.4" data-path="hardware.html"><a href="hardware.html#workstation"><i class="fa fa-check"></i><b>2.4</b> Workstation</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="geo_accuracy.html"><a href="geo_accuracy.html"><i class="fa fa-check"></i><b>3</b> Geometric Accuracy</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="geo_accuracy.html"><a href="geo_accuracy.html#GCP"><i class="fa fa-check"></i><b>3.1</b> Ground Control Points (GCP)</a></li>
+<li class="chapter" data-level="3.2" data-path="geo_accuracy.html"><a href="geo_accuracy.html#RTK_wf"><i class="fa fa-check"></i><b>3.2</b> Real-Time Kinematic (RTK) Workflows</a></li>
+<li class="chapter" data-level="3.3" data-path="geo_accuracy.html"><a href="geo_accuracy.html#PPK_wf"><i class="fa fa-check"></i><b>3.3</b> Post-Processing Kinematic Workflows (PPK)</a></li>
+<li class="chapter" data-level="3.4" data-path="geo_accuracy.html"><a href="geo_accuracy.html#use_case"><i class="fa fa-check"></i><b>3.4</b> Determining Use-Case</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>4</b> Acquisition Planning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="planning.html"><a href="planning.html#takeoff"><i class="fa fa-check"></i><b>4.1</b> Takeoff Sites</a></li>
+<li class="chapter" data-level="4.2" data-path="planning.html"><a href="planning.html#flight_plan"><i class="fa fa-check"></i><b>4.2</b> Flight Planning Software</a></li>
+<li class="chapter" data-level="4.3" data-path="planning.html"><a href="planning.html#timing"><i class="fa fa-check"></i><b>4.3</b> Timing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="DPP.html"><a href="DPP.html"><i class="fa fa-check"></i><b>5</b> Digital Photogrammetric Processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="DPP.html"><a href="DPP.html#software"><i class="fa fa-check"></i><b>5.1</b> Software Choices</a></li>
+<li class="chapter" data-level="5.2" data-path="DPP.html"><a href="DPP.html#agisoft_wf"><i class="fa fa-check"></i><b>5.2</b> Agisoft Workflow Walk-Throughs</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="DPP.html"><a href="DPP.html#imagery_org"><i class="fa fa-check"></i><b>5.2.1</b> Imagery Organization</a></li>
+<li class="chapter" data-level="5.2.2" data-path="DPP.html"><a href="DPP.html#image_filt"><i class="fa fa-check"></i><b>5.2.2</b> Image filtering</a></li>
+<li class="chapter" data-level="5.2.3" data-path="DPP.html"><a href="DPP.html#image_align"><i class="fa fa-check"></i><b>5.2.3</b> Image Alignment</a></li>
+<li class="chapter" data-level="5.2.4" data-path="DPP.html"><a href="DPP.html#cloud_filt"><i class="fa fa-check"></i><b>5.2.4</b> Sparse Cloud Filtering</a></li>
+<li class="chapter" data-level="5.2.5" data-path="DPP.html"><a href="DPP.html#map_gen"><i class="fa fa-check"></i><b>5.2.5</b> Depth Map Generation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="DPP.html"><a href="DPP.html#map_filt"><i class="fa fa-check"></i><b>5.2.6</b> Depth Map Filtering</a></li>
+<li class="chapter" data-level="5.2.7" data-path="DPP.html"><a href="DPP.html#micasense"><i class="fa fa-check"></i><b>5.2.7</b> Multispectral (MicaSense)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="PPP.html"><a href="PPP.html"><i class="fa fa-check"></i><b>6</b> Photogrammetric Post-Processing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="PPP.html"><a href="PPP.html#software_PPP"><i class="fa fa-check"></i><b>6.1</b> Software choices</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="PPP.html"><a href="PPP.html#LAStools"><i class="fa fa-check"></i><b>6.1.1</b> LAStools</a></li>
+<li class="chapter" data-level="6.1.2" data-path="PPP.html"><a href="PPP.html#lidR"><i class="fa fa-check"></i><b>6.1.2</b> lidR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="PPP.html"><a href="PPP.html#wf_script"><i class="fa fa-check"></i><b>6.2</b> Workflows/Scripting</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="PPP.html"><a href="PPP.html#comp"><i class="fa fa-check"></i><b>6.2.1</b> Compression</a></li>
+<li class="chapter" data-level="6.2.2" data-path="PPP.html"><a href="PPP.html#tiling"><i class="fa fa-check"></i><b>6.2.2</b> Tiling and Buffering</a></li>
+<li class="chapter" data-level="6.2.3" data-path="PPP.html"><a href="PPP.html#noise_filt"><i class="fa fa-check"></i><b>6.2.3</b> Noise filtering</a></li>
+<li class="chapter" data-level="6.2.4" data-path="PPP.html"><a href="PPP.html#class"><i class="fa fa-check"></i><b>6.2.4</b> Classification</a></li>
+<li class="chapter" data-level="6.2.5" data-path="PPP.html"><a href="PPP.html#normal"><i class="fa fa-check"></i><b>6.2.5</b> Normalization</a></li>
+<li class="chapter" data-level="6.2.6" data-path="PPP.html"><a href="PPP.html#PC_normal"><i class="fa fa-check"></i><b>6.2.6</b> Point Cloud Normalization with Co-Occurring LiDAR</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="PPP.html"><a href="PPP.html#data"><i class="fa fa-check"></i><b>6.3</b> Standard Data Products</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="PPP.html"><a href="PPP.html#DTM"><i class="fa fa-check"></i><b>6.3.1</b> Digital Terrain Model/Digital Elevation Model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="PPP.html"><a href="PPP.html#CHM"><i class="fa fa-check"></i><b>6.3.2</b> Canopy Height Model</a></li>
+<li class="chapter" data-level="6.3.3" data-path="PPP.html"><a href="PPP.html#metrics"><i class="fa fa-check"></i><b>6.3.3</b> Standardized Metrics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="field_data.html"><a href="field_data.html"><i class="fa fa-check"></i><b>7</b> Field Data Collection</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="field_data.html"><a href="field_data.html#stem_map"><i class="fa fa-check"></i><b>7.1</b> Stem Mapping Method 1: Distance and Azimuth</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="field_data.html"><a href="field_data.html#instrument"><i class="fa fa-check"></i><b>7.1.1</b> Instrument Calibration</a></li>
+<li class="chapter" data-level="7.1.2" data-path="field_data.html"><a href="field_data.html#methods"><i class="fa fa-check"></i><b>7.1.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="PPP" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Photogrammetric Post-Processing</h1>
+<p>Post-processing of photogrammetric data occurs following export from point cloud generation. Considerations surrounding post-processing should include the software being used, key parameters, approaches for efficient processing workflows (scripting), and desired final outputs.</p>
+<div id="software_PPP" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Software choices</h2>
+<p>There are many proprietary and open source software options for point cloud processing. For this report, we highlight LAStools [27] and the lidR package [28] available in the programming language, R.</p>
+<div id="LAStools" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> LAStools</h3>
+<p><a href="https://rapidlasso.com/lastools/">LAStools</a> [27] is arguably the fastest and most memory-efficient lidar processing software. Some tools and functionalities are free to use, while others require licensing to unlock full capabilities. For example, a licensed version of LAStools facilitates multi-core point cloud processing, which is especially valuable when processing large data acquisitions. The use of LAStools without a license limits users to a smaller range of processing tools, though key processing steps such as point classification (<em>lasground</em>), terrain normalization (<em>lasheight</em>), and metric production (<em>lascanopy</em>) are all possible without a license.</p>
+</div>
+<div id="lidR" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> lidR</h3>
+<p>The <a href="https://r-lidar.github.io/lidRbook/">lidR package</a> [28] is software developed with the R processing language with C++ integrations. lidR is entirely free and open-source with active development. An in-depth description of the inner workings of this package can be found <a href="https://r-lidar.github.io/lidRbook/">here</a>. Processing within lidR can be done in parallel, dramatically increasing processing speeds, and users are able to create user-defined functions and processing workflows, which allow for data-tailored approaches. lidR is capable of performing all the tasks of a fully licensed version of LAStools, though because it is scripted using R, processing times are often slower.</p>
+</div>
+</div>
+<div id="wf_script" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Workflows/Scripting</h2>
+<p>Processing photogrammetric data is an iterative approach where the same processing steps are applied to data tiles in sequence. Some steps are optional depending on storage limitations and intermediate processing steps may vary. Fundamental steps are covered in subsequent sections.</p>
+<div id="comp" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Compression</h3>
+<p>Point cloud data standards are specified by the American Society for Photogrammetry and Remote Sensing (ASPRS). In its most raw form, point cloud data are a table of XYZ coordinates and attributes (i.e. classification, scan angle, spectral information, etc) for each point. The de facto open-source format for point cloud data is <em>.las</em>, though the compressed <em>.laz</em> format facilitates substantial file compression. Compression is performed using <a href="https://laszip.org/">LASzip</a> [29], which is directly integrated into both LAStools and lidR. Though <em>.laz</em> files take slightly longer to read and write during processing, compression results in files that are 7-20% of the size of their <em>.las</em> counterparts. We highly recommend conversion of <em>.las</em> to <em>.laz</em> files prior to processing, or during the first step of processing. The <em>.laz</em> format should be maintained for all intermediate point cloud files.</p>
+</div>
+<div id="tiling" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Tiling and Buffering</h3>
+<p>Data tiling is a fundamental step to efficient point cloud processing. Point cloud files can often be large and bulky, making them difficult - if not impossible - to process. The remedy to these large files is to split them into tiles, which will then be processed individually. Tile size (e.g. 1000 x 1000 m) is often dependent on data characteristics such as point density. File size will scale with point density and file extent, so tile size should be chosen to balance size within the context of available computing power. Limiting tile sizes to &gt;100 MB has worked well for our research, though processing using larger files sizes is possible.</p>
+<p>Buffering is often conducted alongside tiling. Adding a buffer refers to a generally small distance that is added onto the base tile size. For example, if a 5 m buffer is added to a 1000x1000 m tile, the buffered tile will have the dimensions 1005x1005 m. Buffering is used as a method to reduce the impact of tile edge effects in downstream processing (e.g. metrics mosaicking, individual tree segmentation).</p>
+<p>It is extremely important to note that lidR and LAStools handle buffers differently, though their importance remains the same. For LAStools, users must explicitly specify buffers, while in lidR buffering is performed on the fly without the requirement for user input (though specifying sizes are possible and simple to do). Best practice for buffering within LAStools is to use the <em>-flag_as_withheld</em> switch, which flags all buffer points for easy removal later on.</p>
+<p>All processing steps following tiling are iterated individually on each tile.</p>
+</div>
+<div id="noise_filt" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Noise filtering</h3>
+<p>Point cloud data are prone to having noise from various factors. Birds, clouds, haze, and in the case of photogrammetric data, mismatched points, can cause erroneous data to be present. Filtering for these noise data is recommended prior to further processing, which involves removal based on surrounding point density. Algorithms that do this generally have a three dimensional moving window that moves across point cloud tiles. When a tile with very low point density is detected it tests to see whether points are within a specified distance. If the test fails then those points will be classified as noise and the moving window will continue.</p>
+</div>
+<div id="class" class="section level3" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Classification</h3>
+<p>This is a fundamental step. Classification involves assigning a <em>type</em> to each point, which in the most basic sense is ground or non-ground. This point is fundamental for creating DEMs that facilitate point cloud normalization. There are multiple algorithms that can be used to classify a point cloud. The most common is known as the progressive triangular irregular network densification (PTD), which generate triangular networks from points to create a ground surface. Other methods such as the progressive morphological filter (PMF) and cloth simulation filter (CSF). Each of these algorithms are available through the lidR package. For most situations, we recommend using PTD.</p>
+</div>
+<div id="normal" class="section level3" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Normalization</h3>
+<p>Following classification, normalization makes all points above ground relative to a standard ground height of 0 metres. Point cloud normalization references points to their height above ground, as opposed to their height above a vertical datum (i.e. ellipsoid or geoid). This has the effect of removing the undulation of terrain. The simplest method to normalize a point cloud is to subtract the DEM surface heights from the absolute elevation to generate a point cloud with height values that are all relative to the ground surface, where the ground surface has a value of 0. Normalized point clouds are used for generating wall-to-wall metrics including mean height, cover, and variability. Normalization is visualized in Figure 6.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="figures/fig6.png" alt="A visualization of the process of normalizing terrain." width="100%" />
+<p class="caption">
+Figure 6.1: A visualization of the process of normalizing terrain.
+</p>
+</div>
+</div>
+<div id="PC_normal" class="section level3" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> Point Cloud Normalization with Co-Occurring LiDAR</h3>
+<p>DAP-derived DEM may be unreliable in areas with moderate to high degrees of canopy cover due to the image-based nature of DAP data. In such cases, normalizing point clouds with DAP-derived DEM will produce inaccurate height measurements. To correct for this, a DEM derived from co-occurring LiDAR can instead be used for point cloud normalization [30]. This process is visualized in Figure 7.</p>
+</div>
+</div>
+<div id="data" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Standard Data Products</h2>
+<p>There are a number of data outputs that are standard for point cloud data in the context of forest management.</p>
+<div id="DTM" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Digital Terrain Model/Digital Elevation Model</h3>
+<p>The DEM (also commonly referred to as a digital terrain model, or DTM), is created by using only points classified as ground in non-normalized tiles. The DEM is a raster layer with a user-specified resolution (e.g. 1 m) representing ground elevation. It is important to be cognizant of the density of ground points within a given dataset. Lower densities will result in fewer ground points overall, which can therefore limit the spatial resolution of the produced DEM.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<img src="figures/fig7.png" alt="DAP point cloud normalization with DEM derived from a co-occurring LiDAR point cloud [30]." width="100%" />
+<p class="caption">
+Figure 6.2: DAP point cloud normalization with DEM derived from a co-occurring LiDAR point cloud [30].
+</p>
+</div>
+</div>
+<div id="CHM" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Canopy Height Model</h3>
+<p>The canopy height model (CHM) is created using normalized data. The CHM is a raster layer with a user-specified resolution (e.g. 1 m) representing the maximum height of vegetation (or structures) above ground. Given that the CHM is generated using normalized data, all vegetation heights are relative to ground across the acquisition coverage.</p>
+</div>
+<div id="metrics" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Standardized Metrics</h3>
+<p>Normalized point clouds allow for spatially explicit comparisons of above ground vegetation. This could be as simple as determining where the tallest trees are, or where the most variability in height is. These statistical summaries can be calculated at any spatial resolution, producing rasters capable of being integrated into GIS software for planning and management, or to be used in inventory management and analysis. Given that point clouds are really just a group of points, an endless list of statistical metrics can be calculated [28], [31], [32]. Metrics are often subdivided into height, cover, variability, and vertical distribution classes, though metrics can also be derived from additional point attributes such as RGB values from corresponding pixels. Metrics calculation is generally considered the final step of point cloud post-processing.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="DPP.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="field_data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/6.0-Photogrammetric-Post-Processing.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
