@@ -1,7 +1,3 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
 # Digital Photogrammetric Processing {#DPP}
 
 DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) [23] are used to detect features of interest in images. These features are known as *key points*. Features which appear across multiple images, called *tie points*, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build *depth maps* for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.

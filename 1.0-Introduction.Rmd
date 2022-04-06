@@ -1,7 +1,3 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
 # Introduction {#intro}
 Remotely piloted aerial systems (RPAS) have emerged as remote sensing platforms capable of capturing imagery at finer spatial resolutions than conventional aerial and spaceborne platforms. Along with the proliferation of commercially available RPAS has come an emergence of digital aerial photogrammetry (DAP) techniques, which have enabled the derivation of three-dimensional (3D) point cloud data from overlapping imagery. Members of the University of British Columbia’s Integrated Remote Sensing Studio Integrated Remote Sensing Studio (IRSS) have undertaken investigations into a wide range of forestry solutions utilizing orthomosaics and photogrammetric point clouds derived from fine spatial resolution RPAS imagery, and have since developed an expert knowledgebase on the use of RPAS and DAP technologies.
 

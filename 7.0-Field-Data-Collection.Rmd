@@ -1,7 +1,3 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
 # Field Data Collection {#field_data}
 
 Two methods have been developed and implemented for collecting stem-mapped field measurements. These methods produce georeferenced field information, which can be later used to train and validate predictive models. The first method – distance and azimuth – is suitable for most forested conditions and is the most generalizable of the two methods. The second method – direct to image – was developed specifically for collecting field data for regenerating openings and may therefore be limited in its applicability elsewhere.

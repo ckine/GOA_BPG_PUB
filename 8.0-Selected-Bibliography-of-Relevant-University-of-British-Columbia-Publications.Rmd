@@ -1,7 +1,3 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
 # Selected Bibliography of Relevant University of British Columbia Publications {#bibliography}
 We have included this list of publications – from which the synthesis of this report was largely drawn – in addition to the reference section at the end of this report. 
 

@@ -1,17 +1,4 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
-# Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
-
-```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
-knitr::include_graphics("figures\\cover.png")
-```
-
-## How to cite this report: {-#cite_report}
-Chadwick, A. J.; Goodbody, T. R. H.; Bater, C. W.; Martens, L. A.; Nuijten, R. J. G.; Smith-Tripp, S.; Grubinger, S.; Irwin, L.; Arkin, J.; Hervieux, A.; and Coops, N.C. 2022. “Best Practice Guide to Acquisition of 3D Imagery from RPAS,” Department of Forest Resource Management, Faculty of Forestry, University of British Columbia, Vancouver, British Columbia.
-
-## Contents {-#contents} 
+# Contents {-#contents} 
 <p>[1.0 Introduction](#intro)</p> 
 <p>[2.0 Hardware](#hardware)</p>
 

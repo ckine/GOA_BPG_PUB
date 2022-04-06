@@ -1,7 +1,3 @@
-```{r, echo=FALSE, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
 # Acquisition Planning {#planning}
 
 When planning RPAS acquisitions on harvest openings, operators must plan for additional risks, beyond what is typical of forest field work. Important considerations include takeoff and landing sites, line-of-sight, flight obstacles, inclement weather, and terrain.

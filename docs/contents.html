@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
-  <meta name="description" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <title>Contents | Best Practice Guide to Acquisition of 3D Imagery from RPAS</title>
+  <meta name="description" content="Contents | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta property="og:title" content="Contents | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Digital Photogrammetric Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
+  <meta name="twitter:title" content="Contents | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="planning.html"/>
-<link rel="next" href="PPP.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="intro.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -171,60 +171,228 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="DPP" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Digital Photogrammetric Processing</h1>
-<p>DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) [23] are used to detect features of interest in images. These features are known as <em>key points</em>. Features which appear across multiple images, called <em>tie points</em>, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build <em>depth maps</em> for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="figures/fig4.png" alt="Key point and Tie point matching [30]." width="100%" />
-<p class="caption">
-Figure 5.1: Key point and Tie point matching [30].
+<div id="contents" class="section level1 unnumbered">
+<h1>Contents</h1>
+<p>
+<a href="intro.html#intro">1.0 Introduction</a>
 </p>
-</div>
-<p>Each pixel of each image is then projected onto depth maps, which converts them into points in 3D space, which retain spectral information from the original pixel and comprise the <em>dense point cloud</em>. The software then stitches together the best available imagery for each point on the surfaces generated from the depth maps, creating a single image of entirely near-nadir views. This imagery can be manipulated spatially like any other georeferenced raster dataset.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="figures/fig5.png" alt="A cross-section of a DAP point cloud in a planted spruce forest." width="100%" />
-<p class="caption">
-Figure 5.2: A cross-section of a DAP point cloud in a planted spruce forest.
+<p>
+<a href="hardware.html#hardware">2.0 Hardware</a>
 </p>
+<p style="text-indent: 5%">
+<a href="hardware.html#RPA">2.1 Remotely Piloted Aircraft (RPA)</a>
+</p>
+<p style="text-indent: 5%">
+<a href="hardware.html#sensors">2.2 Imaging Sensors</a>
+</p>
+<p style="text-indent: 5%">
+<a href="hardware.html#other_h">2.3 Other Hardware Considerations</a>
+</p>
+<p style="text-indent: 5%">
+<a href="hardware.html#workstation">2.4 Workstation</a>
+</p>
+<p><a href="geo_accuracy.html#geo_accuracy">3.0 Geometric Accuracy</a></p>
+<p style="text-indent: 5%">
+<a href="geo_accuracy.html#GCP">3.1 Ground Control Points (GCP)</a>
+</p>
+<p style="text-indent: 5%">
+<a href="geo_accuracy.html#RTK_wf">3.2 Real-Time Kinematic (RTK) Workflows</a>
+</p>
+<p style="text-indent: 5%">
+<a href="geo_accuracy.html#PPK_wf">3.3 Post-Processing Kinematic Workflows (PPK)</a>
+</p>
+<p style="text-indent: 5%">
+<a href="geo_accuracy.html#use_case">3.4 Determining Use-Case</a>
+</p>
+<p><a href="planning.html#planning">4.0 Acquisition Planning</a></p>
+<p style="text-indent: 5%">
+<a href="planning.html#takeoff">4.1 Takeoff Sites</a>
+</p>
+<p style="text-indent: 5%">
+<a href="planning.html#flight_plan">4.2 Flight Planning Software</a>
+</p>
+<p style="text-indent: 5%">
+<a href="planning.html#timing">4.3 Timing</a>
+</p>
+<p><a href="DPP.html#DPP">5.0 Digital Photogrammetric Processing</a></p>
+<p style="text-indent: 5%">
+<a href="DPP.html#software">5.1 Software Choices</a>
+</p>
+<p style="text-indent: 5%">
+<a href="DPP.html#agisoft_wf">5.2 Agisoft Workflow Walk-Throughs</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#imagery_org">5.2.1 Imagery Organization</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#image_filt">5.2.2 Image filtering</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#image_align">5.2.3 Image Alignment</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#cloud_filt">5.2.4 Sparse Cloud Filtering</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#map_gen">5.2.5 Depth Map Generation</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#map_filt">5.2.6 Depth Map Filtering</a>
+</p>
+<p style="text-indent: 10%">
+<a href="DPP.html#micasense">5.2.7 Multispectral (MicaSense)</a>
+</p>
+<p><a href="PPP.html#PPP">6.0 Photogrammetric Post-Processing</a></p>
+<p style="text-indent: 5%">
+<a href="PPP.html#software_PPP">6.1 Software choices</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#LAStools">6.1.1 LAStools</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#lidR">6.1.2 lidR</a>
+</p>
+<p style="text-indent: 5%">
+<a href="PPP.html#wf_script">6.2 Workflows/Scripting</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#comp">6.2.1 Compression</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#tiling">6.2.2 Tiling and Buffering</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#noise_filt">6.2.3 Noise filtering</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#class">6.2.4 Classification</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#normal">6.2.5 Normalization</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#PC_normal">6.2.6 Point Cloud Normalization with Co-Occurring LiDAR</a>
+</p>
+<p style="text-indent: 5%">
+<a href="PPP.html#data">6.3 Standard Data Products</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#DTM">6.3.1 Digital Terrain Model/Digital Elevation Model</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#CHM">6.3.2 Canopy Height Model</a>
+</p>
+<p style="text-indent: 10%">
+<a href="PPP.html#metrics">6.3.3 Standardized Metrics</a>
+</p>
+<p><a href="field_data.html#field_data">7.0 Field Data Collection</a></p>
+<p style="text-indent: 5%">
+<a href="field_data.html#stem_map">7.1 Stem Mapping Method 1: Distance and Azimuth</a>
+</p>
+<p style="text-indent: 10%">
+<a href="field_data.html#instrument">7.1.1 Instrument Calibration</a>
+</p>
+<p style="text-indent: 10%">
+<a href="field_data.html#methods">7.1.2 Methods</a>
+</p>
+<p style="text-indent: 5%">
+<a href="field_data.html#stem_map_image">7.2 Stem Mapping Method 2: Direct-to-Image</a>
+</p>
+<p><a href="bibliography.html#bibliography">8.0 Selected Bibliography of Relevant University of British Columbia Publications</a></p>
+<p><a href="references.html#references">9.0 References</a></p>
+<div id="acknowledgements" class="section level2 unnumbered">
+<h2>Acknowledgements</h2>
+<p>We would like thank Barry White for his irreplaceable contributions towards envisioning and breathing life into the project that would eventually produce this report; and Alberta Agriculture and Forestry for funding.</p>
 </div>
-<div id="software" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Software Choices</h2>
-<p>Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research [24], [25]. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters.</p>
-</div>
-<div id="agisoft_wf" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Agisoft Workflow Walk-Throughs</h2>
-<div id="imagery_org" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Imagery Organization</h3>
-<p>Depending on the sensor and volume of data collected, imagery from planned flights may be saved across multiple subfolders, and empty folders may be created. The creation of empty folders typically only occurs for multispectral sensors such as the MicaSense, which cannot be fully integrated with RPA. Regardless, it is important to inspect imagery directories to ensure that they are organized and named consistently prior to adding data to Agisoft. Some manual reorganization may be required. For multispectral acquisitions, multiple spectral bands are usually stored subfolders within the same directory and are differentiated using suffixes (e.g. _1, _2, _3, _4, _5) that correspond to each spectral band. Ensure that all RPAS imagery is backed up prior to processing in Agisoft.</p>
-</div>
-<div id="image_filt" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Image filtering</h3>
-<p>Within the Agisoft MetaShape interface, it is possible to manually disable images so as to prevent them from being used in subsequent processing. Results will be improved by disabling images that are blurry or oblique, which may occur due to wind gusts or changes in flight path. It is also beneficial to eliminate images taken during takeoff and landing. Ideally, all images are taken from a near-nadir perspective and fall along a plane at a relatively constant distance from the surface of interest. For most RGB sensors, which can be fully integrated with the RPA, images will not be taken during takeoff and landing. However, blurry images may still be acquired as a result of unexpected changes in the flight path.</p>
-</div>
-<div id="image_align" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> Image Alignment</h3>
-<p>Key alignment parameters determine the extent to which each image is downscaled and which image pairs will be tested for potential matches. The downscale parameter represents the length of a side of the square of pixels averaged together during downscaling. A value of 1, or <em>High</em>, matches images using every pixel. A value of 2, or <em>Medium</em>, averages 4 original pixels. A value of 0, or <em>Highest</em>, is used to denote an upscaling, and creates 4 pixels from each original pixel. Adjusting this parameter affects processing time and, in some cases, the number of images aligned. Images with poor overlap, minimal feature geometry, or images located along the edges of image sets will be especially affected by this parameter. A higher setting (or lower number) does not necessarily result in superior alignment.</p>
-<p>Generic preselection and reference preselection limit the number of image pairs that the algorithm searches for. Generic preselection uses downscaled images first to determine probable pairs, while reference preselection searches for matches which are located near one another. These settings can greatly increase processing speed without sacrificing quality. Key point and tie point limits set caps on the number of points which can be generated and matched, respectively. Increasing these values or setting them to 0 (unlimited) can increase processing time but can improve results in some cases.</p>
-</div>
-<div id="cloud_filt" class="section level3" number="5.2.4">
-<h3><span class="header-section-number">5.2.4</span> Sparse Cloud Filtering</h3>
-<p>Clusters of tie points are used to construct the depth maps. Therefore, the points included in the sparse cloud ultimately determine the quality of the depth maps, dense cloud, and elevation products. By eliminating erroneously matched points from the sparse cloud based on quality criteria and then resetting camera alignment, the quality of depth maps can be improved. The “gradual selection” tool in MetaShape offers several quality criteria to choose from; the “reconstruction uncertainty” option seems to be especially useful for forested scenes. A threshold between 15 and 50 seems to be effective in eliminating problematic points without losing useful data.</p>
-</div>
-<div id="map_gen" class="section level3" number="5.2.5">
-<h3><span class="header-section-number">5.2.5</span> Depth Map Generation</h3>
-<p>Like image matching, the generation of depth maps is also pixel-based and can be downscaled. The degree of downscaling directly affects the detail of the dense point cloud. Downscaling the depth maps will dramatically increase processing time but will result in smoothed surfaces and compromise canopy structural metrics.</p>
-</div>
-<div id="map_filt" class="section level3" number="5.2.6">
-<h3><span class="header-section-number">5.2.6</span> Depth Map Filtering</h3>
-<p>Filtering of depth maps balances data loss with noise generation at the dense cloud level. Isolated noise points occurring beneath the ground surface are not detrimental to data quality, because they are typically eliminated after a ground model is created and the point cloud is normalized. Noise points and artifacts occurring at the tops of tree crowns are much more of a concern. The “mild” option for depth map filtering is the recommended setting, achieving a balance between elimination of erroneous outliers and flattening of canopy structure. This setting has been shown to perform well for tree detection and height estimates in open-canopy conifer forests [26].</p>
-</div>
-<div id="micasense" class="section level3" number="5.2.7">
-<h3><span class="header-section-number">5.2.7</span> Multispectral (MicaSense)</h3>
-<p>Multispectral and RGB imagery can be processed using similar workflows. It is often desirable to extract structural canopy information from high-resolution aerial RGB photography and calibrated spectral data from multispectral imagery acquired for the same site at the same time.</p>
-<p>When dealing with multispectral imagery, MetaShape groups corresponding images as multi-camera systems. Most of the processing is similar, however, the “Calibrate Reflectance” step is a key difference. This step can be performed before photo matching. Reflectance panel images can be located automatically, and will automatically be disabled for subsequent steps. If a downwelling light sensor (DLS) was used during flight, the use_sun_sensor tag should be set to true.</p>
-<p>The algorithms used in image matching are capable of operating between different image types, meaning that key points can be detected in single-band multispectral images and RGB photographs. The two datasets can be processed in separate chunks and aligned using “Align Chunks”; a low or medium accuracy is usually sufficient for this type of alignment. It is also possible to align RGB and MS imagery in a single chunk before exporting the aligned images to a new chunk and proceeding. This method can sometimes allow alignment of problematic image sets with poor geometry or insufficient overlap.</p>
+<div id="glossary" class="section level2 unnumbered">
+<h2>Glossary</h2>
+<p>
+<strong>RPA</strong> – remotely piloted aircraft.
+Otherwise known as unmanned aerial vehicles (UAV) or drones.
+</p>
+<p>
+<strong>RPAS</strong> – remotely piloted aircraft systems.
+RPAS includes RPA as well as software, operating personnel, etc.
+Otherwise referred to as unmanned aerial systems (UAS).
+</p>
+<p>
+<strong>GPS</strong> – global positioning system.
+Most GPS devices communicate with American GPS satellites to determine location information.
+</p>
+<p>
+<strong>GNSS</strong> – global navigation satellite system.
+GNSS includes all navigation satellite constellations.
+Other constellations include the Russian GLONASS (Globalnaya Navigazionnaya Sputnikovaya Sistema), the European Union’s Galileo.
+GNSS devices can communicate with other satellite constellations in addition to American GPS satellites.
+</p>
+<p>
+<strong>Pixel</strong> – Short for pixel element, a pixel is the constituent element of images.
+Each pixel of an image contains numerical values known as digital brightness values.
+Conventional images contain three channels for red, green, and blue light.
+Digital brightness values determine how much red, green, and blue light should be displayed for each pixel.
+Digital brightness values typically range from 0-255, with 0 representing no brightness and 255 representing maximum brightness.
+</p>
+<p>
+<strong>CHM</strong> – Canopy Height Model.
+A two-dimensional digital representation of canopy heights relative to a ground-level.
+</p>
+<p>
+<strong>DEM</strong> – Digital Elevation Model.
+A two-dimensional digital representation of the surface of the Earth.
+DEM are single-channel images.
+Lower values correspond to lower elevations and higher values correspond to higher elevations.
+</p>
+<p>
+<strong>DAP</strong> – Digital Aerial Photogrammetry.
+DAP is the process by which overlapping aerial images are used to derive three-dimensional point cloud data as well as orthorectified imagery products.
+</p>
+<p>
+<strong>Downwelling light sensor (DLS)</strong> – An incident light sensor that directly connects to the MicaSense RedEdge camera.
+DLS collect information on ambient light during acquisition, which can be used to correct for sudden changes in light that may occur during acquisition.
+</p>
+<p>
+<strong>GCP</strong> – Ground Control Point.
+GCPs are marked targets that are distributed throughout sites prior to acquisition.
+The locations of GCPs are recorded with GNSS devices.
+GCPs are located in RPAS imagery during photogrammetric processing and used to improve the geometric accuracy of DAP products.
+</p>
+<p>
+<strong>Gimbal</strong> – an instrument which allows a sensor to maintain a constant position while mounted on a moving aircraft.
+</p>
+<p>
+<strong>GPU</strong> – Graphics Processing Unit.
+GPU are used by computers to display graphics and render video.
+</p>
+<p>
+<strong>ITC</strong> – Individual Tree Crown.
+</p>
+<p>
+<strong>LiDAR</strong> – Light Detection and Ranging, otherwise known as airborne laser scanning (ALS) – LiDAR emits light as laser pulses at targets and measures the time it takes for emitted light to return to the sensor.
+Each return is recorded as a point in 3-dimensional space.
+In the context of forestry, LiDAR is typically collected with piloted aircraft.
+</p>
+<p>
+<strong>Nadir</strong>- refers to the viewing angle directly below a sensor.
+</p>
+<p>
+<strong>Orthomosaic</strong> – an orthorectified image produced by mosaicking images collected by an RPAS.
+A primary photogrammetric product.
+</p>
+<p>
+<strong>PPK</strong> – Post-Processing Kinematic.
+PPK uses satellite carrier data from third-party base stations to apply differential corrections to GNSS data after it has been recorded.
+</p>
+<p>
+<strong>RTK</strong> – Real-Time Kinematic.
+RTK systems use RPA GNSS to communicate with a transportable base station and differentially correct satellite carrier data in real time.
+</p>
+<p>
+<strong>SFOC</strong> – Special Flight Operations Certificate.
+An SFOC allows for the operation of RPAS beyond basic or advanced drone pilot certificates.
+Pertinent to this report, an SFOC allows for RPAS to be operated beyond visual line of sight and at altitudes greater than 120 metres.
+See <a href="https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations">here</a> [1] for more.
+</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -232,8 +400,8 @@ Figure 5.2: A cross-section of a DAP point cloud in a planted spruce forest.
           </div>
         </div>
       </div>
-<a href="planning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="PPP.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -264,7 +432,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/5.0-Digital-Photogrammetric-Processing.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/0-Title.Rmd",
 "text": "Edit"
 },
 "history": {

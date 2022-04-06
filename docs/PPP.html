@@ -13,7 +13,7 @@
   
   
   
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Photogrammetric Post-Processing | Best Practice Guide to Acquisition of 3D Imagery from RPAS" />
@@ -73,12 +73,14 @@
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Best Practice Guide to Acquisition of 3D Imagery from RPAS</a>
 <ul>
-<li class="chapter" data-level="" data-path="title.html"><a href="title.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
-<li class="chapter" data-level="" data-path="title.html"><a href="title.html#contents"><i class="fa fa-check"></i>Contents</a></li>
-<li class="chapter" data-level="" data-path="title.html"><a href="title.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
-<li class="chapter" data-level="" data-path="title.html"><a href="title.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cite_report"><i class="fa fa-check"></i>How to cite this report:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="contents.html"><a href="contents.html"><i class="fa fa-check"></i>Contents</a>
+<ul>
+<li class="chapter" data-level="" data-path="contents.html"><a href="contents.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="contents.html"><a href="contents.html#glossary"><i class="fa fa-check"></i>Glossary</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>2</b> Hardware</a>
@@ -209,7 +211,7 @@
 <div id="normal" class="section level3" number="6.2.5">
 <h3><span class="header-section-number">6.2.5</span> Normalization</h3>
 <p>Following classification, normalization makes all points above ground relative to a standard ground height of 0 metres. Point cloud normalization references points to their height above ground, as opposed to their height above a vertical datum (i.e. ellipsoid or geoid). This has the effect of removing the undulation of terrain. The simplest method to normalize a point cloud is to subtract the DEM surface heights from the absolute elevation to generate a point cloud with height values that are all relative to the ground surface, where the ground surface has a value of 0. Normalized point clouds are used for generating wall-to-wall metrics including mean height, cover, and variability. Normalization is visualized in Figure 6.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="figures/fig6.png" alt="A visualization of the process of normalizing terrain." width="100%" />
 <p class="caption">
 Figure 6.1: A visualization of the process of normalizing terrain.
@@ -227,7 +229,7 @@ Figure 6.1: A visualization of the process of normalizing terrain.
 <div id="DTM" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Digital Terrain Model/Digital Elevation Model</h3>
 <p>The DEM (also commonly referred to as a digital terrain model, or DTM), is created by using only points classified as ground in non-normalized tiles. The DEM is a raster layer with a user-specified resolution (e.g. 1 m) representing ground elevation. It is important to be cognizant of the density of ground points within a given dataset. Lower densities will result in fewer ground points overall, which can therefore limit the spatial resolution of the produced DEM.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
 <img src="figures/fig7.png" alt="DAP point cloud normalization with DEM derived from a co-occurring LiDAR point cloud [30]." width="100%" />
 <p class="caption">
 Figure 6.2: DAP point cloud normalization with DEM derived from a co-occurring LiDAR point cloud [30].
