@@ -21,10 +21,10 @@
   
   
 
-<meta name="author" content="Andrew J. Chadwock, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
+<meta name="author" content="Andrew J. Chadwick, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
 
 
-<meta name="date" content="2022-04-06" />
+<meta name="date" content="2022-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,19 +172,15 @@
 <div id="DPP" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Digital Photogrammetric Processing</h1>
 <p>DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) [23] are used to detect features of interest in images. These features are known as <em>key points</em>. Features which appear across multiple images, called <em>tie points</em>, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build <em>depth maps</em> for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="figures/fig4.png" alt="Key point and Tie point matching [30]." width="100%" />
-<p class="caption">
-Figure 5.1: Key point and Tie point matching [30].
-</p>
-</div>
+<img src="figures/fig4.png" width="100%" style="display: block; margin: auto;" />
+<center>
+<strong>Figure 4.</strong> Key point and Tie point matching [30].
+</center>
 <p>Each pixel of each image is then projected onto depth maps, which converts them into points in 3D space, which retain spectral information from the original pixel and comprise the <em>dense point cloud</em>. The software then stitches together the best available imagery for each point on the surfaces generated from the depth maps, creating a single image of entirely near-nadir views. This imagery can be manipulated spatially like any other georeferenced raster dataset.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="figures/fig5.png" alt="A cross-section of a DAP point cloud in a planted spruce forest." width="100%" />
-<p class="caption">
-Figure 5.2: A cross-section of a DAP point cloud in a planted spruce forest.
-</p>
-</div>
+<img src="figures/fig5.png" width="100%" style="display: block; margin: auto;" />
+<center>
+<strong>Figure 5.</strong> A cross-section of a DAP point cloud in a planted spruce forest.
+</center>
 <div id="software" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Software Choices</h2>
 <p>Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research [24], [25]. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters.</p>
