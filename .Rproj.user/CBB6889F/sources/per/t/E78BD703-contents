@@ -12,7 +12,7 @@ When planning takeoff sites via Google Earth, consider the age of satellite imag
 knitr::include_graphics("figures\\fig3.png")
 
 ```
-<center>**Figure 3.** Site planning for RPAS data acquisition with Google Earth. The historic timeline button (1) and time slider are highlighted in red.</center>
+<center>**Figure 3.** Site planning for RPAS data acquisition with Google Earth. The historic timeline button (1) and time slider are highlighted in red.</center><br>
 
 Table: **Table 2.** Site planning considerations for determining appropriate takeoff points and best practices for conducting active flights.
 
