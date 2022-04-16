@@ -6,6 +6,10 @@ output:
   html_document:
     toc: true
     toc_depth: 3
+    
+bibliography: ["ref-extracts.bib"]
+biblio-style: "apalike"
+link-citations: true
 ---
 
 # Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
