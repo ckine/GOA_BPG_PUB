@@ -1,0 +1,699 @@
+--- 
+title: "Best Practice Guide to Acquisition of 3D Imagery from RPAS"
+author: "Andrew J. Chadwick, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    
+bibliography: ["ref-extracts.bib"]
+biblio-style: "apalike"
+link-citations: true
+---
+
+# Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\cover.png")
+```
+
+## How to cite this report: {-#cite_report}
+Chadwick, A. J.; Goodbody, T. R. H.; Bater, C. W.; Martens, L. A.; Nuijten, R. J. G.; Smith-Tripp, S.; Grubinger, S.; Irwin, L.; Arkin, J.; Hervieux, A.; and Coops, N.C. 2022. “Best Practice Guide to Acquisition of 3D Imagery from RPAS,” Department of Forest Resource Management, Faculty of Forestry, University of British Columbia, Vancouver, British Columbia.
+
+## Acknowledgements {-#acknowledgements} 
+We would like thank Barry White for his irreplaceable contributions towards envisioning and breathing life into the project that would eventually produce this report; and Alberta Agriculture and Forestry for funding.
+
+<!--chapter:end:index.Rmd-->
+
+# Contents {-#contents} 
+<p>[1.0 Introduction](#intro)</p> 
+<p>[2.0 Hardware](#hardware)</p>
+
+<p style="text-indent: 5%"> [2.1 Remotely Piloted Aircraft (RPA)](#RPA)</p>
+
+<p style="text-indent: 5%"> [2.2 Imaging Sensors](#sensors)</p>
+
+<p style="text-indent: 5%"> [2.3 Other Hardware Considerations](#other_h)</p>
+
+<p style="text-indent: 5%"> [2.4 Workstation](#workstation)</p>
+
+[3.0 Geometric Accuracy](#geo_accuracy)
+
+<p style="text-indent: 5%">[3.1 Ground Control Points (GCP)](#GCP)</p>
+
+<p style="text-indent: 5%">[3.2 Real-Time Kinematic (RTK) Workflows](#RTK_wf)</p>
+
+<p style="text-indent: 5%">[3.3 Post-Processing Kinematic Workflows (PPK)](#PPK_wf)</p>
+
+<p style="text-indent: 5%">[3.4 Determining Use-Case](#use_case)</p>
+
+[4.0 Acquisition Planning](#planning)
+
+<p style="text-indent: 5%">[4.1 Takeoff Sites](#takeoff)</p>
+
+<p style="text-indent: 5%">[4.2 Flight Planning Software](#flight_plan)</p>
+
+<p style="text-indent: 5%">[4.3 Timing](#timing)</p>
+
+[5.0 Digital Photogrammetric Processing](#DPP)
+
+<p style="text-indent: 5%">[5.1 Software Choices](#software)</p>
+
+<p style="text-indent: 5%">[5.2 Agisoft Workflow Walk-Throughs](#agisoft_wf)</p>
+
+<p style="text-indent: 10%">[5.2.1 Imagery Organization](#imagery_org)</p>
+
+<p style="text-indent: 10%">[5.2.2 Image filtering](#image_filt)</p>
+
+<p style="text-indent: 10%">[5.2.3 Image Alignment](#image_align)</p>
+
+<p style="text-indent: 10%">[5.2.4 Sparse Cloud Filtering](#cloud_filt)</p>
+
+<p style="text-indent: 10%">[5.2.5 Depth Map Generation](#map_gen)</p>
+
+<p style="text-indent: 10%">[5.2.6 Depth Map Filtering](#map_filt)</p>
+
+<p style="text-indent: 10%">[5.2.7 Multispectral (MicaSense)](#micasense)</p>
+
+[6.0 Photogrammetric Post-Processing](#PPP)
+
+<p style="text-indent: 5%">[6.1 Software choices](#software_PPP)</p>
+
+<p style="text-indent: 10%">[6.1.1 LAStools](#LAStools)</p>
+
+<p style="text-indent: 10%">[6.1.2 lidR](#lidR)</p>
+
+<p style="text-indent: 5%">[6.2 Workflows/Scripting](#wf_script)</p>
+
+<p style="text-indent: 10%">[6.2.1 Compression](#comp)</p>
+
+<p style="text-indent: 10%">[6.2.2 Tiling and Buffering](#tiling)</p>
+
+<p style="text-indent: 10%">[6.2.3 Noise filtering](#noise_filt)</p>
+
+<p style="text-indent: 10%">[6.2.4 Classification](#class)</p>
+
+<p style="text-indent: 10%">[6.2.5 Normalization](#normal)</p>
+
+<p style="text-indent: 10%">[6.2.6 Point Cloud Normalization with Co-Occurring LiDAR](#PC_normal)</p>
+
+<p style="text-indent: 5%">[6.3 Standard Data Products](#data)</p>
+
+<p style="text-indent: 10%">[6.3.1 Digital Terrain Model/Digital Elevation Model](#DTM)</p>
+
+<p style="text-indent: 10%">[6.3.2 Canopy Height Model](#CHM)</p>
+
+<p style="text-indent: 10%">[6.3.3 Standardized Metrics](#metrics)</p>
+
+[7.0 Field Data Collection](#field_data)
+
+<p style="text-indent: 5%">[7.1 Stem Mapping Method 1: Distance and Azimuth](#stem_map)</p>
+
+<p style="text-indent: 10%">[7.1.1 Instrument Calibration](#instrument)</p>
+
+<p style="text-indent: 10%">[7.1.2 Methods](#methods)</p>
+
+<p style="text-indent: 5%">[7.2 Stem Mapping Method 2: Direct-to-Image](#stem_map_image)</p>
+
+[8.0 Selected Bibliography of Relevant University of British Columbia Publications](#bibliography) 
+
+[9.0 References](#references)
+
+
+
+
+<!--chapter:end:00_Title.Rmd-->
+
+# Glossary {-#glossary} 
+<p>**RPA** -- remotely piloted aircraft.
+Otherwise known as unmanned aerial vehicles (UAV) or drones.</p>
+<p>**RPAS** -- remotely piloted aircraft systems.
+RPAS includes RPA as well as software, operating personnel, etc.
+Otherwise referred to as unmanned aerial systems (UAS).</p>
+<p>**GPS** -- global positioning system.
+Most GPS devices communicate with American GPS satellites to determine location information.</p>
+<p>**GNSS** -- global navigation satellite system.
+GNSS includes all navigation satellite constellations.
+Other constellations include the Russian GLONASS (Globalnaya Navigazionnaya Sputnikovaya Sistema), the European Union's Galileo.
+GNSS devices can communicate with other satellite constellations in addition to American GPS satellites.</p>
+<p>**Pixel** -- Short for pixel element, a pixel is the constituent element of images.
+Each pixel of an image contains numerical values known as digital brightness values.
+Conventional images contain three channels for red, green, and blue light.
+Digital brightness values determine how much red, green, and blue light should be displayed for each pixel.
+Digital brightness values typically range from 0-255, with 0 representing no brightness and 255 representing maximum brightness.</p>
+<p>**CHM** -- Canopy Height Model.
+A two-dimensional digital representation of canopy heights relative to a ground-level.</p>
+<p>**DEM** -- Digital Elevation Model.
+A two-dimensional digital representation of the surface of the Earth.
+DEM are single-channel images.
+Lower values correspond to lower elevations and higher values correspond to higher elevations.</p>
+<p>**DAP** -- Digital Aerial Photogrammetry.
+DAP is the process by which overlapping aerial images are used to derive three-dimensional point cloud data as well as orthorectified imagery products.</p>
+<p>**Downwelling light sensor (DLS)** -- An incident light sensor that directly connects to the MicaSense RedEdge camera.
+DLS collect information on ambient light during acquisition, which can be used to correct for sudden changes in light that may occur during acquisition.</p>
+<p>**GCP** -- Ground Control Point.
+GCPs are marked targets that are distributed throughout sites prior to acquisition.
+The locations of GCPs are recorded with GNSS devices.
+GCPs are located in RPAS imagery during photogrammetric processing and used to improve the geometric accuracy of DAP products.</p>
+<p>**Gimbal** -- an instrument which allows a sensor to maintain a constant position while mounted on a moving aircraft.</p>
+<p>**GPU** -- Graphics Processing Unit.
+GPU are used by computers to display graphics and render video.</p>
+<p>**ITC** -- Individual Tree Crown.</p>
+<p>**LiDAR** -- Light Detection and Ranging, otherwise known as airborne laser scanning (ALS) -- LiDAR emits light as laser pulses at targets and measures the time it takes for emitted light to return to the sensor.
+Each return is recorded as a point in 3-dimensional space.
+In the context of forestry, LiDAR is typically collected with piloted aircraft.</p>
+<p>**Nadir**- refers to the viewing angle directly below a sensor.</p>
+<p>**Orthomosaic** -- an orthorectified image produced by mosaicking images collected by an RPAS.
+A primary photogrammetric product.</p>
+<p>**PPK** -- Post-Processing Kinematic.
+PPK uses satellite carrier data from third-party base stations to apply differential corrections to GNSS data after it has been recorded.</p>
+<p>**RTK** -- Real-Time Kinematic.
+RTK systems use RPA GNSS to communicate with a transportable base station and differentially correct satellite carrier data in real time.</p>
+<p>**SFOC** -- Special Flight Operations Certificate.
+An SFOC allows for the operation of RPAS beyond basic or advanced drone pilot certificates.
+Pertinent to this report, an SFOC allows for RPAS to be operated beyond visual line of sight and at altitudes greater than 120 metres.
+See [here](https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations) [1](@Transport Canada2020Get) for more.</p>
+
+<!--chapter:end:01_Glossary.Rmd-->
+
+# Introduction {#intro}
+Remotely piloted aerial systems (RPAS) have emerged as remote sensing platforms capable of capturing imagery at finer spatial resolutions than conventional aerial and spaceborne platforms. Along with the proliferation of commercially available RPAS has come an emergence of digital aerial photogrammetry (DAP) techniques, which have enabled the derivation of three-dimensional (3D) point cloud data from overlapping imagery. Members of the University of British Columbia’s Integrated Remote Sensing Studio Integrated Remote Sensing Studio (IRSS) have undertaken investigations into a wide range of forestry solutions utilizing orthomosaics and photogrammetric point clouds derived from fine spatial resolution RPAS imagery, and have since developed an expert knowledgebase on the use of RPAS and DAP technologies.
+
+In 2018, IRSS members began collaboration with partners at the Government of Alberta, with the ultimate goal of leveraging RPAS and DAP to deliver post-harvest inventory information in an accurate, consistent, and repeatable manner. We have since developed guidelines on how to best acquire and process RPAS-borne data to characterize regeneration 12-14 years post-harvest with DAP products. The following report is divided into three main sections. The report is a synthesis of knowledge and is presented as a best practices guide. While tailored towards regeneration approaches, the principles discussed in this report are likely to be useful for applications in other forest conditions. 
+
+<!--chapter:end:02_Introduction.Rmd-->
+
+# Hardware {#hardware}
+
+## Remotely Piloted Aircraft (RPA){#RPA}
+Remotely Piloted Aircraft (RPA) are commonly known to as unmanned aerial vehicles (UAV) or simply, drones. The term RPA refers only to aircraft, whereas the term Remotely Piloted Aircraft Systems (RPAS) refers to RPA in addition to all components of data collection and processing, including any operating personnel [2]. Generally, there are two fundamental types of RPA: fixed-wing and rotary-wing. While the rest of this report covers only rotary-wing RPA, fixed-wing RPA are included in this section for completeness. Fixed-wing RPA mimic the design of a conventional airplane, consisting of a single rigid wing with an engineered aerofoil, one or multiple propellers, and flight control surfaces which adjust the roll, pitch and yaw of the aircraft. Fixed-wing RPA require specific runways, launchers (depending on the RPA model either mechanical or human thrown), or specialized vertical take-off and landing systems to become airborne. Like conventional airplanes, fixed-wing RPA must remain in a constant forward motion once they are airborne. Rotary-wing RPA are lifted and flown using rotor blades which are attached to a central mast. Air is forced downwards through the rotors, creating a vertical lift.
+
+Fixed-wing and rotary-wing RPA each have their own advantages and disadvantages. Relative to rotary-wing RPA, fixed-wing RPA are more aerodynamic and have lower power requirements. These qualities facilitate greater flight speeds and longer battery life, making fixed-wing RPA ideal for large-scale mapping and surveying [3]. Rotary-wing RPA have a high degree of maneuverability and allow more customization considering payloads (i.e. gimbals and sensors). The ability to hover makes them very suitable for inspection-related tasks where they need to fly around specific objects, and allows for operation in confined spaces. Above all, the operation of rotary-wing RPA is safer as they are easier to pilot manually, and flights can be interrupted by having the aircraft hover or rapidly return-to-home. Fixed-wing RPA, on the other hand, cannot hover and cameras need to be integrated in the aircraft’s body, limiting the degree to which payloads may be customized. Currently, the acquisition costs associated with fixed-wing RPA are higher than with rotary-wing RPA, though there is likely a trade-off with shorter image acquisition times.
+
+
+## Imaging Sensors {#sensors}
+The two main sensor types relevant for forestry and environmental monitoring applications are conventional red-green-blue (RGB) (also called visible-light) and multispectral cameras. RGB cameras capture light in three spectral bands, which correspond to the frequencies of red, green, and blue light. By the strictest definition of the word, multispectral refers to multiple regions of the electromagnetic spectrum, which by definition includes RGB wavelengths. However, multispectral is used to refer to sensors which, in addition to capturing light in conventional RGB bands, capture light at longer non-visible wavelengths (most commonly in the near-infrared region of the electromagnetic spectrum). These non-visible wavelengths are reflected off surfaces with less energy than visible wavelengths, resulting in coarser spatial resolution of non-visible image channels compared with visible light channels. Furthermore, multispectral sensors like the MicaSense-RedEdge collect spectral data in very narrow bands relative to common RGB sensors. This too has the effect of reducing spatial resolution; the reduction in bandwidth of these more spectrally sensitive sensors results in a weaker signal which necessitates larger pixel sizes (ground sampling distances) during acquisition. Generally speaking, the pixel sizes from sensors like the MicaSense are two to three times larger than those of conventional RGB sensors.  
+
+RGB cameras are by far the most commonly available RPA sensors, and are typically integrated into the RPA (the DJI Phantom 4 Pro, for example), especially in the case of fixed-wing RPA. Despite their relative simplicity and lower costs, RGB sensors are perfectly suitable for producing high quality orthomosaics and DAP point clouds. In contrast to the Phantom 4 Pro and most fixed-wing models, large rotary-wing RPA (such as the DJI Matrice 300) allow for a large range of cameras to be mounted. 
+
+Table: **Table 1.** Comparison of a common and high-end rotary-wing RPAS for data collection over a 40 ha area at a ground sampling distance (GSD) of 3 cm with 90% forward and 85% side overlap. Battery sets used refers to the estimated number of times an operator would need to swap in new batteries to complete the acquisition. Total acquisition time includes time expended during battery swaps. All flight parameters were calculated in Map Pilot Pro [4]. 
+
+|**Class**|**Common Setup**|**High-end setup**|
+|------|:---------------:|:----------------:|
+|Drone model|Phantom 4 RTK|Matrice 300 RTK|
+|Camera model|Integrated camera|Zenmuse P1|
+|Platform Cost|<span>&#36;</span>CAD 11,600|<span>&#36;</span>CAD 15,220|
+|Sensor Cost|-|$CAD 9,130| 
+|X Resolution (pixels)|4864|8192|
+|Y Resolution (Pixels)|3648|5460|
+|Pixel Pitch (μm)|2.4|4.4|
+|Focal Length (mm)|8.8|24|
+|Max image rate (s/frame)|2|0.7|
+|Flying Speed|5.4 m/s|10 m/s|
+|Flying Altitude|109 m|167 m (SFOC needed)|
+|Max battery time|25 min|35 min|
+|Images|6,203|5,761|
+|Memory|13.1 GB|11.6 GB|
+|Total acquisition time|85 min|24 min|
+|Battery sets used|4|1|
+
+Due to recent technological advancements, there is a wide range of commercially available RPA sensors available today. Higher priced cameras generally offer faster image capturing rates as a result of improved shutter and memory writing speeds, as well as improved image resolution. Advanced gimbals have improved sensor stability and can also facilitate the capture of imagery at oblique angles. Meanwhile, improvements to sensor durability and water resistance have been made for newer sensors. Image acquisition time can be greatly reduced with a combination of higher image resolution and faster image capturing, allowing more advanced RPA to fly higher and faster, while maintaining the same ground sampling distance (GSD) as older sensors (Table 1). When flying at higher altitudes, the sensor’s field of view is increased, which can improve success and speed of photogrammetric processing.
+
+The extent to which sensors can be integrated with RPAS varies. Newer cameras and RPA can be combined into a single integrated system, wherein the RPA provides power to the camera, triggers the camera, sends live footage to the ground control station, and provides positioning data to the camera. Some camera models, particularly multispectral cameras, may not support full integration with all RPA models and will use their own built-in global positioning system (GPS) or global navigation satellite system (GNSS) receiver and triggering mechanism. RPA-sensor integration compatibility should be considered as this can improve ease of use and can be important when combining various spatial datasets and DAP acquisitions.
+
+
+## Other Hardware Considerations {#other_h}
+
+The number of batteries required for data acquisition should be considered. This is a function of the RPA model (i.e. battery capacity) and planned acquisition duration. Battery consumption will vary due to factors such as temperature and wind speed, and should be planned for accordingly. A generator, as well as additional charging stations, will likely be required to operate an RPAS continuously throughout the day. 
+
+Hundreds of gigabytes of storage will likely be needed to support continuous acquisitions throughout the day. As such, extra memory cards and hard drives should be kept on hand. Reading and writing speed are particularly important when working with large datasets, thus the use of solid state drives (SSD) as well as modern connectors such as USB-C and Thunderbolt is recommended.
+
+Data for forestry and environmental monitoring applications will often be acquired in remote locations. It is important to have an appropriate vehicle that can be used on forest service roads. Access points may also be used by oil and gas operations. For this reason, a two-way radio is recommended for communication with other vehicles you may share the road with. Additionally, having a mobile landing and take-off pad is useful for keeping dust and mud away from equipment.
+
+
+## Workstation {#workstation}
+In addition to RPAS hardware, a high-functioning computer workstation is required to retrieve data from RPA, process the data using photogrammetric software, and perform subsequent processing on photogrammetric products such as orthomosaics and photogrammetric point clouds. Photogrammetric processing is a task that demands high computational power, memory and storage. The amount of computational resources required depends on the extent of the study area, GSD, image overlap, the use of high accuracy settings, and whether imagery from multiple sensors is used. In the case of multispectral cameras, each band is captured simultaneously by a specialized sensor, which functions as an individual camera for the purpose of photogrammetric processing. 
+
+The most resource-intensive stages of photogrammetric processing benefit from high-end graphics processing units (GPU), otherwise known as graphics cards. For example, the company behind the photogrammetric software, Agisoft Metashape, recommends the use of: 1) at least one GPU with upwards of 1920 parallel processors (known as CUDA cores for Nvidia products or Stream Processors for AMD products), 2) a multi-core central processing unit (CPU) with upwards of 6 cores, 3) a clock speed of 3 gigahertz (GHz), and 4) upwards of 64 gigabytes of random access memory (RAM) [5]. Benchmark tests, available through [6], and forums of photogrammetric software providers can help a user select the appropriate hardware configuration. 
+
+<!--chapter:end:03_Hardware.Rmd-->
+
+# Geometric Accuracy {#geo_accuracy}
+
+During data acquisition, time and positional information is imprinted on each image collected by the RPAS. The most basic RPA (for example, the Phantom 4 Pro) use global positioning system (GPS) receivers to achieve this. GPS satellites are owned and operated by the United States of America and constitute one of several global navigation satellite systems (GNSS). More sophisticated RPA (for example, the Phantom 4 RTK) are equipped with GNSS receivers and are able to communicate with GPS satellites in addition to satellites from other GNSS constellations (for example, the European Union Galileo constellation). In this way, GNSS receivers can provide more accurate and reliable positional data by utilizing additional satellites. The positional information determined by RPA GPS or GNSS receivers is later used to locate each collected image in space during photogrammetric processing. As such, the quality of image geolocation affects the quality of photogrammetric reconstruction.
+
+Geolocation errors arise from both satellite-associated errors as well as receiver-associated errors. Regardless of the type of receiver, satellite-associated errors are likely to be encountered. Satellite-associated geolocation errors are rectified using either real time kinematic (RTK) or post processing kinematic (PPK) correction algorithms. RTK and PPK systems rely on a combination of a rover (for example, an RPA or handheld GPS or GNSS unit), and a GNSS base station, where the base station is established over a known fixed position and records data to differentially correct for satellite-associated errors. RTK and PPK systems allow for centimeter-level accuracy, which is necessary in surveying most applications, whereas RPAS using solely built-in GPS or GNSS receivers can expect metre-level accuracy.
+
+In RTK and PPK systems, a base station placed over a known location continually records the difference between that known location and its location as estimated by overhead satellites. This difference creates a correction factor that is then applied to positions recorded by a roving GPS or GNSS unit, which can be an RPA or a hand-held unit. In RTK systems, base stations apply correction factors on the fly using carrier phase data (a measure of the error in position measured between bases actual and known location). In PPK systems, both the rover and the base station record GNSS data and are corroborated in later processing to calculate the absolute position of the rover. RTK requires constant connection between the base station and the rover, while PPK processing data is recorded simultaneously but there requires no real-time data transfer between the rover and the unit. An overview of these processes is provided in (Figure 1).
+
+In RPAS workflows, geolocation accuracy may be improved through use of new technology which integrates PPK and RTK positions directly with the RPAS, or traditional ground control point (GCP) placement. We first outline the process of using ground control points before revisiting PPK and RTK workflows.
+
+
+## Ground Control Points (GCP){#GCP}
+
+Traditionally, RPAS surveying at centimetre-level accuracy has relied on the integration of ground control points (GCP), which are used to apply geometric corrections in photogrammetric models. GCP are large (ranging from approximately 30 cm2 to 1 m2 in size), marked targets distributed over the site for which RPAS imagery is collected. Target locations are recorded with a hand-held GPS or GNSS device and are later identified by the user in the imagery during photogrammetric processing. In the case of data collection with a non-RTK RPAS, PPK or RTK processing can be incorporated with GCP location measurements by using the hand-held GPS or GNSS device as a rover. The geometric accuracy of the final model, of which the point cloud and orthomosaic are major products, is highly dependent on the distribution and density of the GCP. Typically, tree-based studies (especially studies focussing on small tree crowns) require models of much higher geometric accuracy than area-based studies. Optimal positioning (i.e. distribution and density) of GCP is dependent on 1) elevation changes, 2) the size of a site, and 3) the camera’s field-of-view. Various guidelines on how to capture GCP are available online, such as DroneDeploy [7]. Note that the integration of GCP adds significant workload to both field data collection, as well as photogrammetric processing. Placing of GCP targets may also cause a degree of trampling and as such, may be considered intrusive.
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig1.png")
+
+```
+<center>**Figure 1.** An overview of PPK (red) and RTK (blue) processes.</center>
+
+RTK and PPK allow the surveyor to largely or completely phase out GCP points, and instead use a base station which is connected directly to the RPAS. In this instance, the RPA is essentially replacing a traditional rover unit. Users can improve overall geolocation accuracy using a combination of RTK systems with PPK processing. The following sections discuss RTK processing and PPK processing using files generated from a traditional base station and a rover combination, or files generated from a base station and an RPA rover. 
+
+## Real-Time Kinematic (RTK) Workflows {#RTK_wf}
+
+RTK positioning systems apply corrections in real time by calculating additional difference offset between the base station and the satellite communicated by the carrier phase of the satellite itself. Generally, RTK RPA like the DJIs Phantom 4 RTK, Matrice 200, or Matrice 300 come with their own base station unit and store a .rinex file for each flight. These files contain the GNSS positioning errors associated with the locations recorded for each photo. The corrections can be loaded directly into different photogrammetry processing softwares to incorporate the accurate and precise locations of the RPA in each photo. Note that connection between a rover and RTK base station can be lost, particularly in complex environments with limited line-of-sight. In such a case, geometric accuracy is likely to be reduced. Caution is advised when operating in such conditions. If a loss of connection seems likely, the use of GCP or PPK in addition to RTK is recommended if consistently high geometric accuracy is required.
+
+## Post-Processing Kinematic Workflows (PPK) {#PPK_wf}
+
+The PPK workflow includes an additional processing step to combine data from a base station and the RPA or rover. The base station is typically a third-party nearby base station from which data is gathered in post data acquisition or near real-time through a mobile network. The data includes recorded messages of the satellite’s carrier phase to calculate a difference metric that relates the precise location of the roving unit (or RPA) to the base station. PPK then corrects the positions recorded by the roving unit, after which the positional accuracy of the rover will be similar to the accuracy of the PPK base station. However, some error is likely to be introduced during the transformation of the rover's positions and accuracy may diminish as a function of distance from the PPK base station. Typically, location data can only be processed using software distributed by the manufacturer of the rover. A good example of this are the Trimble units, which require post-processing with GPS Pathfinder Office [8]. However, RTKLIB [9] is a well known free open source alternative to paid PPK software. Note that the distance away from the base station is very important in order to improve geometric accuracy following PPK. In some provinces like British Columbia a continuous network of base stations is operational, whereas this is problematic in large parts of Alberta. PPK position files can then be loaded into the photogrammetry processing software similar to the RTK processing steps above. 
+
+## Determining Use-Case {#use_case}
+
+PPK- and RTK-enabled GNSS systems are considerably more expensive than conventional GPS/GNSS options. As an example, the Phantom 4 RTK costs $CAD 11,600 while the non-RTK equivalent costs $CAD 2,200 [10]. A user needs a subscription to be able to use PPK services, which (at the time of this writing) costs around $CAD 2,625 per year for Trimble CenterPoint RTX rovers [11]. To be able to justify the higher costs of PPK and RTK, a decision maker should have a good understanding of the desired use-cases for datasets. 
+
+The use-case determines the necessary geometric accuracy level, thus whether GCPPPK/RTK is required. A DAP dataset that is going to be used solely for applications such as tree identification and classification of vegetation types does not require high geometric accuracy, nor does a dataset that is going to be used in combination with large (~ 9 m radius) sample plots or sample plots easily identifiable in the imagery. For any other use case, data acquisition likely requires the use of GCPPPK/RTK. Note that not using GCP/PPK/RTK can lead to increases in horizontal and vertical error and error in geolocation will correspond to error in tree height measurements from photogrammetric products. When the DAP dataset is going to be used in combination with other datasets, it is important that the DAP dataset does not include any irregular random distortions (i.e. high local accuracy) and is positioned correctly (i.e. high global accuracy). Decision makers and end-users should refer to Figure 2 to assess whether the use of more accurate GNSS technology is required. 
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig2.png")
+
+```
+<center>**Figure 2.** Decision chart to determine required geometric accuracy.</center>
+
+<!--chapter:end:04_Geometric-Accuracy.Rmd-->
+
+# Acquisition Planning {#planning}
+
+When planning RPAS acquisitions on harvest openings, operators must plan for additional risks, beyond what is typical of forest field work. Important considerations include takeoff and landing sites, line-of-sight, flight obstacles, inclement weather, and terrain.
+
+## Takeoff Sites {#takeoff}
+
+Before leaving the office, it is important to consult the most up to date imagery and inventory data to determine potential takeoff sites for your acquisition. Shapefiles for the site of interest can be converted to a .kml format and easily loaded into Google Earth (Figure 3). We recommend working with other layers such as roadways, powerline infrastructure, canopy height models, and elevation models to optimize your site planning efforts (Table 2).
+
+When planning takeoff sites via Google Earth, consider the age of satellite imagery, which can be determined with the historical timeline button (Figure 3). By adjusting the time slider, one may be able to see years with clear images where pullouts and potential takeoff sites are more visible. Keep in mind that older imagery will be less reliable as regrowth and erosion occurs on deactivated roads. Proposed takeoff locations can be saved with pins which can be exported as KMLs for use in your geographic information system (GIS) mapping software of choice. When you arrive on site, perform a reconnaissance of the potential takeoff sites and select the most appropriate based on flight considerations (Table 2). 
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig3.png")
+
+```
+<center>**Figure 3.** Site planning for RPAS data acquisition with Google Earth. The historic timeline button (1) and time slider are highlighted in red.</center><br>
+
+Table: **Table 2.** Site planning considerations for determining appropriate takeoff points and best practices for conducting active flights.
+
+|**Site Planning Considerations**|**Description**|**Managing the Risk**|**Data Sources**|
+|------------------------------|-------------|-------------------|--------------|
+|Nearby Roadway Infrastructure|Keep in mind active traffic on roads; roadways must be kept clear, dust from traffic can damage equipment or impact line-of-site.|Have at least one radio tuned to the nearest road channel to anticipate incoming traffic. Communicate with local operators beforehand to identify industrial activity in the area. Choose takeoff sites located away from active roadways when possible.|[Alberta Provincial roads database](https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer) [12]<br><br>Local operators<br><br>[Alberta Road Channels](https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html) [13]|
+|Maintaining Line-of-site|Select the takeoff site where you and your team will have the best view of the RPA while it is in-flight.|Choose take-off sites clear of tall vegetation and ideally located on elevated positions with a good view of the block. Deploy team members equipped radios to elevated/clear positions to maintain visual line of sight.|[Google Earth](https://www.google.com/earth/download/gep/agree.html?hl=en-GB), Canopy Height models, Digital Elevation models|
+|Obstacles|Be mindful of obstacles such as trees and powerlines which may contact the RPA; particularly during a flyaway event|Identify hazards when generating flight plans and ensure the path of the RPA does not intersect. Do not rely on built-in obstacle avoidance, actively watch the system and video transmission while being ready to take control of the aircraft at any point.<br><br>Make sure to set return to home height to a height that will allow the RPA to clear obstacles before returning home|[Google Earth](https://www.google.com/earth/download/gep/agree.html?hl=en-GB), Canopy Height models, Digital Elevation models, provincial infrastructure (powerline) layers.|
+|Changes in elevation|When deploying the RPAS, be mindful of changes in ground elevation across the survey area. It is always best to take off from the highest point and allow the system to work downhill. |Some RPAS are equipped with terrain following software; this function is essential when working on sites with significant slope to both maintain consistent image acquisition conditions (aboveground altitude), and keep the RPA away from potential obstacles. Digital elevation models (dem) can be loaded into flight planning software to allow the RPA to adjust altitude accordingly. Provide the most accurate and highest spatial resolution DEM available.<br><br>Any obstacles or terrain that is located between the RPA and controller will reduce/disrupt the signal strength.|Digital elevation models:<br><br>[Alberta Provincial DEM (25m)](https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a) [14]<br><br>Available LIDAR DEM (Ideal)|
+
+
+Depending on the RPAS being used, the block boundary, and potential site KML files as well as digital elevation models (DEM) (.tif) can be easily copied to the memory card or controller and loaded into on-board flight planning software. It should be noted that DJI RPAS typically require that files use the WGS 1984 geographic coordinate system (i.e. latitude/longitude; WKID: 4326 Authority: EPSG); coordinate system conversion of vector and raster data can be done in most common GIS software ([*ArcMap*](https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm) [15], [*ArcGis Pro*](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm) [16], [*QGIS*](https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html) [17]). In Canada, most spatial data are referenced to North American Datum 1983 original (NAD83 (original)), or North American Datum of 1983 of the Canadian Spatial Reference System (NAD83(CSRS)). For conversion between coordinate systems (e.g. NAD83 to WGS84), consult geographic transformation tables (e.g. [ESRI](https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf) [18]) to ensure that the proper geographic transformation is employed – this is especially important when high spatial accuracy is desired.
+
+## Flight Planning Software {#flight_plan}
+
+There are various software packages available for automating RPAS acquisitions, including ODM [19], Pix4D [20], Drone Deploy [21], Map Pilot (drones made easy) [4], and DJI GS Pro [10]. We almost exclusively use Map Pilot. Some of the software is free to use, but accessing all of the features necessary to carry out flights in the manner described above requires some kind of subscription or one time payment. Any of the software will allow the user to specify how high the RPA flies above ground and the level of overlap desired. Most flight planning software will also offer services which process RPAS data into orthomosaics and DAP point clouds. In general, we recommend that users process their own data, which will almost always result in higher quality outputs and reduce costs. When choosing a flight software, the user should ensure that the RPA is supported by the software. Most DJI RPA that allow the user to control the drone with a tablet can be flown by any software, but there is typically a delay between new RPA being released and their incorporation with flight planning software. When choosing a software package, it is important to pick one that includes some kind of terrain following feature, ideally one that allows the user to upload a user defined DEM. If the user does not own high quality DEMs, any software that allows for terrain following should have an option to allow the user to download a coarse resolution DEM. 
+
+As we are most familiar with Map Pilot, we will describe a basic workflow for planning and carrying out automated flights using this software. Map Pilot is proprietary and requires a subscription purchased from their website. We recommend subscribing to Map Pilot Pro. Once the account is set up, the user can download and login to the software on any tablet (we use iPads). Make sure to plan your flights before going into the field, as a data connection is required to download all of the necessary files.
+
+Flight planning with Map Pilot:
+<ol>
+<li>Locate the *Settings* menu</li>
+<li>Select the RPA from the *Flight Camera Model* field</li>
+<li>Return to the main screen</li>
+<li>Click *Create New Flight*</li>
+<li>Navigate to where the flight will take place using the provided satellite imagery</li>
+<li>Double tap a location to set the takeoff point </li>
+<li>Tap and hold three more spots to complete the flight path polygon</li>
+</ol>
+
+Once the polygon has been created, vertices may be added and adjusted to ensure that the area of interest is within the polygon. We recommend making the polygon slightly larger than necessary to make sure that areas near the polygon’s boundaries are suitably covered. Flight polygons may also be made in advance. In this case, KML files can be sent to the tablet by email. However, it may be desirable to modify flight polygons in field following reconnaissance of the acquisition site. 
+
+After your polygon is created, tap the drop down menu on the top of the screen to set your mission type, altitude, and overlap. We recommend 90% forward and 85% lateral overlap for the generation of high quality DAP point clouds. If only orthomosaics are required, 80% forward and 80% lateral overlap will suffice. For most flights, a normal mission type is suitable, but for higher quality, you can set the mission type to grid, which will essentially have the drone fly the acquisition area twice using perpendicular flight patterns. Once all of these parameters have been set, click the tab on the lower left of the screen to open the terrain awareness function. Click the top of this menu to load in the DEM. After everything has been set, click the save icon on the top left of the screen to save your mission. This is essential to do as it also downloads the imagery and DEM so you can use these data offline when you are in the field. As long as everything has been downloaded, you will then be able to adjust all of these flight parameters in the field before you collect your data. To actually fly your saved mission, you only need to connect the drone to the tablet, open the software, and select your mission. The software should recognize the drone as being connected, allowing you to click “take off”, which should launch the drone and cause it to follow the preset flight path. When the battery is running low, it should return to home on its own. The drone should be able to land itself, but we recommend pausing the flight and landing the drone manually. Once the battery has been changed, you can select “take off” again, and the drone will return to its last waypoint to continue the mission. For more details, numerous tutorials that can be found here. 
+
+
+## Timing {#timing}
+
+With regard to weather conditions, overcast skies reduce the effects of intense brightness and are therefore ideal. However, consistent weather throughout each acquisition is the most important factor with regard to illumination conditions. Attention should be paid to sun position. Acquiring data when the sun is at its highest point minimizes issues related to shadow and occlusion. Planning for illumination conditions is important. Tools such as [SunCalc](http://suncalc.net/#/51.508,-0.125,2/2022.03.28/16:23) [22] can help prepare for optimized flight times and conditions. 
+
+Additionally, seasonality and the phenological state of target vegetation should be considered. Imagery captured in the early Spring, after snow-melt, but prior to deciduous green-up (leaf-off conditions), is especially useful for differentiating deciduous and coniferous species. Under these conditions, coniferous species are likely to be the only green objects in the captured imagery. Leaf-off deciduous individuals will however be difficult to discern in imagery. Leaf-off conditions may be helpful for developing DEM during photogrammetric processing (Section 5.0) as the absence of foliage may provide more ground points. There is however, also a possibility that leafless deciduous structures may impair depth map production (discussed in Photogrammetric Processing), which could lead to terrain being erroneously raised in places. Finally, while the effect of snow is relatively uncertain, photogrammetric software may be confused when snow occurs in tree crowns and on the ground. 
+
+
+<!--chapter:end:05_Acquisition-Planning.Rmd-->
+
+# Digital Photogrammetric Processing {#DPP}
+
+DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) [23] are used to detect features of interest in images. These features are known as *key points*. Features which appear across multiple images, called *tie points*, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build *depth maps* for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig4.png")
+
+```
+<center>**Figure 4.** Key point and Tie point matching [30].</center>
+
+Each pixel of each image is then projected onto depth maps, which converts them into points in 3D space, which retain spectral information from the original pixel and comprise the *dense point cloud*. The software then stitches together the best available imagery for each point on the surfaces generated from the depth maps, creating a single image of entirely near-nadir views. This imagery can be manipulated spatially like any other georeferenced raster dataset. 
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig5.png")
+
+```
+<center>**Figure 5.** A cross-section of a DAP point cloud in a planted spruce forest.</center>
+
+## Software Choices {#software}
+
+Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research [24], [25]. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters. 
+
+## Agisoft Workflow Walk-Throughs {#agisoft_wf}
+
+### Imagery Organization {#imagery_org}
+
+Depending on the sensor and volume of data collected, imagery from planned flights may be saved across multiple subfolders, and empty folders may be created. The creation of empty folders typically only occurs for multispectral sensors such as the MicaSense, which cannot be fully integrated with RPA. Regardless, it is important to inspect imagery directories to ensure that they are organized and named consistently prior to adding data to Agisoft. Some manual reorganization may be required. For multispectral acquisitions, multiple spectral bands are usually stored subfolders within the same directory and are differentiated using suffixes (e.g. _1, _2, _3, _4, _5) that correspond to each spectral band. Ensure that all RPAS imagery is backed up prior to processing in Agisoft. 
+
+### Image filtering {#image_filt}
+
+Within the Agisoft MetaShape interface, it is possible to manually disable images so as to prevent them from being used in subsequent processing. Results will be improved by disabling images that are blurry or oblique, which may occur due to wind gusts or changes in flight path. It is also beneficial to eliminate images taken during takeoff and landing. Ideally, all images are taken from a near-nadir perspective and fall along a plane at a relatively constant distance from the surface of interest. For most RGB sensors, which can be fully integrated with the RPA, images will not be taken during takeoff and landing. However, blurry images may still be acquired as a result of unexpected changes in the flight path. 
+
+### Image Alignment {#image_align}
+
+Key alignment parameters determine the extent to which each image is downscaled and which image pairs will be tested for potential matches. The downscale parameter represents the length of a side of the square of pixels averaged together during downscaling. A value of 1, or *High*, matches images using every pixel. A value of 2, or *Medium*, averages 4 original pixels. A value of 0, or *Highest*, is used to denote an upscaling, and creates 4 pixels from each original pixel. Adjusting this parameter affects processing time and, in some cases, the number of images aligned. Images with poor overlap, minimal feature geometry, or images located along the edges of image sets will be especially affected by this parameter. A higher setting (or lower number) does not necessarily result in superior alignment. 
+
+Generic preselection and reference preselection limit the number of image pairs that the algorithm searches for. Generic preselection uses downscaled images first to determine probable pairs, while reference preselection searches for matches which are located near one another. These settings can greatly increase processing speed without sacrificing quality. Key point and tie point limits set caps on the number of points which can be generated and matched, respectively. Increasing these values or setting them to 0 (unlimited) can increase processing time but can improve results in some cases. 
+
+
+### Sparse Cloud Filtering {#cloud_filt}
+
+Clusters of tie points are used to construct the depth maps. Therefore, the points included in the sparse cloud ultimately determine the quality of the depth maps, dense cloud, and elevation products. By eliminating erroneously matched points from the sparse cloud based on quality criteria and then resetting camera alignment, the quality of depth maps can be improved. The “gradual selection” tool in MetaShape offers several quality criteria to choose from; the “reconstruction uncertainty” option seems to be especially useful for forested scenes. A threshold between 15 and 50 seems to be effective in eliminating problematic points without losing useful data. 
+
+### Depth Map Generation {#map_gen}
+
+Like image matching, the generation of depth maps is also pixel-based and can be downscaled. The degree of downscaling directly affects the detail of the dense point cloud. Downscaling the depth maps will dramatically increase processing time but will result in smoothed surfaces and compromise canopy structural metrics. 
+
+### Depth Map Filtering {#map_filt}
+
+Filtering of depth maps balances data loss with noise generation at the dense cloud level. Isolated noise points occurring beneath the ground surface are not detrimental to data quality, because they are typically eliminated after a ground model is created and the point cloud is normalized. Noise points and artifacts occurring at the tops of tree crowns are much more of a concern. The “mild” option for depth map filtering is the recommended setting, achieving a balance between elimination of erroneous outliers and flattening of canopy structure. This setting has been shown to perform well for tree detection and height estimates in open-canopy conifer forests [26]. 
+
+### Multispectral (MicaSense) {#micasense}
+
+Multispectral and RGB imagery can be processed using similar workflows. It is often desirable to extract structural canopy information from high-resolution aerial RGB photography and calibrated spectral data from multispectral imagery acquired for the same site at the same time. 
+
+When dealing with multispectral imagery, MetaShape groups corresponding images as multi-camera systems. Most of the processing is similar, however, the “Calibrate Reflectance” step is a key difference. This step can be performed before photo matching. Reflectance panel images can be located automatically, and will automatically be disabled for subsequent steps. If a downwelling light sensor (DLS) was used during flight, the use_sun_sensor tag should be set to true. 
+
+The algorithms used in image matching are capable of operating between different image types, meaning that key points can be detected in single-band multispectral images and RGB photographs. The two datasets can be processed in separate chunks and aligned using “Align Chunks”; a low or medium accuracy is usually sufficient for this type of alignment. It is also possible to align RGB and MS imagery in a single chunk before exporting the aligned images to a new chunk and proceeding. This method can sometimes allow alignment of problematic image sets with poor geometry or insufficient overlap. 
+
+
+<!--chapter:end:06_Digital-Photogrammetric-Processing.Rmd-->
+
+# Photogrammetric Post-Processing {#PPP}
+
+Post-processing of photogrammetric data occurs following export from point cloud generation. Considerations surrounding post-processing should include the software being used, key parameters, approaches for efficient processing workflows (scripting), and desired final outputs.
+
+## Software choices {#software_PPP}
+
+There are many proprietary and open source software options for point cloud processing. For this report, we highlight LAStools [27] and the lidR package [28] available in the programming language, R.
+
+### LAStools {#LAStools}
+
+[LAStools](https://rapidlasso.com/lastools/) [27] is arguably the fastest and most memory-efficient lidar processing software. Some tools and functionalities are free to use, while others require licensing to unlock full capabilities. For example, a licensed version of LAStools facilitates multi-core point cloud processing, which is especially valuable when processing large data acquisitions. The use of LAStools without a license limits users to a smaller range of processing tools, though key processing steps such as point classification (*lasground*), terrain normalization (*lasheight*), and metric production (*lascanopy*) are all possible without a license.
+
+### lidR {#lidR}
+
+The [lidR package](https://r-lidar.github.io/lidRbook/) [28] is software developed with the R processing language with C++ integrations. lidR is entirely free and open-source with active development. An in-depth description of the inner workings of this package can be found [here](https://r-lidar.github.io/lidRbook/). Processing within lidR can be done in parallel, dramatically increasing processing speeds, and users are able to create user-defined functions and processing workflows, which allow for data-tailored approaches. lidR is capable of performing all the tasks of a fully licensed version of LAStools, though because it is scripted using R, processing times are often slower.
+
+## Workflows/Scripting {#wf_script}
+
+Processing photogrammetric data is an iterative approach where the same processing steps are applied to data tiles in sequence. Some steps are optional depending on storage limitations and intermediate processing steps may vary. Fundamental steps are covered in subsequent sections. 
+
+### Compression {#comp}
+
+Point cloud data standards are specified by the American Society for Photogrammetry and Remote Sensing (ASPRS). In its most raw form, point cloud data are a table of XYZ coordinates and attributes (i.e. classification, scan angle, spectral information, etc) for each point. The de facto open-source format for point cloud data is *.las*, though the compressed *.laz* format facilitates substantial file compression. Compression is performed using [LASzip](https://laszip.org/) [29], which is directly integrated into both LAStools and lidR. Though *.laz* files take slightly longer to read and write during processing, compression results in files that are 7-20% of the size of their *.las* counterparts. We highly recommend conversion of *.las* to *.laz* files prior to processing, or during the first step of processing. The *.laz* format should be maintained for all intermediate point cloud files.
+
+### Tiling and Buffering {#tiling}
+
+Data tiling is a fundamental step to efficient point cloud processing. Point cloud files can often be large and bulky, making them difficult - if not impossible - to process. The remedy to these large files is to split them into tiles, which will then be processed individually. Tile size (e.g. 1000 x 1000 m) is often dependent on data characteristics such as point density. File size will scale with point density and file extent, so tile size should be chosen to balance size within the context of available computing power. Limiting tile sizes to >100 MB has worked well for our research, though processing using larger files sizes is possible.
+
+Buffering is often conducted alongside tiling. Adding a buffer refers to a generally small distance that is added onto the base tile size. For example, if a 5 m buffer is added to a 1000x1000 m tile, the buffered tile will have the dimensions 1005x1005 m. Buffering is used as a method to reduce the impact of tile edge effects in downstream processing (e.g. metrics mosaicking, individual tree segmentation).
+
+It is extremely important to note that lidR and LAStools handle buffers differently, though their importance remains the same. For LAStools, users must explicitly specify buffers, while in lidR buffering is performed on the fly without the requirement for user input (though specifying sizes are possible and simple to do). Best practice for buffering within LAStools is to use the *-flag_as_withheld* switch, which flags all buffer points for easy removal later on. 
+
+All processing steps following tiling are iterated individually on each tile.
+
+
+### Noise filtering {#noise_filt}
+
+Point cloud data are prone to having noise from various factors. Birds, clouds, haze, and in the case of photogrammetric data, mismatched points, can cause erroneous data to be present. Filtering for these noise data is recommended prior to further processing, which involves removal based on surrounding point density. Algorithms that do this generally have a three dimensional moving window that moves across point cloud tiles. When a tile with very low point density is detected it tests to see whether points are within a specified distance. If the test fails then those points will be classified as noise and the moving window will continue.
+
+### Classification {#class}
+
+This is a fundamental step. Classification involves assigning a *type* to each point, which in the most basic sense is ground or non-ground. This point is fundamental for creating DEMs that facilitate point cloud normalization. There are multiple algorithms that can be used to classify a point cloud. The most common is known as the progressive triangular irregular network densification (PTD), which generate triangular networks from points to create a ground surface. Other methods such as the progressive morphological filter (PMF) and cloth simulation filter (CSF). Each of these algorithms are available through the lidR package. For most situations, we recommend using PTD. 
+
+### Normalization {#normal}
+
+Following classification, normalization makes all points above ground relative to a standard ground height of 0 metres. Point cloud normalization references points to their height above ground, as opposed to their height above a vertical datum (i.e. ellipsoid or geoid). This has the effect of removing the undulation of terrain. The simplest method to normalize a point cloud is to subtract the DEM surface heights from the absolute elevation to generate a point cloud with height values that are all relative to the ground surface, where the ground surface has a value of 0. Normalized point clouds are used for generating wall-to-wall metrics including mean height, cover, and variability. Normalization is visualized in Figure 6.
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig6.png")
+
+```
+<center>**Figure 6.** A visualization of the process of normalizing terrain.</center>
+
+### Point Cloud Normalization with Co-Occurring LiDAR  {#PC_normal}
+
+DAP-derived DEM may be unreliable in areas with moderate to high degrees of canopy cover due to the image-based nature of DAP data. In such cases, normalizing point clouds with DAP-derived DEM will produce inaccurate height measurements. To correct for this, a DEM derived from co-occurring LiDAR can instead be used for point cloud normalization [30]. This process is visualized in Figure 7. 
+
+## Standard Data Products {#data}
+
+There are a number of data outputs that are standard for point cloud data in the context of forest management.
+
+### Digital Terrain Model/Digital Elevation Model {#DTM}
+
+The DEM (also commonly referred to as a digital terrain model, or DTM), is created by using only points classified as ground in non-normalized tiles. The DEM is a raster layer with a user-specified resolution (e.g. 1 m) representing ground elevation. It is important to be cognizant of the density of ground points within a given dataset. Lower densities will result in fewer ground points overall, which can therefore limit the spatial resolution of the produced DEM.
+
+```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
+knitr::include_graphics("figures\\fig7.png")
+
+```
+<center>**Figure 7.** DAP point cloud normalization with DEM derived from a co-occurring LiDAR point cloud [30].</center>
+
+### Canopy Height Model {#CHM}
+
+The canopy height model (CHM) is created using normalized data. The CHM is a raster layer with a user-specified resolution (e.g. 1 m) representing the maximum height of vegetation (or structures) above ground. Given that the CHM is generated using normalized data, all vegetation heights are relative to ground across the acquisition coverage.
+
+### Standardized Metrics {#metrics}
+
+Normalized point clouds allow for spatially explicit comparisons of above ground vegetation. This could be as simple as determining where the tallest trees are, or where the most variability in height is. These statistical summaries can be calculated at any spatial resolution, producing rasters capable of being integrated into GIS software for planning and management, or to be used in inventory management and analysis. Given that point clouds are really just a group of points, an endless list of statistical metrics can be calculated [28], [31], [32]. Metrics are often subdivided into height, cover, variability, and vertical distribution classes, though metrics can also be derived from additional point attributes such as RGB values from corresponding pixels. Metrics calculation is generally considered the final step of point cloud post-processing.
+
+<!--chapter:end:07_Photogrammetric-Post-Processing.Rmd-->
+
+# Field Data Collection {#field_data}
+
+Two methods have been developed and implemented for collecting stem-mapped field measurements. These methods produce georeferenced field information, which can be later used to train and validate predictive models. The first method – distance and azimuth – is suitable for most forested conditions and is the most generalizable of the two methods. The second method – direct to image – was developed specifically for collecting field data for regenerating openings and may therefore be limited in its applicability elsewhere.
+
+## Stem Mapping Method 1: Distance and Azimuth {#stem_map}
+
+This method was designed to be executed by three people for 100 m<sup>2</sup> circular plots. However, having a fourth team member that can float between roles as needed and help carry gear is also feasible. A summary of required equipment is provided in Table 3. 
+
+Table: **Table 3.** Required equipment. All prices are listed in Canadian Dollars (CAD). 
+
+|**Equipment Name**|**Quantity**|**Description**|**Cost**|
+|------------------|------------|---------------|--------|
+|Rangefinder|1|Rangefinders can be used to measure both distance to the plot centre and the heights of individual trees when a height pole cannot be used. Survey grade rangefinders such as the [TruPulse 360 series](https://lasertech.com/product/trupulse-360-r-laser-rangefinder/) [33] are capable of providing 360.0 degree azimuth measurements which are critical for describing tree location relative to the Trimble GNSS plot centre. <br><br>Cheaper rangefinders ($300-500) typically do not have the ability to record azimuth. In this case, a GPS/GNSS or compass could be used. This, however, would immensely slow down the plot mensuration process.| ~[$2200](https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285) [34]|
+|Rangefinder Foliage Filter|1|Using a [foliage filter](https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360) [35] can help avoid false measurements from branches and leaves between you (at the plot centre) and the target tree. Attaching this filter to a TruPulse rangefinder and switching the rangefinder into FLT mode makes measurements only possible when reflecting off a reflective target such as that on a high-visibility jacket.<br><br>Have a team member hold a target against the stem and use the foliage filter when dealing with dense vegetation conditions.|[$87](https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360)|
+|Tripod and Mounting bracket for Rangefinder|1|Mounting the RangeFinder on a tripod at plot centre will greatly increase the accuracy and consistency of azimuth and distance measurements, which is critical to make these data useful in combination with remotely sensed imagery. Set this tripod directly above where you recorded plot centre and ensure it does not move throughout the plot sampling process.|Bracket: [$137](https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835) [36]<br><br>Tripod: ~$100-300|
+|Clipboard/iPad for data entry|1|Data can be recorded on a spreadsheet (either physical or digital). Many prefer the flexibility and reliability of pencil and paper. However, these require time consuming data entry back at the office. If using a clipboard avoid metal ones as these may interfere with GPS/GNSS measurements or the compass in your rangefinder. Otherwise an iPad or tablet can be used to record data digitally.|~$10-300|
+|Differential GNSS System (Trimble Geo 7x)|1 (Highly recommended)|We highly recommended using a GNSS unit capable of being differentially corrected as points recorded with standard handheld GPS/GNSS units can vary 5-20m depending on satellite positioning and other factors. After correction, accuracies of 1-100 cm can be achieved under open skies. This highly accurate plot centre serves as the reference for all geo-located trees and as such, its accuracy determines how field-mapped trees align with trees in remote sensing data. You will need the Handheld Trimble unit [37], a monopod or tripod for mounting, a GNSS antenna [38], the mounting bracket, and the required cables. We recommend carrying these in a pelican case to ensure all components are present and to avoid damage.|~[$10,000-20,000](https://geospatial.trimble.com/products-and-solutions/trimble-geo-7x#product-downloads)|
+|Garmin GPS|1|A standard recreational grade handheld GPS can be very useful in the stem mapping process for locating plots, recording observations, and providing redundancy for your differential locations. Record your tracks throughout your time in the block as these can be useful to see what areas were witnessed by on-ground observers.|~$250|
+|Vertex|1* (Optional)|A vertex can be used to more accuracy record tree heights. These systems use a two part sonic system to measure distance. They require a transponder to be placed on the target such as the tree stem. These systems are not able to record azimuth and as such are not a replacement but can be used in tandem by other team members to record tree heights if available.|[$2000](https://www.forestry-suppliers.com/product_pages/products.php?mi=1377) [39]|
+|Compass|1+|The compass is mainly used to determine the four cardinal directions when laying out your circular plot. |$30|
+|DBH Tapes|At least 2|DBH tapes are simple critical tools for any forest measurement process; record diameter at 1.3m (breast height). We recommend having as many team members equipped with DBH tapes as possible, allowing team members to efficiently collect DBH for trees around them during the plot. Remember to never store DBH tape while wet because they will quickly rust.|~[$150 each](https://www.deakin.com/products/Details.aspx?p=641534&c=1343&g=5496) [40]|
+|Tape measures|At least 2|5-m measuring tapes can be used to collect distance information, heights of small trees, crown widths, record observations of disturbance agents, etc. Ensure at least one or two members of the crew have one on hand. We recommend metric tapes for consistency.|[$10-30](https://www.homedepot.ca/product/stanley-fatmax-fatmax-8m-26-ft-x-1-1-4-inch-tape-measure-metric-english-scale-/1000185066) [41]|
+|Transect Tape or 30-m Logger’s Tape|1|A transect tape is useful for running larger distances. For example, plot radii. We recommend metric tapes for consistency.|$30|
+|Commercial Plot Cords|1|Plot cords are useful for standardizing plot radius. Alternatively, rope can be used. In this case, measure 5.64 m of rope with transect tape and cut three to four pieces of this length so each team member can help measure the plot radius. Note that rope may stretch, whereas commercial plot cords will not.|$30|
+|Flagging tape|1+ roll per plot|Have flagging tape and sharpies on hand to record tree numbers for stems too small to apply paint. Having multiple colours can be useful when delineating plot boundaries or identifying multiple species.| |
+|Spray paint|0.5-1 can per plot|When numbering larger stems (10-15 cm+ DBH) paint can be a useful tool to quickly mark a tree and ensure it is not measured twice. Paint goes fast and can be lost or broken; ensure you bring more paint than you expect to use. Orange paint is best, however, blue or red can be used to avoid confusing future timber cruising or inventory efforts. A cheap ‘can-gun’ can be used for easier application of paint.|$5-8 per can|
+|360 Camera|1* (Optional)|Taking 360 photographs at plot centre and the four cardinal directions can provide an excellent reference of plot conditions for use after sampling. When connected to GPS, these cameras can record geo-locations. These georeferenced photos can be helpful for identifying erroneous measurements and developing plot context. However, this is by no means necessary and standard cameras can be used instead.|[$900](https://www.amazon.ca/Ricoh-Theta-camera-Metallic-Gray/dp/B074W5BKYS?th=1) [42]|
+|Batteries|Many|Ensure you have extra batteries for anything that requires them; note that some Rangefinders (TruPulse 360R) require non standard battery types such as [CR123As](https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277). Garmin Handhelds can rapidly consume AA batteries, so always pack extras as lacking batteries can be a frustrating day-ending blunder.|[$20](https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277) [43]|
+
+### Instrument Calibration {#instrument}
+Both the Rangefinder and Vertex require regular calibration to ensure precision and accuracy. This typically involves measuring a known length along a flat surface (for example, a road) and measuring this distance while in calibration mode. Typically, this is length is 10.0 m. We recommend conducting calibration at least once a day before sampling in the field. 
+
+Vertexes use sound to measure and as such are sensitive to changes in air temperature. Changing temperatures will slightly change the speed at which the sound travels through the air and as such, measurements taken at the beginning of the day when temperatures are cooler can differ from measurements taken in the afternoon. Conducting a morning and mid-day calibration can help avoid these inconsistencies.
+
+Before beginning the calibration process always refer to the specific manual for your Rangefinder or Vertex. YouTube can be a useful resource for help when learning to operate and calibrate these tools.
+
+### Methods {#methods}
+Plot Setup Overview:
+<ol>
+<li>Layout plot boundary</li>
+<li>Record differential GNSS plot centre</li>
+<li>Enumerate and mark trees</li>
+<li>Take and record tree measurements (person one/two)</li>
+<li>Simultaneously record heights (person three)</li>
+</ol>
+
+Team member roles:
+<ol>
+<li>Data recorder</li>
+<li>DBH measurer</li>
+<li>Tree height measurer</li>
+</ol>
+
+The job of the data recorder is to remain at plot centre. From this position, they will begin each plot by recording plot centre location measurements with the GNSS unit. At least 180 readings (approximately 3 minutes) should be taken at plot centre with the Trimble Geo 7x. In between GNSS point measurements, they should setup up the tripod for the range finder while recording tree information as it is communicated by the DBH and tree height measurers. Once GNSS measurements are complete, they will begin recording horizontal distance and azimuth to each measured tree, relative to plot centre.
+
+For each measured tree, the DBH measurer will place the vertex transponder at DBH height prior to recording DBH. Once the vertex transponder is placed on a tree by the DBH measurer, the tree height measurer will ideally locate themselves 1.5 tree lengths away from the measured tree. However, this may be difficult to do in practice. Measured trees should be tagged so as to ensure they are not measured twice. Enumerating measured trees with spray paint is useful for this. In addition to their aforementioned duties, the DBH and tree height measurers may communicate tree species or any other pertinent information to the tree recorder.
+
+Within a geographic information system (GIS), horizontal distance and azimuth for each measured tree can then be used with the geolocated plot centre to create point features for each measured tree. Enumerated field notes must then be entered as attributes for these point features. Even with advanced GNSS equipment, it is likely that the positions of tree point features will need to be manually adjusted so as to align with remotely sensed data. This requirement, and the need for transcribing hand-written field notes, are the greatest limitations of this stem mapping method.
+
+## Stem Mapping Method 2: Direct-to-Image {#stem_map_image}
+Required equipment:
+<ul>
+<li>A GPS-enabled mobile device (smart phone or tablet) with a stylus<sup>1</sup> </li>
+<li>One or more external power banks(s) - CAD $30-$200</li>
+<li>A telescopic height measurement pole (at least 5 m total length)<sup>2</sup> - [CAD $106](https://www.deakin.com/products/Details.aspx?p=640782&c=1356&g=5561) [44]</li>
+<li>Spray paint or flagging tape</li>
+<li>DBH tape</li>
+<li>A free-standing umbrella<sup>3</sup></li>
+</ul>
+
+Team member roles:
+Team member roles:
+<ol>
+<li>Smart phone/tablet operator</li>
+<li>Height pole operator</li>
+</ol>
+
+In its most rudimentary form, this method for stem mapping may be carried out with as few as two people to record tree location, species, and height. DBH may also be recorded (as described below). However, in regenerating openings, this will not be feasible for all trees. Additional personnel should be considered depending on which measurements are being taken.
+
+This method for stem mapping relies on recently acquired fine spatial resolution imagery (at least 5 cm ground sampling distance is recommended), loaded onto a smartphone or tablet with a compatible stylus. Therefore, for this method to function, imagery data must be collected and processed prior to the collection of field data. This method also relies on mapping software, used with the stylus to record tree information. We recommend Avenza Maps Pro software for this [45], which requires a paid subscription. Additionally, using the recently acquired imagery and a GIS, plot locations should be determined and created as shapefiles which can then be uploaded to the mobile device and overlaid upon the imagery. Additional DAP products such as canopy height models or digital elevation models may also be useful and can be loaded into Avenza Maps at the discretion of the user.
+
+Images with plot boundaries overlaid are displayed in Avenza Maps along with the user’s GPS-determined location. Cardinal directions are also estimated. An internet connection is not required for this. The GPS location as determined by the mobile device is not likely to be accurate beyond 3-5 m under ideal conditions, and should only be used as a guide. Rather than relying purely on GPS location, the user should use distinct landmarks such as stumps, fallen logs, isolated trees, distinct clusters of trees, or any other unique features in addition to GPS-estimated location in order to determine their position relative to the displayed imagery. Due to the need to identify distinct landmarks, this method for stem mapping may not be suitable for sites with dense, closed canopies or homogenous cover. 
+
+Once a plot is located, the team should begin by identifying a distinct tree or cluster of trees which is located near the border of the plot. Create a new layer whose name allows the user to identify which plot this layer will belong to. Point features may then be created and precisely dropped on tree crown centres. Once created, the user may record attribute information for that tree such as species, height, and DBH. For plots containing multiple tree species of interest, we recommend designating a unique colour or shape to the point features representing each species so as to help the team keep track of where they are within the plot. This can be done on the fly. Additionally, the mobile device’s camera may be used to capture complex or anomalous situations. These pictures can be attached to tree points along with notes, which may be useful later on.
+
+Upon locating a tree and creating a point feature to represent it, the second team member is to place the height measurement pole at the base of the tree as evenly as possible. Position the pole so that it faces the mobile device operator and begin to expand it, keeping it as close to the trunk of the tree as possible. Ensure that each subsequent segment of the pole is fully expanded before expanding the next segment. The mobile device operator can then confirm the straightness of the pole and begin to record the tree’s height. Afterward, DBH may be measured and communicated by the height pole operator. If the pole is evenly secured against the tree and free-standing, DBH may be recorded while the mobile device operator records height. Once measured, each tree should be enumerated and tagged. This method for stem-mapping has the advantage of bypassing the need to transform distance and azimuth measurements for tree locations into point features. As such, tree location errors may be greatly reduced. However, it is important to note that while tree points recorded with this method will be extremely true to the imagery used to create them, they may not completely align with other co-occurring datasets. Therefore, a high degree of planning is required by this method as all datasets to be used with the collected field data should be processed before heading into the field. Finally, this method for stem-mapping also has the benefit of bypassing the need for hand-written field notes, subsequent data entry, and errors associated with both of these processes.
+
+<hr>
+
+<sup>1</sup>The storage capacity and processing power of the device should be considered as fine spatial resolution imagery, associated plot boundary shapefiles, and newly created tree point layers will need to be displayed at once. We used a Samsung Galaxy Note 10+, with a 64-bit Octo-core processor, 12 gigabytes random access memory (RAM), 256 gigabytes internal storage, and a 4300 milliampere-hour (mAh) battery. Battery life lasted for approximately 6-8 hours of continuous use and was extended with a 5000 mAh external power bank. This device has a screen size of 7.5 x 15.9 cm and an integrated stylus. Screen magnification was enabled through the device’s accessibility settings, allowing the user to precisely locate tree crown centres. The use of tablets with larger screens may be preferable. However, these devices are less portable than smartphones. Finally, we recommend securing the device’s stylus to the mobile device with string.   
+
+<sup>2</sup>If sites with older, taller trees are deemed appropriate for this approach, a Vertex or Rangefinder may be used for trees over 8 m in height.
+
+<sup>3</sup>In addition to shielding the mobile device from hazards such as rain, the umbrella will be useful for blocking sunlight, affording the mobile device operator a better view of the screen. Depending on brightness conditions, this may be required to adequately locate trees. Any regular umbrella may be attached to a stake or pole to allow it to stand freely. A screen cover may also be used to remove the influence of sunlight. However, this will not protect the screen from rain. 
+
+<!--chapter:end:08_Field-Data-Collection.Rmd-->
+
+# Selected Bibliography of Relevant University of British Columbia Publications {#bibliography}
+We have included this list of publications – from which the synthesis of this report was largely drawn – in addition to the reference section at the end of this report. 
+
+<ol>
+<li>T. R. H. Goodbody, N. C. Coops, P. Tompalski, P. Crawford, and K. J. K. Day, “Updating residual stem volume estimates using ALS- and UAV-acquired stereo-photogrammetric point clouds,” Int. J. Remote Sens., vol. 38, no. 8–10, pp. 2938–2953, 2017, doi: 10.1080/01431161.2016.1219425.</li>
+<li>T. R. H. Goodbody, N. C. Coops, P. L. Marshall, P. Tompalski, and P. Crawford, “Unmanned aerial systems for precision forest inventory purposes: A review and case study,” For. Chron., vol. 93, no. 1, pp. 71–81, 2017, doi: 10.5558/tfc2017-012.</li>
+<li>T. R. H. Goodbody, N. C. Coops, T. Hermosilla, P. Tompalski, G. McCartney, and D. A. MacLean, “Digital aerial photogrammetry for assessing cumulative spruce budworm defoliation and enhancing forest inventories at a landscape-level,” ISPRS J. Photogramm. Remote Sens., vol. 142, no. April, pp. 1–11, 2018, doi: 10.1016/j.isprsjprs.2018.05.012.</li>
+<li>T. R. H. Goodbody, N. C. Coops, T. Hermosilla, P. Tompalski, and P. Crawford, “Assessing the status of forest regeneration using digital aerial photogrammetry and unmanned aerial systems,” Int. J. Remote Sens., vol. 39, no. 15–16, pp. 5246–5264, 2018, doi: 10.1080/01431161.2017.1402387.</li>
+<li>T. R. H. Goodbody, N. C. Coops, T. Hermosilla, P. Tompalski, and G. Pelletier, “Vegetation phenology driving error variation in digital aerial photogrammetrically derived Terrain Models,” Remote Sens., vol. 10, no. 10, pp. 1–15, 2018, doi: 10.3390/rs10101554.</li>
+<li>R. J. G. Nuijten, N. C. Coops, T. R. H. Goodbody, and G. Pelletier, “Examining the multi-seasonal consistency of individual tree segmentation on deciduous stands using Digital Aerial Photogrammetry (DAP) and unmanned aerial systems (UAS),” Remote Sens., vol. 11, no. 7, 2019, doi: 10.3390/rs11070739.</li>
+<li>T. R. H. Goodbody, N. C. Coops, and J. C. White, “Digital Aerial Photogrammetry for Updating Area-Based Forest Inventories: A Review of Opportunities, Challenges, and Future Directions,” Curr. For. Reports, pp. 55–75, 2019, doi: 10.1007/s40725-019-00087-2.</li>
+<li>N. C. Coops, T. R. H. Goodbody, and L. Cao, “Four steps to extend drone use in research,” Nature, pp. 7–9, 2019.</li>
+<li>J. M. M. Yancho, N. C. Coops, P. Tompalski, T. R. H. Goodbody, and A. Plowright, “Fine-Scale Spatial and Spectral Clustering of UAV-Acquired Digital Aerial Photogrammetric (DAP) Point Clouds for Individual Tree Crown Detection and Segmentation,” IEEE J. Sel. Top. Appl. Earth Obs. Remote Sens., vol. 12, no. 10, pp. 4131–4148, 2019, doi: 10.1109/JSTARS.2019.2942811.</li>
+<li>A. Graham, N. C. Coops, M. Wilcox, and A. Plowright, “Evaluation of ground surface models derived from unmanned aerial systems with digital aerial photogrammetry in a disturbed conifer forest,” Remote Sens., vol. 11, no. 1, 2019, doi: 10.3390/rs11010084.</li>
+<li>A. N. V. Graham, N. C. Coops, P. Tompalski, A. Plowright, and M. Wilcox, “Effect of ground surface interpolation methods on the accuracy of forest attribute modelling using unmanned aerial systems-based digital aerial photogrammetry,” Int. J. Remote Sens., vol. 41, no. 9, pp. 3287–3306, 2020, doi: 10.1080/01431161.2019.1694722.</li>
+<li>P. Tompalski, J. Rakofsky, N. C. Coops, J. C. White, A. N. V. Graham, and K. Rosychuk, “Challenges of multi-temporal and multi-sensor forest growth analyses in a highly disturbed boreal mixedwood forests,” Remote Sens., vol. 11, no. 18, 2019, doi: 10.3390/rs11182102.</li>
+<li>A. J. Chadwick et al., “Automatic delineation and height measurement of regenerating conifer crowns under leaf-off conditions using uav imagery,” Remote Sens., vol. 12, no. 24, pp. 1–26, 2020, doi: 10.3390/rs12244104.</li>
+<li>Z. Xu et al., “Tree species classification using UAS-based digital aerial photogrammetry point clouds and multispectral imageries in subtropical natural forests,” Int. J. Appl. Earth Obs. Geoinf., vol. 92, no. May, p. 102173, 2020, doi: 10.1016/j.jag.2020.102173.</li>
+<li>J. R. Roussel et al., “lidR: An R package for analysis of Airborne Laser Scanning (ALS) data,” Remote Sens. Environ., vol. 251, no. September, p. 112061, 2020, doi: 10.1016/j.rse.2020.112061.</li>
+<li>P. Tompalski et al., “Estimating Changes in Forest Attributes and Enhancing Growth Projections: a Review of Existing Approaches and Future Directions Using Airborne 3D Point Cloud Data (Current Forestry Reports, (2021), 7, 1, (1-24), 10.1007/s40725-021-00,” Curr. For. Reports, vol. 7, no. 1, pp. 25–30, 2021, doi: 10.1007/s40725-021-00139-6.</li>
+<li>X. Fu et al., “Assessment of approaches for monitoring forest structure dynamics using bi-temporal digital aerial photogrammetry point clouds,” Remote Sens. Environ., vol. 255, no. January, p. 112300, 2021, doi: 10.1016/j.rse.2021.112300.</li>
+<li>T. R. H. Goodbody, J. C. White, N. C. Coops, and A. LeBoeuf, “Benchmarking acquisition parameters for digital aerial photogrammetric data for forest inventory applications: Impacts of image overlap and resolution,” Remote Sens. Environ., vol. 265, no. August, p. 112677, 2021, doi: 10.1016/j.rse.2021.112677.</li>
+<li>A. J. Chadwick, N. C. Coops, C. W. Bater, L. A. Martens, and B. White, “Species Classification of Automatically Delineated Regenerating Conifer Crowns Using RGB and Near-Infrared UAV Imagery,” IEEE Geosci. Remote Sens. Lett., vol. 19, 2022, doi: 10.1109/LGRS.2021.3123552.</li>
+<li>J. Arkin, N. C. Coops, T. Hermosilla, L. D. Daniels, and A. Plowright, “Integrated fire severity-land cover mapping using very-high-spatial-resolution aerial imagery and point clouds,” Int. J. Wildl. Fire, vol. 28, no. 11, pp. 840–860, 2019, doi: 10.1071/WF19008.</li>
+<li>R. J. G. Nuijten, N. C. Coops, C. Watson, and D. Theberge, “Monitoring the structure of regenerating vegetation using drone-based digital aerial photogrammetry,” Remote Sens., vol. 13, no. 10, 2021, doi: 10.3390/rs13101942.</li>
+</ol>
+
+<!--chapter:end:09_Selected-Bibliography-of-Relevant-University-of-British-Columbia-Publications.Rmd-->
+
+# References {#references}
+
+<ol>
+<li>Transport Canada, “Get permission for special drone operations,” 2020. https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations (accessed Sep. 03, 2022).</li>
+<li>RPAS Governance Committee, “Remotely Piloted Aircraft System (RPAS) Directive,” Edmonton, Alberta, 2020.</li>
+<li>F. Nex and F. Remondino, “UAV for 3D mapping applications: A review,” Appl. Geomatics, vol. 6, no. 1, pp. 1–15, 2014, doi: 10.1007/s12518-013-0120-x.</li>
+<li>Drones Made Easy, “Map Pilot Pro.” https://dronesmadeeasy.com/map-pilot (accessed Feb. 02, 2022).</li>
+<li>Agisoft LLC, “Agisoft Metashape Hardware Requirements.” https://www.agisoft.com/downloads/system-requirements/ (accessed Feb. 02, 2022).</li>
+<li>W. George, “Metashape Benchmark,” Puget Systems, 2019. https://www.pugetsystems.com/labs/articles/Metashape-Benchmark-1457/ (accessed Feb. 02, 2022).</li>
+<li>DroneDeploy, “Ground Control Points,” 2021. https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points#:~:text=DroneDeploy requires a minimum of,see the standard example below). (accessed Feb. 02, 2022).</li>
+<li>Trimble Inc., “GPS Pathfinder Office.” 2022, [Online]. Available: https://geospatial.trimble.com/products-and-solutions/gps-pathfinder-office.</li>
+<li>T. Takasu, “RTKLIB.” 2013, [Online]. Available: http://www.rtklib.com/.</li>
+<li>DJI, “DJI,” 2022. https://www.dji.com/ca (accessed Feb. 02, 2022).</li>
+<li>Trimble Inc., “CenterPoint RTX,” 2022. https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB (accessed Feb. 02, 2022).</li>
+<li>G. of A. Information and Data Provisioning Services, Informatics Branch, Corporate Services Division, Alberta Environment and Sustainable Resource Development, “Access,” 2022. https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer (accessed Feb. 02, 2022).</li>
+<li>Government of Canada, “Northern Alberta Forest Industry,” 2018. https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html (accessed Feb. 02, 2022).</li>
+<li>G. of A. Alberta Environment and Parks, “Alberta Provincial Digital Elevation Model,” 2017. https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a#summary (accessed Feb. 02, 2022).</li>
+<li>ESRI, “Project (ArcMap),” 2016. https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm (accessed Feb. 02, 2022).</li>
+<li>ESRI, “Project (ArcGIS Pro),” 2022. https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm (accessed Feb. 02, 2022).</li>
+<li>QGIS, “Working with Projections,” 2022. https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html (accessed Feb. 02, 2022).</li>
+<li>ESRI, “ArcGIS Desktop 10.8.2 Geographic and Vertical Transformation Tables,” 2021. https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf.</li>
+<li>ODM, “OpenDroneMap.” 2020, [Online]. Available: https://www.opendronemap.org/.</li>
+<li>Pix4D SA, “Pix4D.” 2022, [Online]. Available: https://www.pix4d.com/.</li>
+<li>DroneDeploy, “DroneDeploy.” 2022, [Online]. Available: https://www.dronedeploy.com/.</li>
+<li>V. Agafonkin, “SunCalc,” 2018. http://suncalc.net/ (accessed Sep. 03, 2022).</li>
+<li>D. G. Low, “Distinctive image features from scale-invariant keypoints,” Int. J. Comput. Vis., pp. 91–110, 2004.</li>
+<li>T. R. H. Goodbody, J. C. White, N. C. Coops, and A. LeBoeuf, “Benchmarking acquisition parameters for digital aerial photogrammetric data for forest inventory applications: Impacts of image overlap and resolution,” Remote Sens. Environ., vol. 265, no. August, p. 112677, 2021, doi: 10.1016/j.rse.2021.112677.</li>
+<li>I. A. Iqbal, J. Osborn, C. Stone, A. Lucieer, M. Dell, and C. McCoull, “Evaluating the robustness of point clouds from small format aerial photography over a Pinus radiata plantation,” Aust. For., vol. 81, no. 3, pp. 162–176, 2018, doi: 10.1080/00049158.2018.1482799.</li>
+<li>N. C. Swayze, W. T. Tinkham, J. C. Vogeler, and A. T. Hudak, “Influence of flight parameters on UAS-based monitoring of tree height, diameter, and density,” Remote Sens. Environ., vol. 263, no. December 2020, p. 112540, 2021, doi: 10.1016/j.rse.2021.112540.</li>
+<li>M. Isenburg, “LAStools.” 2020, Accessed: Aug. 18, 2020. [Online]. Available: http://lastools.org.</li>
+<li>J.-R. Roussel, T. R. H. Goodbody, and P. Tompalski, “lidR.” 2021, [Online]. Available: https://jean-romain.github.io/lidRbook/.</li>
+<li>M. Isenburg, “LASzip.” 2019, [Online]. Available: https://laszip.org/.</li>
+<li>T. R. H. Goodbody, N. C. Coops, and J. C. White, “Digital Aerial Photogrammetry for Updating Area-Based Forest Inventories: A Review of Opportunities, Challenges, and Future Directions,” Curr. For. Reports, pp. 55–75, 2019, doi: 10.1007/s40725-019-00087-2.</li>
+<li>J. R. Roussel et al., “lidR: An R package for analysis of Airborne Laser Scanning (ALS) data,” Remote Sens. Environ., vol. 251, no. September, p. 112061, 2020, doi: 10.1016/j.rse.2020.112061.</li>
+<li>J. C. White et al., A best practices guide for generating forest inventory attributes from airborne laser scanning data using an area-based approach, vol. 89, no. 6. 2013.</li>
+<li>I. Laser Technology, “TruPulse 360 R Laser Rangefinder,” 2021. TruPulse 360 R Laser Rangefinder (accessed Feb. 02, 2022).</li>
+<li>C. Cansel, “TruPulse LTI 360R Rangefinder,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285 (accessed Feb. 02, 2022).</li>
+<li>C. Cansel, “Trupulse LTI Foliage Filter,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360 (accessed Feb. 02, 2022).</li>
+<li>C. Cansel, “TruPulse 360R 200X Mounting Bracket,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835 (accessed Feb. 02, 2022).</li>
+<li>Trimble Inc., “Geo 7X Handheld Data Collector,” 2022. https://www.geospatial.trimble.com/products-and-solutions/geo-7x (accessed Feb. 02, 2022).</li>
+<li>Trimble Inc., “Trimble Tornado,” 2022. https://www.geospatial.trimble.com/products-and-solutions/trimble-tornado (accessed Feb. 02, 2022).</li>
+<li>Forestry Suppliers Inc., “Haglöf Vertex 5 Hypsometer,” 2022. https://www.forestry-suppliers.com/product_pages/products.php?mi=1377 (accessed Feb. 02, 2022).</li>
+<li>Deakin Industries Ltd., “LUFKIN C106TPMN DIAMETER TAPE 6.5M,” 2022. https://www.deakin.com/products/Details.aspx?p=641534&c=1343&g=5496 (accessed Feb. 02, 2022).</li>
+<li>Home Depot International Inc., “STANLEY FATMAX,” 2022. https://www.homedepot.ca/product/stanley-fatmax-fatmax-8m-26-ft-x-1-1-4-inch-tape-measure-metric-english-scale-/1000185066 (accessed Feb. 02, 2022).</li>
+<li>Amazon.com Inc., “Ricoh 910725 Theta V camera, Metallic Gray,” 2022. https://www.amazon.ca/Ricoh-Theta-camera-Metallic-Gray/dp/B074W5BKYS?th=1 (accessed Feb. 02, 2022).</li>
+<li>Home Depot International Inc., “Energizer 123 Batteries,” 2022. https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277 (accessed Feb. 02, 2022).</li>
+<li>Deakin Industries Ltd., “TELESCOPIC SURVEY ROD ALUM 5 METER,” 2022. https://www.deakin.com/products/Details.aspx?p=640782&c=1356&g=5561 (accessed Feb. 02, 2022).</li>
+<li>Avenza Systems Inc., “Avenza Maps.” 2022, [Online]. Available: https://www.avenzamaps.com/.</li>
+<li>Alberta Reforestation Standards Science Coucil, Linking Regeneration Stands to Growth and Yield and Forest Management Objectives. Sustainable Resource Development (2001-2006, 2006-2013), 2001.</li>
+<li>Alberta Agriculture and Forestry, “Reforestation Standard of Alberta,” Edmonton, Alberta, 2020.</li>
+<li>S. Puliti, S. Solberg, and A. Granhus, “Use of UAV photogrammetric data for estimation of biophysical properties in forest stands under regeneration,” Remote Sens., vol. 11, no. 3, 2019, doi: 10.3390/rs11030233.</li>
+<li>Alberta Sustainable Resource Development, “Alberta Forest Management Planning Standard Version 4.1.,” Edmonton, Alberta, 2006.</li>
+<li>J. D. Beckingham, I. G. W. Corns, and J. H. Archibald, “Field guide to ecosites of west-central Alberta,” Edmonton, Alberta, 1996.</li>
+<li>O. Burggraaff et al., “Standardized spectral and radiometric calibration of consumer cameras,” arXiv, vol. 27, no. 14, pp. 19075–19101, 2019, doi: 10.1364/oe.27.019075.</li>
+<li>MicaSense, “What is the center wavelength and bandwidth of each filter for MicaSense sensors?,” 2021. https://support.micasense.com/hc/en-us/articles/214878778-What-is-the-center-wavelength-and-bandwidth-of-each-filter-on-the-RedEdge-camera-.</li>
+<li>“Pix4D,” 2020. https://cloud.pix4d.com (accessed Aug. 18, 2020).</li>
+<li>A. Khosravipour, A. K. Skidmore, M. Isenburg, T. Wang, and Y. A. Hussin, “Generating pit-free canopy height models from airborne lidar,” Photogramm. Eng. Remote Sensing, vol. 80, no. 9, pp. 863–872, 2014, doi: 10.14358/PERS.80.9.863.</li>
+<li>“Agisoft Metashape Professional.” [Online]. Available: https://www.agisoft.com/downloads/installer/.</li>
+<li>M. Imangholiloo et al., “Characterizing seedling stands using leaf-off and leaf-on photogrammetric point clouds and hyperspectral imagery acquired from unmanned aerial vehicle,” Forests, vol. 10, no. 5, pp. 1–17, 2019, doi: 10.3390/f10050415.</li>
+<li>T. Kattenborn, J. Eichel, and F. E. Fassnacht, “Convolutional Neural Networks enable efficient, accurate and fine-grained segmentation of plant species and communities from high-resolution UAV imagery,” Sci. Rep., vol. 9, no. 1, pp. 1–9, 2019, doi: 10.1038/s41598-019-53797-9.</li>
+<li>S. Kentsch, M. L. L. Caceres, D. Serrano, F. Roure, and Y. Diez, “Computer vision and deep learning techniques for the analysis of drone-acquired forest images, a transfer learning study,” Remote Sens., vol. 12, no. 8, pp. 1–19, 2020, doi: 10.3390/RS12081287.</li>
+<li>A. Waleed, “Mask R-CNN for object detection and instance segmentation on Keras and TensorFlow,” GitHub Repository, 2017. https://github.com/matterport/Mask_RCNN (accessed Sep. 03, 2022).</li>
+<li>W. Zhang, C. Witharana, A. K. Liljedahl, and M. Kanevskiy, “Deep convolutional neural networks for automated characterization of arctic ice-wedge polygons in very high spatial resolution aerial imagery,” Remote Sens., vol. 10, no. 9, 2018, doi: 10.3390/rs10091487.</li>
+<li>M. Fromm, M. Schubert, G. Castilla, J. Linke, and G. McDermid, “Automated detection of conifer seedlings in drone imagery using convolutional neural networks,” Remote Sens., vol. 11, no. 21, 2019, doi: 10.3390/rs11212585.</li>
+<li>N. Chinchor, “MUC-4 evaluation metrics,” p. 22, 1992, doi: 10.3115/1072064.1072067.</li>
+<li>D. Armit, “Silvics and silviculture of lodgepole pine in the north central interior of British Columbia: A Problem analysis,” no. Research Notes No. 40, pp. 1–50, 1966.</li>
+<li>K. He, G. Gkioxari, P. Dollár, and R. Girshick, “Mask R-CNN,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 42, no. 2, pp. 386–397, 2018, doi: 10.1109/TPAMI.2018.2844175.</li>
+<li>Jia Deng, Wei Dong, R. Socher, Li-Jia Li, Kai Li, and Li Fei-Fei, “ImageNet: A large-scale hierarchical image database,” pp. 248–255, 2009, doi: 10.1109/cvprw.2009.5206848.</li>
+<li>T. Y. Lin et al., “Microsoft COCO: Common objects in context,” in Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 2014, vol. 8693 LNCS, no. PART 5, pp. 740–755, doi: 10.1007/978-3-319-10602-1_48.</li>
+<li>C. Lanaras, J. Bioucas-Dias, S. Galliani, E. Baltsavias, and K. Schindler, “Super-resolution of Sentinel-2 images: Learning a globally applicable deep neural network,” ISPRS J. Photogramm. Remote Sens., vol. 146, pp. 305–319, 2018, doi: 10.1016/j.isprsjprs.2018.09.018.</li>
+<li>S. Huang, S. X. Meng, and Y. Yuquing, “A Growth and Yield Projection System ( GYPSY ) for Natural and Post-harvest Stands in Alberta,” 2009.</li>
+<li>E. Naesset, “Airborne laser scanning as a method in operational forest inventory: Status of accuracy assessments accomplished in Scandinavia,” Scand. J. For. Res., vol. 22, no. 5, pp. 433–442, 2007, doi: 10.1080/02827580701672147.</li>
+<li>M. Penner, D. G. Pitt, and M. E. Woods, “Parametric vs. nonparametric LiDAR models for operational forest inventory in boreal Ontario,” Can. J. Remote Sens., vol. 39, no. 5, pp. 426–443, 2013, doi: 10.5589/m13-049.</li>
+<li>P. Tompalski, N. C. Coops, J. C. White, and M. A. Wulder, “Enhancing forest growth and yield predictions with airborne laser scanning data: Increasing spatial detail and optimizing yield curve selection through template matching,” Forests, vol. 7, no. 11, pp. 1–20, 2016, doi: 10.3390/f7110255.</li>
+<li>P. Tompalski, N. C. Coops, P. L. Marshall, J. C. White, M. A. Wulder, and T. Bailey, “Combining multi-date airborne laser scanning and digital aerial photogrammetric data for forest growth and yield modelling,” Remote Sens., vol. 10, no. 2, pp. 1–21, 2018, doi: 10.3390/rs10020347.</li>
+<li>P. Tompalski et al., “Estimating Changes in Forest Attributes and Enhancing Growth Projections: a Review of Existing Approaches and Future Directions Using Airborne 3D Point Cloud Data (Current Forestry Reports, (2021), 7, 1, (1-24), 10.1007/s40725-021-00,” Curr. For. Reports, vol. 7, no. 1, pp. 25–30, 2021, doi: 10.1007/s40725-021-00139-6.</li>
+<li>T. Gobakken, O. M. Bollandsås, and E. Næsset, “Comparing biophysical forest characteristics estimated from photogrammetric matching of aerial images and airborne laser scanning data,” Scand. J. For. Res., vol. 30, no. 1, pp. 73–86, 2015, doi: 10.1080/02827581.2014.961954.</li>
+<li>S. Puliti, T. Gobakken, H. O. Ørka, and E. Næsset, “Assessing 3D point clouds from aerial photographs for species-specific forest inventories,” Scand. J. For. Res., vol. 32, no. 1, pp. 68–79, 2017, doi: 10.1080/02827581.2016.1186727.</li>
+<li>I. Bjelanovic, P. G. Comeau, and B. White, “High resolution site index prediction in boreal forests using topographic and wet areas mapping attributes,” Forests, vol. 9, no. 3, 2018, doi: 10.3390/f9030113.</li>
+<li>S. Huang and S. J. Titus, “An index of site productivity for uneven-aged or mixed species stands,” Can. J. For. Res., vol. 23, no. 3, 1993.</li>
+
+</ol>
+
+<!--chapter:end:10_References.Rmd-->
+

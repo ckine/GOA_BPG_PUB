@@ -1,0 +1,53 @@
+h1:title Best Practice Guide to Acquisition of 3D Imagery from RPAS
+h2:cite_report How to cite this report:
+h2:acknowledgements Acknowledgements
+h1:contents Contents
+h1:glossary Glossary
+h1:intro Introduction
+h1:hardware Hardware
+h2:RPA Remotely Piloted Aircraft (RPA)
+h2:sensors Imaging Sensors
+h2:other_h Other Hardware Considerations
+h2:workstation Workstation
+h1:geo_accuracy Geometric Accuracy
+h2:GCP Ground Control Points (GCP)
+h2:RTK_wf Real-Time Kinematic (RTK) Workflows
+h2:PPK_wf Post-Processing Kinematic Workflows (PPK)
+h2:use_case Determining Use-Case
+h1:planning Acquisition Planning
+h2:takeoff Takeoff Sites
+h2:flight_plan Flight Planning Software
+h2:timing Timing
+h1:DPP Digital Photogrammetric Processing
+h2:software Software Choices
+h2:agisoft_wf Agisoft Workflow Walk-Throughs
+h3:imagery_org Imagery Organization
+h3:image_filt Image filtering
+h3:image_align Image Alignment
+h3:cloud_filt Sparse Cloud Filtering
+h3:map_gen Depth Map Generation
+h3:map_filt Depth Map Filtering
+h3:micasense Multispectral (MicaSense)
+h1:PPP Photogrammetric Post-Processing
+h2:software_PPP Software choices
+h3:LAStools LAStools
+h3:lidR lidR
+h2:wf_script Workflows/Scripting
+h3:comp Compression
+h3:tiling Tiling and Buffering
+h3:noise_filt Noise filtering
+h3:class Classification
+h3:normal Normalization
+h3:PC_normal Point Cloud Normalization with Co-Occurring LiDAR
+h2:data Standard Data Products
+h3:DTM Digital Terrain Model/Digital Elevation Model
+h3:CHM Canopy Height Model
+h3:metrics Standardized Metrics
+h1:field_data Field Data Collection
+h2:stem_map Stem Mapping Method 1: Distance and Azimuth
+h3:instrument Instrument Calibration
+h3:methods Methods
+h2:stem_map_image Stem Mapping Method 2: Direct-to-Image
+h1:bibliography Selected Bibliography of Relevant University of British Columbia Publications
+h1:references References
+
