@@ -224,7 +224,7 @@ div.csl-indent {
 <td>Nearby Roadway Infrastructure</td>
 <td>Keep in mind active traffic on roads; roadways must be kept clear, dust from traffic can damage equipment or impact line-of-site.</td>
 <td>Have at least one radio tuned to the nearest road channel to anticipate incoming traffic. Communicate with local operators beforehand to identify industrial activity in the area. Choose takeoff sites located away from active roadways when possible.</td>
-<td><a href="https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer">Alberta Provincial roads database</a> [12]<br><br>Local operators<br><br><a href="https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html">Alberta Road Channels</a> [13]</td>
+<td><a href="https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer">Alberta Provincial roads database</a> <span class="citation">(<a href="#ref-Information-Data-Provisioning-Services" role="doc-biblioref">Information, Data Provisioning Services, and Sustainable Resource Development 2022</a>)</span><br><br>Local operators<br><br><a href="https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html">Alberta Road Channels</a> <span class="citation">(<a href="#ref-Government-of-Canada2018Northern" role="doc-biblioref">G. of Canada 2018</a>)</span></td>
 </tr>
 <tr class="even">
 <td>Maintaining Line-of-site</td>
@@ -242,15 +242,15 @@ div.csl-indent {
 <td>Changes in elevation</td>
 <td>When deploying the RPAS, be mindful of changes in ground elevation across the survey area. It is always best to take off from the highest point and allow the system to work downhill.</td>
 <td>Some RPAS are equipped with terrain following software; this function is essential when working on sites with significant slope to both maintain consistent image acquisition conditions (aboveground altitude), and keep the RPA away from potential obstacles. Digital elevation models (dem) can be loaded into flight planning software to allow the RPA to adjust altitude accordingly. Provide the most accurate and highest spatial resolution DEM available.<br><br>Any obstacles or terrain that is located between the RPA and controller will reduce/disrupt the signal strength.</td>
-<td>Digital elevation models:<br><br><a href="https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a">Alberta Provincial DEM (25m)</a> [14]<br><br>Available LIDAR DEM (Ideal)</td>
+<td>Digital elevation models:<br><br><a href="https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a">Alberta Provincial DEM (25m)</a> <span class="citation">(<a href="#ref-Alberta-Environment-and-Parks2017Alberta" role="doc-biblioref">Environment and Parks 2017</a>)</span><br><br>Available LIDAR DEM (Ideal)</td>
 </tr>
 </tbody>
 </table>
-<p>Depending on the RPAS being used, the block boundary, and potential site KML files as well as digital elevation models (DEM) (.tif) can be easily copied to the memory card or controller and loaded into on-board flight planning software. It should be noted that DJI RPAS typically require that files use the WGS 1984 geographic coordinate system (i.e. latitude/longitude; WKID: 4326 Authority: EPSG); coordinate system conversion of vector and raster data can be done in most common GIS software (<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm"><em>ArcMap</em></a> [15], <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm"><em>ArcGis Pro</em></a> [16], <a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html"><em>QGIS</em></a> [17]). In Canada, most spatial data are referenced to North American Datum 1983 original (NAD83 (original)), or North American Datum of 1983 of the Canadian Spatial Reference System (NAD83(CSRS)). For conversion between coordinate systems (e.g. NAD83 to WGS84), consult geographic transformation tables (e.g. <a href="https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf">ESRI</a> [18]) to ensure that the proper geographic transformation is employed – this is especially important when high spatial accuracy is desired.</p>
+<p>Depending on the RPAS being used, the block boundary, and potential site KML files as well as digital elevation models (DEM) (.tif) can be easily copied to the memory card or controller and loaded into on-board flight planning software. It should be noted that DJI RPAS typically require that files use the WGS 1984 geographic coordinate system (i.e. latitude/longitude; WKID: 4326 Authority: EPSG); coordinate system conversion of vector and raster data can be done in most common GIS software (<a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm"><em>ArcMap</em></a> <span class="citation">(<a href="#ref-ESRI2016Project" role="doc-biblioref">ESRI 2016</a>)</span>, <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm"><em>ArcGis Pro</em></a> <span class="citation">(<a href="#ref-ESRI2022Project" role="doc-biblioref">ESRI 2022</a>)</span>, <a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html"><em>QGIS</em></a> <span class="citation">(<a href="#ref-QGIS2022Working" role="doc-biblioref">QGIS 2022</a>)</span>). In Canada, most spatial data are referenced to North American Datum 1983 original (NAD83 (original)), or North American Datum of 1983 of the Canadian Spatial Reference System (NAD83(CSRS)). For conversion between coordinate systems (e.g. NAD83 to WGS84), consult geographic transformation tables (e.g. <a href="https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf">ESRI</a> <span class="citation">(<a href="#ref-ESRI2021ArcGIS" role="doc-biblioref">ESRI 2021</a>)</span>) to ensure that the proper geographic transformation is employed – this is especially important when high spatial accuracy is desired.</p>
 </div>
 <div id="flight_plan" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Flight Planning Software</h2>
-<p>There are various software packages available for automating RPAS acquisitions, including ODM [19], Pix4D [20], Drone Deploy [21], Map Pilot (drones made easy) [4], and DJI GS Pro [10]. We almost exclusively use Map Pilot. Some of the software is free to use, but accessing all of the features necessary to carry out flights in the manner described above requires some kind of subscription or one time payment. Any of the software will allow the user to specify how high the RPA flies above ground and the level of overlap desired. Most flight planning software will also offer services which process RPAS data into orthomosaics and DAP point clouds. In general, we recommend that users process their own data, which will almost always result in higher quality outputs and reduce costs. When choosing a flight software, the user should ensure that the RPA is supported by the software. Most DJI RPA that allow the user to control the drone with a tablet can be flown by any software, but there is typically a delay between new RPA being released and their incorporation with flight planning software. When choosing a software package, it is important to pick one that includes some kind of terrain following feature, ideally one that allows the user to upload a user defined DEM. If the user does not own high quality DEMs, any software that allows for terrain following should have an option to allow the user to download a coarse resolution DEM.</p>
+<p>There are various software packages available for automating RPAS acquisitions, including ODM <span class="citation">(<a href="#ref-ODM2020OpenDroneMap" role="doc-biblioref">ODM 2020</a>)</span>, Pix4D <span class="citation">(<a href="#ref-Pix4D-SA2022Pix4D" role="doc-biblioref">SA 2022</a>)</span>, Drone Deploy <span class="citation">(<a href="#ref-DroneDeploy2022DroneDeploy" role="doc-biblioref">DroneDeploy 2022</a>)</span>, Map Pilot (drones made easy) <span class="citation">(<a href="#ref-Nex2014UAV" role="doc-biblioref">Nex and Remondino 2014</a>)</span>, and DJI GS Pro <span class="citation">(<a href="#ref-DJI2022DJI" role="doc-biblioref">DJI 2022</a>)</span>. We almost exclusively use Map Pilot. Some of the software is free to use, but accessing all of the features necessary to carry out flights in the manner described above requires some kind of subscription or one time payment. Any of the software will allow the user to specify how high the RPA flies above ground and the level of overlap desired. Most flight planning software will also offer services which process RPAS data into orthomosaics and DAP point clouds. In general, we recommend that users process their own data, which will almost always result in higher quality outputs and reduce costs. When choosing a flight software, the user should ensure that the RPA is supported by the software. Most DJI RPA that allow the user to control the drone with a tablet can be flown by any software, but there is typically a delay between new RPA being released and their incorporation with flight planning software. When choosing a software package, it is important to pick one that includes some kind of terrain following feature, ideally one that allows the user to upload a user defined DEM. If the user does not own high quality DEMs, any software that allows for terrain following should have an option to allow the user to download a coarse resolution DEM.</p>
 <p>As we are most familiar with Map Pilot, we will describe a basic workflow for planning and carrying out automated flights using this software. Map Pilot is proprietary and requires a subscription purchased from their website. We recommend subscribing to Map Pilot Pro. Once the account is set up, the user can download and login to the software on any tablet (we use iPads). Make sure to plan your flights before going into the field, as a data connection is required to download all of the necessary files.</p>
 Flight planning with Map Pilot:
 <ol>
@@ -281,9 +281,51 @@ Tap and hold three more spots to complete the flight path polygon
 </div>
 <div id="timing" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Timing</h2>
-<p>With regard to weather conditions, overcast skies reduce the effects of intense brightness and are therefore ideal. However, consistent weather throughout each acquisition is the most important factor with regard to illumination conditions. Attention should be paid to sun position. Acquiring data when the sun is at its highest point minimizes issues related to shadow and occlusion. Planning for illumination conditions is important. Tools such as <a href="http://suncalc.net/#/51.508,-0.125,2/2022.03.28/16:23">SunCalc</a> [22] can help prepare for optimized flight times and conditions.</p>
+<p>With regard to weather conditions, overcast skies reduce the effects of intense brightness and are therefore ideal. However, consistent weather throughout each acquisition is the most important factor with regard to illumination conditions. Attention should be paid to sun position. Acquiring data when the sun is at its highest point minimizes issues related to shadow and occlusion. Planning for illumination conditions is important. Tools such as <a href="http://suncalc.net/#/51.508,-0.125,2/2022.03.28/16:23">SunCalc</a> <span class="citation">(<a href="#ref-Agafonkin2018SunCalc" role="doc-biblioref">Agafonkin 2018</a>)</span> can help prepare for optimized flight times and conditions.</p>
 <p>Additionally, seasonality and the phenological state of target vegetation should be considered. Imagery captured in the early Spring, after snow-melt, but prior to deciduous green-up (leaf-off conditions), is especially useful for differentiating deciduous and coniferous species. Under these conditions, coniferous species are likely to be the only green objects in the captured imagery. Leaf-off deciduous individuals will however be difficult to discern in imagery. Leaf-off conditions may be helpful for developing DEM during photogrammetric processing (Section 5.0) as the absence of foliage may provide more ground points. There is however, also a possibility that leafless deciduous structures may impair depth map production (discussed in Photogrammetric Processing), which could lead to terrain being erroneously raised in places. Finally, while the effect of snow is relatively uncertain, photogrammetric software may be confused when snow occurs in tree crowns and on the ground.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Agafonkin2018SunCalc" class="csl-entry">
+Agafonkin, Vladimir. 2018. <span>“SunCalc.”</span> <a href="http://suncalc.net/">http://suncalc.net/</a>.
+</div>
+<div id="ref-Government-of-Canada2018Northern" class="csl-entry">
+Canada, Government of. 2018. <span>“Northern Alberta Forest Industry.”</span> <a href="https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html">https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html</a>.
+</div>
+<div id="ref-DJI2022DJI" class="csl-entry">
+DJI. 2022. <span>“DJI.”</span> <a href="https://www.dji.com/ca">https://www.dji.com/ca</a>.
+</div>
+<div id="ref-DroneDeploy2022DroneDeploy" class="csl-entry">
+———. 2022. <span>“DroneDeploy.”</span>
+</div>
+<div id="ref-Alberta-Environment-and-Parks2017Alberta" class="csl-entry">
+Environment, Alberta, and Government of Alberta Parks. 2017. <span>“Alberta Provincial Digital Elevation Model.”</span> <a href="https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a#summary">https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a#summary</a>.
+</div>
+<div id="ref-ESRI2016Project" class="csl-entry">
+ESRI. 2016. <span>“Project (ArcMap).”</span> <a href="https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm">https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm</a>.
+</div>
+<div id="ref-ESRI2021ArcGIS" class="csl-entry">
+———. 2021. <span>“ArcGIS Desktop 10.8.2 Geographic and Vertical Transformation Tables.”</span> <a href="https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf">https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf</a>.
+</div>
+<div id="ref-ESRI2022Project" class="csl-entry">
+———. 2022. <span>“Project (ArcGIS Pro).”</span> <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm">https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm</a>.
+</div>
+<div id="ref-Information-Data-Provisioning-Services" class="csl-entry">
+Information, Corporate Services Division Data Provisioning Services Informatics Branch, and Government of Alberta Sustainable Resource Development. 2022. <span>“Access.”</span> <a href="https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer">https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer</a>.
+</div>
+<div id="ref-Nex2014UAV" class="csl-entry">
+Nex, Francesco, and Fabio Remondino. 2014. <span>“UAV for 3d Mapping Applications: A Review.”</span> <em>Applied Geomatics</em> 6 (1): 1–15. <a href="https://doi.org/10.1007/s12518-013-0120-x">https://doi.org/10.1007/s12518-013-0120-x</a>.
+</div>
+<div id="ref-ODM2020OpenDroneMap" class="csl-entry">
+ODM. 2020. <span>“OpenDroneMap.”</span>
+</div>
+<div id="ref-QGIS2022Working" class="csl-entry">
+QGIS. 2022. <span>“Working with Projections.”</span> <a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html">https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html</a>.
+</div>
+<div id="ref-Pix4D-SA2022Pix4D" class="csl-entry">
+SA, Pix4D. 2022. <span>“Pix4D.”</span>
 </div>
 </div>
             </section>
