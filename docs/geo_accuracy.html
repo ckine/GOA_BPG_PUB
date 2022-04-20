@@ -24,7 +24,7 @@
 <meta name="author" content="Andrew J. Chadwick, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops" />
 
 
-<meta name="date" content="2022-04-16" />
+<meta name="date" content="2022-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,6 +204,7 @@ div.csl-indent {
 <center>
 <strong>Figure 1.</strong> An overview of PPK (red) and RTK (blue) processes.
 </center>
+<p><br></p>
 <p>RTK and PPK allow the surveyor to largely or completely phase out GCP points, and instead use a base station which is connected directly to the RPAS. In this instance, the RPA is essentially replacing a traditional rover unit. Users can improve overall geolocation accuracy using a combination of RTK systems with PPK processing. The following sections discuss RTK processing and PPK processing using files generated from a traditional base station and a rover combination, or files generated from a base station and an RPA rover.</p>
 </div>
 <div id="RTK_wf" class="section level2" number="3.2">
@@ -212,11 +213,11 @@ div.csl-indent {
 </div>
 <div id="PPK_wf" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Post-Processing Kinematic Workflows (PPK)</h2>
-<p>The PPK workflow includes an additional processing step to combine data from a base station and the RPA or rover. The base station is typically a third-party nearby base station from which data is gathered in post data acquisition or near real-time through a mobile network. The data includes recorded messages of the satellite’s carrier phase to calculate a difference metric that relates the precise location of the roving unit (or RPA) to the base station. PPK then corrects the positions recorded by the roving unit, after which the positional accuracy of the rover will be similar to the accuracy of the PPK base station. However, some error is likely to be introduced during the transformation of the rover’s positions and accuracy may diminish as a function of distance from the PPK base station. Typically, location data can only be processed using software distributed by the manufacturer of the rover. A good example of this are the Trimble units, which require post-processing with GPS Pathfinder Office <span class="citation">(<a href="#ref-Trimble-Inc-2022GPS" role="doc-biblioref">T. Inc. 2022c</a>)</span>. However, RTKLIB <span class="citation">(<a href="#ref-Takasu2013RTKLIB" role="doc-biblioref">Takasu 2013</a>)</span> is a well known free open source alternative to paid PPK software. Note that the distance away from the base station is very important in order to improve geometric accuracy following PPK. In some provinces like British Columbia a continuous network of base stations is operational, whereas this is problematic in large parts of Alberta. PPK position files can then be loaded into the photogrammetry processing software similar to the RTK processing steps above.</p>
+<p>The PPK workflow includes an additional processing step to combine data from a base station and the RPA or rover. The base station is typically a third-party nearby base station from which data is gathered in post data acquisition or near real-time through a mobile network. The data includes recorded messages of the satellite’s carrier phase to calculate a difference metric that relates the precise location of the roving unit (or RPA) to the base station. PPK then corrects the positions recorded by the roving unit, after which the positional accuracy of the rover will be similar to the accuracy of the PPK base station. However, some error is likely to be introduced during the transformation of the rover’s positions and accuracy may diminish as a function of distance from the PPK base station. Typically, location data can only be processed using software distributed by the manufacturer of the rover. A good example of this are the Trimble units, which require post-processing with GPS Pathfinder Office <span class="citation">(<a href="#ref-Trimble-Inc-2022GPS" role="doc-biblioref">Trimble Inc. 2022c</a>)</span>. However, RTKLIB <span class="citation">(<a href="#ref-Takasu2013RTKLIB" role="doc-biblioref">Takasu 2013</a>)</span> is a well known free open source alternative to paid PPK software. Note that the distance away from the base station is very important in order to improve geometric accuracy following PPK. In some provinces like British Columbia a continuous network of base stations is operational, whereas this is problematic in large parts of Alberta. PPK position files can then be loaded into the photogrammetry processing software similar to the RTK processing steps above.</p>
 </div>
 <div id="use_case" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Determining Use-Case</h2>
-<p>PPK- and RTK-enabled GNSS systems are considerably more expensive than conventional GPS/GNSS options. As an example, the Phantom 4 RTK costs $CAD 11,600 while the non-RTK equivalent costs $CAD 2,200 <span class="citation">(<a href="#ref-DJI2022DJI" role="doc-biblioref">DJI 2022</a>)</span>. A user needs a subscription to be able to use PPK services, which (at the time of this writing) costs around $CAD 2,625 per year for Trimble CenterPoint RTX rovers <span class="citation">(<a href="#ref-Trimble-Inc-2022CenterPoint" role="doc-biblioref">T. Inc. 2022a</a>)</span>. To be able to justify the higher costs of PPK and RTK, a decision maker should have a good understanding of the desired use-cases for datasets.</p>
+<p>PPK- and RTK-enabled GNSS systems are considerably more expensive than conventional GPS/GNSS options. As an example, the Phantom 4 RTK costs $CAD 11,600 while the non-RTK equivalent costs $CAD 2,200 <span class="citation">(<a href="#ref-DJI2022DJI" role="doc-biblioref">DJI 2022</a>)</span>. A user needs a subscription to be able to use PPK services, which (at the time of this writing) costs around $CAD 2,625 per year for Trimble CenterPoint RTX rovers <span class="citation">(<a href="#ref-Trimble-Inc-2022CenterPoint" role="doc-biblioref">Trimble Inc. 2022a</a>)</span>. To be able to justify the higher costs of PPK and RTK, a decision maker should have a good understanding of the desired use-cases for datasets.</p>
 <p>The use-case determines the necessary geometric accuracy level, thus whether GCPPPK/RTK is required. A DAP dataset that is going to be used solely for applications such as tree identification and classification of vegetation types does not require high geometric accuracy, nor does a dataset that is going to be used in combination with large (~ 9 m radius) sample plots or sample plots easily identifiable in the imagery. For any other use case, data acquisition likely requires the use of GCPPPK/RTK. Note that not using GCP/PPK/RTK can lead to increases in horizontal and vertical error and error in geolocation will correspond to error in tree height measurements from photogrammetric products. When the DAP dataset is going to be used in combination with other datasets, it is important that the DAP dataset does not include any irregular random distortions (i.e. high local accuracy) and is positioned correctly (i.e. high global accuracy). Decision makers and end-users should refer to Figure 2 to assess whether the use of more accurate GNSS technology is required.</p>
 <img src="figures/fig2.png" width="100%" style="display: block; margin: auto;" />
 <center>
@@ -233,14 +234,14 @@ DJI. 2022. <span>“DJI.”</span> <a href="https://www.dji.com/ca">https://www.
 <div id="ref-DroneDeploy2021Ground" class="csl-entry">
 DroneDeploy. 2021. <span>“Ground Control Points.”</span> <a href="https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points">https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points</a>.
 </div>
+<div id="ref-Takasu2013RTKLIB" class="csl-entry">
+Takasu, T. 2013. <span>“RTKLIB.”</span>
+</div>
 <div id="ref-Trimble-Inc-2022CenterPoint" class="csl-entry">
-Inc., Trimble. 2022a. <span>“CenterPoint RTX.”</span> <a href="https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB">https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB</a>.
+Trimble Inc. 2022a. <span>“CenterPoint RTX.”</span> <a href="https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB">https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB</a>.
 </div>
 <div id="ref-Trimble-Inc-2022GPS" class="csl-entry">
 ———. 2022c. <span>“GPS Pathfinder Office.”</span>
-</div>
-<div id="ref-Takasu2013RTKLIB" class="csl-entry">
-Takasu, T. 2013. <span>“RTKLIB.”</span>
 </div>
 </div>
             </section>

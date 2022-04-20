@@ -1,31 +1,1015 @@
 {
     "sources": [
         {
-            "URL": "http://yihui.org/knitr/",
+            "URL": "https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations",
             "author": [
                 {
-                    "family": "Xie",
-                    "given": "Yihui"
+                    "literal": "Transport Canada"
                 }
             ],
-            "edition": "2nd",
-            "id": "xie2015",
+            "id": "Transport-Canada2020Get",
             "issued": {
                 "date-parts": [
                     [
-                        2015
+                        2020
                     ]
                 ]
             },
-            "note": "ISBN 978-1498716963",
-            "publisher": "Chapman; Hall/CRC",
-            "publisher-place": "Boca Raton, Florida",
-            "title": "Dynamic documents with R and knitr",
-            "type": "book"
+            "note": "[Online; accessed 2022-09-03]",
+            "title": "Get permission for special drone operations",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "literal": "RPAS Governance Committee"
+                }
+            ],
+            "id": "RPAS-Governance-Committee2020Remotely",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher-place": "Edmonton, Alberta",
+            "title": "Remotely piloted aircraft system (RPAS) directive",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1007/s12518-013-0120-x",
+            "ISSN": "1866928X",
+            "author": [
+                {
+                    "family": "Nex",
+                    "given": "Francesco"
+                },
+                {
+                    "family": "Remondino",
+                    "given": "Fabio"
+                }
+            ],
+            "container-title": "Applied Geomatics",
+            "id": "Nex2014UAV",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "page": "1-15",
+            "title": "UAV for 3D mapping applications: A review",
+            "title-short": "UAV for 3D mapping applications",
+            "type": "article-journal",
+            "volume": "6"
+        },
+        {
+            "URL": "https://dronesmadeeasy.com/map-pilot",
+            "author": [
+                {
+                    "literal": "Drones Made Easy"
+                }
+            ],
+            "id": "Drones-Made-Easy0Map",
+            "issued": {
+                "date-parts": [
+                    [
+                        0
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Map pilot pro",
+            "type": ""
+        },
+        {
+            "URL": "https://www.agisoft.com/downloads/system-requirements/",
+            "author": [
+                {
+                    "literal": "Agisoft LLC"
+                }
+            ],
+            "id": "Agisoft-LLC0Agisoft",
+            "issued": {
+                "date-parts": [
+                    [
+                        0
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Agisoft metashape hardware requirements",
+            "type": ""
+        },
+        {
+            "URL": "https://www.pugetsystems.com/labs/articles/Metashape-Benchmark-1457/",
+            "author": [
+                {
+                    "family": "George",
+                    "given": "William"
+                }
+            ],
+            "container-title": "Puget Systems",
+            "id": "George2019Metashape",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Metashape benchmark",
+            "type": ""
+        },
+        {
+            "URL": "https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points",
+            "author": [
+                {
+                    "family": "DroneDeploy"
+                }
+            ],
+            "id": "DroneDeploy2021Ground",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Ground control points",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "literal": "Trimble Inc."
+                }
+            ],
+            "id": "Trimble-Inc-2022GPS",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "GPS pathfinder office",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Takasu",
+                    "given": "T."
+                }
+            ],
+            "id": "Takasu2013RTKLIB",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013
+                    ]
+                ]
+            },
+            "title": "RTKLIB",
+            "type": "article-journal"
+        },
+        {
+            "URL": "https://www.dji.com/ca",
+            "author": [
+                {
+                    "family": "DJI"
+                }
+            ],
+            "id": "DJI2022DJI",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "DJI",
+            "type": ""
+        },
+        {
+            "URL": "https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB",
+            "author": [
+                {
+                    "literal": "Trimble Inc."
+                }
+            ],
+            "id": "Trimble-Inc-2022CenterPoint",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "CenterPoint RTX",
+            "type": ""
+        },
+        {
+            "URL": "https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer",
+            "author": [
+                {
+                    "literal": "Information and Data Provisioning Services, Informatics Branch, Corporate Services Division, Alberta Environment and Sustainable Resource Development, Government of Alberta"
+                }
+            ],
+            "id": "Information-Data-Provisioning-Services",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Access",
+            "type": ""
+        },
+        {
+            "URL": "https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html",
+            "author": [
+                {
+                    "literal": "Government of Canada"
+                }
+            ],
+            "id": "Government-of-Canada2018Northern",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Northern alberta forest industry",
+            "type": ""
+        },
+        {
+            "URL": "https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a#summary",
+            "author": [
+                {
+                    "literal": "Alberta Environment and Parks, Government of Alberta"
+                }
+            ],
+            "id": "Alberta-Environment-and-Parks2017Alberta",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Alberta provincial digital elevation model",
+            "type": ""
+        },
+        {
+            "URL": "https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm",
+            "author": [
+                {
+                    "family": "ESRI"
+                }
+            ],
+            "id": "ESRI2016Project",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Project (ArcMap)",
+            "type": ""
+        },
+        {
+            "URL": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm",
+            "author": [
+                {
+                    "family": "ESRI"
+                }
+            ],
+            "id": "ESRI2022Project",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Project (ArcGIS pro)",
+            "type": ""
+        },
+        {
+            "URL": "https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html",
+            "author": [
+                {
+                    "family": "QGIS"
+                }
+            ],
+            "id": "QGIS2022Working",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Working with projections",
+            "type": ""
+        },
+        {
+            "URL": "https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf",
+            "author": [
+                {
+                    "family": "ESRI"
+                }
+            ],
+            "id": "ESRI2021ArcGIS",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "title": "ArcGIS desktop 10.8.2 geographic and vertical transformation tables",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "family": "ODM"
+                }
+            ],
+            "id": "ODM2020OpenDroneMap",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "title": "OpenDroneMap",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "literal": "Pix4D SA"
+                }
+            ],
+            "id": "Pix4D-SA2022Pix4D",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "Pix4D",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "literal": "DroneDeploy"
+                }
+            ],
+            "id": "DroneDeploy2022DroneDeploy",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "DroneDeploy",
+            "type": "article-journal"
+        },
+        {
+            "URL": "http://suncalc.net/",
+            "author": [
+                {
+                    "family": "Agafonkin",
+                    "given": "Vladimir"
+                }
+            ],
+            "id": "Agafonkin2018SunCalc",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-09-03]",
+            "title": "SunCalc",
+            "type": ""
+        },
+        {
+            "DOI": "10.1007/s40725-019-00087-2",
+            "ISSN": "21986436",
+            "author": [
+                {
+                    "family": "Goodbody",
+                    "given": "Tristan R. H."
+                },
+                {
+                    "family": "Coops",
+                    "given": "Nicholas C."
+                },
+                {
+                    "family": "White",
+                    "given": "Joanne C."
+                }
+            ],
+            "container-title": "Current Forestry Reports",
+            "id": "Goodbody2019Digital",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "55-75",
+            "publisher": "Current Forestry Reports",
+            "title": "Digital aerial photogrammetry for updating area-based forest inventories: A review of opportunities, challenges, and future directions",
+            "title-short": "Digital aerial photogrammetry for updating area-based forest inventories",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Low",
+                    "given": "David G"
+                }
+            ],
+            "container-title": "International Journal of Computer Vision",
+            "id": "Low2004Distinctive",
+            "issued": {
+                "date-parts": [
+                    [
+                        2004
+                    ]
+                ]
+            },
+            "page": "91-110",
+            "title": "Distinctive image features from scale-invariant keypoints",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1016/j.rse.2021.112677",
+            "ISSN": "00344257",
+            "author": [
+                {
+                    "family": "Goodbody",
+                    "given": "Tristan R. H."
+                },
+                {
+                    "family": "White",
+                    "given": "Joanne C."
+                },
+                {
+                    "family": "Coops",
+                    "given": "Nicholas C."
+                },
+                {
+                    "family": "LeBoeuf",
+                    "given": "Antoine"
+                }
+            ],
+            "container-title": "Remote Sensing of Environment",
+            "id": "Goodbody2021Benchmarking",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "page": "112677",
+            "publisher": "Elsevier Inc.",
+            "title": "Benchmarking acquisition parameters for digital aerial photogrammetric data for forest inventory applications: Impacts of image overlap and resolution",
+            "title-short": "Benchmarking acquisition parameters for digital aerial photogrammetric data for forest inventory applications",
+            "type": "article-journal",
+            "volume": "265"
+        },
+        {
+            "DOI": "10.1080/00049158.2018.1482799",
+            "author": [
+                {
+                    "family": "Iqbal",
+                    "given": "I. A."
+                },
+                {
+                    "family": "Osborn",
+                    "given": "J."
+                },
+                {
+                    "family": "Stone",
+                    "given": "C."
+                },
+                {
+                    "family": "Lucieer",
+                    "given": "A."
+                },
+                {
+                    "family": "Dell",
+                    "given": "M."
+                },
+                {
+                    "family": "McCoull",
+                    "given": "C."
+                }
+            ],
+            "container-title": "Australian Forestry",
+            "id": "Iqbal2018Evaluating",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "page": "162-176",
+            "title": "Evaluating the robustness of point clouds from small format aerial photography over a pinus radiata plantation",
+            "type": "article-journal",
+            "volume": "81"
+        },
+        {
+            "DOI": "10.1016/j.rse.2021.112540",
+            "ISSN": "00344257",
+            "author": [
+                {
+                    "family": "Swayze",
+                    "given": "Neal C."
+                },
+                {
+                    "family": "Tinkham",
+                    "given": "Wade T."
+                },
+                {
+                    "family": "Vogeler",
+                    "given": "Jody C."
+                },
+                {
+                    "family": "Hudak",
+                    "given": "Andrew T."
+                }
+            ],
+            "container-title": "Remote Sensing of Environment",
+            "id": "Swayze2021Influence",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "page": "112540",
+            "publisher": "Elsevier Inc.",
+            "title": "Influence of flight parameters on UAS-based monitoring of tree height, diameter, and density",
+            "type": "article-journal",
+            "volume": "263"
+        },
+        {
+            "author": [
+                {
+                    "family": "Isenburg",
+                    "given": "Martin"
+                }
+            ],
+            "id": "Isenburg2020LAStools",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "title": "LAStools",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Roussel",
+                    "given": "Jean-Romain"
+                },
+                {
+                    "family": "Goodbody",
+                    "given": "Tristan R. H."
+                },
+                {
+                    "family": "Tompalski",
+                    "given": "Piotr"
+                }
+            ],
+            "id": "Roussel2021lidR",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "title": "lidR",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Isenburg",
+                    "given": "Martin"
+                }
+            ],
+            "id": "Isenburg2019LASzip",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "title": "LASzip",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1016/j.rse.2020.112061",
+            "ISSN": "00344257",
+            "author": [
+                {
+                    "family": "Roussel",
+                    "given": "Jean Romain"
+                },
+                {
+                    "family": "Auty",
+                    "given": "David"
+                },
+                {
+                    "family": "Coops",
+                    "given": "Nicholas C."
+                },
+                {
+                    "family": "Tompalski",
+                    "given": "Piotr"
+                },
+                {
+                    "family": "Goodbody",
+                    "given": "Tristan R. H."
+                },
+                {
+                    "family": "Meador",
+                    "given": "Andrew Sánchez"
+                },
+                {
+                    "family": "Bourdon",
+                    "given": "Jean François"
+                },
+                {
+                    "dropping-particle": "de",
+                    "family": "Boissieu",
+                    "given": "Florian"
+                },
+                {
+                    "family": "Achim",
+                    "given": "Alexis"
+                }
+            ],
+            "container-title": "Remote Sensing of Environment",
+            "id": "Roussel2020lidR",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "page": "112061",
+            "publisher": "Elsevier",
+            "title": "lidR: An r package for analysis of airborne laser scanning (ALS) data",
+            "title-short": "lidR",
+            "type": "article-journal",
+            "volume": "251"
+        },
+        {
+            "DOI": "10.5558/tfc2013-132",
+            "ISBN": "9781100223858",
+            "ISSN": "00157546",
+            "author": [
+                {
+                    "family": "White",
+                    "given": "Joanne C."
+                },
+                {
+                    "family": "Wulder",
+                    "given": "Michael A."
+                },
+                {
+                    "family": "Varhola",
+                    "given": "Andrés"
+                },
+                {
+                    "family": "Vastaranta",
+                    "given": "Mikko"
+                },
+                {
+                    "family": "Coops",
+                    "given": "Nicholas C."
+                },
+                {
+                    "family": "Cook",
+                    "given": "Bruce D."
+                },
+                {
+                    "family": "Pitt",
+                    "given": "Doug"
+                },
+                {
+                    "family": "Woods",
+                    "given": "Murray"
+                }
+            ],
+            "collection-number": "6",
+            "container-title": "Forestry Chronicle",
+            "id": "White2013best",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013
+                    ]
+                ]
+            },
+            "title": "A best practices guide for generating forest inventory attributes from airborne laser scanning data using an area-based approach",
+            "type": "book",
+            "volume": "89"
+        },
+        {
+            "URL": "TruPulse 360 R Laser Rangefinder",
+            "author": [
+                {
+                    "literal": "Laser Technology, Inc."
+                }
+            ],
+            "id": "Laser-Technology2021TruPulse",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "TruPulse 360 r laser rangefinder",
+            "type": ""
+        },
+        {
+            "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285",
+            "author": [
+                {
+                    "family": "Cansel",
+                    "given": "Canada"
+                }
+            ],
+            "id": "Cansel2022TruPulse",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "TruPulse LTI 360R rangefinder",
+            "type": ""
+        },
+        {
+            "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360",
+            "author": [
+                {
+                    "family": "Cansel",
+                    "given": "Canada"
+                }
+            ],
+            "id": "Cansel2022Trupulse2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Trupulse LTI foliage filter",
+            "type": ""
+        },
+        {
+            "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835",
+            "author": [
+                {
+                    "family": "Cansel",
+                    "given": "Canada"
+                }
+            ],
+            "id": "Cansel2022TruPulse3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "TruPulse 360R 200X mounting bracket",
+            "type": ""
+        },
+        {
+            "URL": "https://www.geospatial.trimble.com/products-and-solutions/geo-7x",
+            "author": [
+                {
+                    "literal": "Trimble Inc."
+                }
+            ],
+            "id": "Trimble-Inc-2022Geo",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Geo 7X handheld data collector",
+            "type": ""
+        },
+        {
+            "URL": "https://www.geospatial.trimble.com/products-and-solutions/trimble-tornado",
+            "author": [
+                {
+                    "literal": "Trimble Inc."
+                }
+            ],
+            "id": "Trimble-Inc-2022Trimble",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Trimble tornado",
+            "type": ""
+        },
+        {
+            "URL": "https://www.forestry-suppliers.com/product_pages/products.php?mi=1377",
+            "author": [
+                {
+                    "literal": "Forestry Suppliers Inc."
+                }
+            ],
+            "id": "Forestry-Suppliers-Inc-2022Haglof",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Haglöf vertex 5 hypsometer",
+            "type": ""
+        },
+        {
+            "URL": "https://www.deakin.com/products/Details.aspx?p=641534&c=1343&g=5496",
+            "author": [
+                {
+                    "literal": "Deakin Industries Ltd."
+                }
+            ],
+            "id": "Deakin-Industries-Ltd-2022LUFKIN",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "LUFKIN C106TPMN DIAMETER TAPE 6.5M",
+            "type": ""
+        },
+        {
+            "URL": "https://www.homedepot.ca/product/stanley-fatmax-fatmax-8m-26-ft-x-1-1-4-inch-tape-measure-metric-english-scale-/1000185066",
+            "author": [
+                {
+                    "literal": "Home Depot International Inc."
+                }
+            ],
+            "id": "Home-Depot-International-Inc-2022STANLEY",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "STANLEY FATMAX",
+            "type": ""
+        },
+        {
+            "URL": "https://www.amazon.ca/Ricoh-Theta-camera-Metallic-Gray/dp/B074W5BKYS?th=1",
+            "author": [
+                {
+                    "literal": "Amazon.com Inc."
+                }
+            ],
+            "id": "Amazon-Inc-2022Ricoh",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Ricoh 910725 theta v camera, metallic gray",
+            "type": ""
+        },
+        {
+            "URL": "https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277",
+            "author": [
+                {
+                    "literal": "Home Depot International Inc."
+                }
+            ],
+            "id": "Home-Depot-International-Inc-2022Energizer",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "Energizer 123 batteries",
+            "type": ""
+        },
+        {
+            "URL": "https://www.deakin.com/products/Details.aspx?p=640782&c=1356&g=5561",
+            "author": [
+                {
+                    "literal": "Deakin Industries Ltd."
+                }
+            ],
+            "id": "Deakin-Industries-Ltd-2022TELESCOPIC",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "note": "[Online; accessed 2022-02-02]",
+            "title": "TELESCOPIC SURVEY ROD ALUM 5 METER",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "literal": "Avenza Systems Inc."
+                }
+            ],
+            "id": "Avenza-Systems-2022Avenza",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "title": "Avenza maps",
+            "type": "article-journal"
         }
     ],
     "project_biblios": [
-        "book.bib",
-        "packages.bib"
+        "ref-extracts.bib"
     ]
 }
