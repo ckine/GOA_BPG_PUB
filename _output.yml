@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Best Practice Guide to Acquisition of 3D Imagery from RPAS</a></li>
       after: |
-        <li><a href="https://ckine.github.io/GOA_BPG_PUB/" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:

@@ -10,6 +10,25 @@ bibliography: ["ref-extracts.bib"]
 biblio-style: "apalike"
 link-citations: true
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r htmlTemplate, echo=FALSE}
+# Create the external file
+img <- htmltools::img(src = "img\\logo.png", 
+               alt = 'logo', 
+               style = 'position:absolute; top:100px; right:5%; height:60px; max-width:100%; z-index:3;')
+
+htmlhead <- paste0('
+<script>
+document.write(\'<div class="logos">',img,'</div>\')
+</script>
+')
+
+readr::write_lines(htmlhead, path = "header.html")
+
+```
 
 # Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
 
