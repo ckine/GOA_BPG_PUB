@@ -1,6 +1,5 @@
 --- 
-title: "Best Practice Guide to Acquisition of 3D Imagery from RPAS"
-author: "Andrew J. Chadwick, Tristan R.H. Goodbody, Chris W. Bater, Lee A. Martens, Rik J.G. Nuijten, Sarah Smith-Tripp, Samuel Grubinger, Liam Irwin, Jeremy Arkin, Anne Hervieux, and Nicholas C. Coops"
+
 date: "`r Sys.Date()`"
 output:
   html_document:
