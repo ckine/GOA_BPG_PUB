@@ -1,14 +1,14 @@
 --- 
-
 date: "`r Sys.Date()`"
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    
+site: bookdown::bookdown_site
+documentclass: book
 bibliography: ["ref-extracts.bib"]
 biblio-style: "apalike"
 link-citations: true
+output:
+  bookdown::gitbook:
+    includes:
+      in_header: header.html
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -29,7 +29,7 @@ document.write(\'<div class="logos">',img,'</div>\')
 readr::write_lines(htmlhead, path = "header.html")
 
 ```
-
+---
 # Best Practice Guide to Acquisition of 3D Imagery from RPAS {-#title}
 
 ```{r, echo=FALSE, out.width="100%",fig.align = 'center'}
