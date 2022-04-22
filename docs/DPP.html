@@ -23,6 +23,7 @@
 
 
 
+<meta name="date" content="2022-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +53,35 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
+<script>
+document.write('<div class="logos"><img src="img\logo.png" alt="logo" style="position:absolute; top:100px; right:5%; height:60px; max-width:100%; z-index:3;"/></div>')
+</script>
 
 
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -145,7 +173,7 @@
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant IRSS Publications</a></li>
 <li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -169,10 +197,10 @@
             <section class="normal" id="section-">
 <div id="DPP" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Digital Photogrammetric Processing</h1>
-<p>DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) <span class="citation">(<strong>Low2004Distinctive?</strong>)</span> are used to detect features of interest in images. These features are known as <em>key points</em>. Features which appear across multiple images, called <em>tie points</em>, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build <em>depth maps</em> for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.</p>
+<p>DAP is the process by which overlapping aerial images are used to derive 3-dimensional (3D) point cloud data as well as orthorectified imagery products. This is facilitated by algorithms which detect features present in multiple, overlapping images, which are in turn used to iteratively reconstruct surfaces with trigonometry. Algorithms such as Scale Invariant Feature Transform (SIFT) <span class="citation">(<a href="#ref-Low2004Distinctive" role="doc-biblioref">Low 2004</a>)</span> are used to detect features of interest in images. These features are known as <em>key points</em>. Features which appear across multiple images, called <em>tie points</em>, are then used to relate each camera location in space trigonometrically. Following the identification of these features, photogrammetric software iteratively tests and validates key points to adjust estimates of camera locations. Once the locations of cameras are determined, the software uses tie point locations to build <em>depth maps</em> for each image. Depth maps are images where pixel values represent the distance of surfaces and objects from a view point. Depth maps are intermediary photogrammetric products which are used to create dense point clouds.</p>
 <img src="figures/fig4.png" width="100%" style="display: block; margin: auto;" />
 <center>
-<strong>Figure 4.</strong> Key point and Tie point matching <span class="citation">(<strong>Goodbody2019Digital?</strong>)</span>.
+<strong>Figure 4.</strong> Key point and Tie point matching <span class="citation">(<a href="#ref-Goodbody2019Digital" role="doc-biblioref">Goodbody, Coops, and White 2019</a>)</span>.
 </center>
 <p><br></p>
 <p>Each pixel of each image is then projected onto depth maps, which converts them into points in 3D space, which retain spectral information from the original pixel and comprise the <em>dense point cloud</em>. The software then stitches together the best available imagery for each point on the surfaces generated from the depth maps, creating a single image of entirely near-nadir views. This imagery can be manipulated spatially like any other georeferenced raster dataset.</p>
@@ -182,7 +210,7 @@
 </center>
 <div id="software" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Software Choices</h2>
-<p>Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research <span class="citation">(<strong>Goodbody2021Benchmarking?</strong>)</span>, <span class="citation">(<strong>Iqbal2018Evaluating?</strong>)</span>. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters.</p>
+<p>Of the available options for photogrammetric processing software, Pix4D, and Agisoft Metashape are the most popular and best performing for processing of forested terrain. This report focuses only on Agisoft Metashape. Advantages of Agisoft Metashape include a highly modifiable API (automated programming interface), network processing, and seamless integration of MicaSense multispectral imagery among other sensors. The software is user friendly and has been used extensively in published remote sensing for forest management research <span class="citation">(<a href="#ref-Goodbody2021Benchmarking" role="doc-biblioref">Goodbody et al. 2021</a>)</span>, <span class="citation">(<a href="#ref-Iqbal2018Evaluating" role="doc-biblioref">Iqbal et al. 2018</a>)</span>. Disadvantages include price (approximately CAD $4k - $7k per license per year, depending on how many), cryptic support and documentation, and some “black box” features which do not allow the end-user to modify or access parameters.</p>
 </div>
 <div id="agisoft_wf" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Agisoft Workflow Walk-Throughs</h2>
@@ -209,7 +237,7 @@
 </div>
 <div id="map_filt" class="section level3" number="5.2.6">
 <h3><span class="header-section-number">5.2.6</span> Depth Map Filtering</h3>
-<p>Filtering of depth maps balances data loss with noise generation at the dense cloud level. Isolated noise points occurring beneath the ground surface are not detrimental to data quality, because they are typically eliminated after a ground model is created and the point cloud is normalized. Noise points and artifacts occurring at the tops of tree crowns are much more of a concern. The “mild” option for depth map filtering is the recommended setting, achieving a balance between elimination of erroneous outliers and flattening of canopy structure. This setting has been shown to perform well for tree detection and height estimates in open-canopy conifer forests <span class="citation">(<strong>Swayze2021Influence?</strong>)</span>.</p>
+<p>Filtering of depth maps balances data loss with noise generation at the dense cloud level. Isolated noise points occurring beneath the ground surface are not detrimental to data quality, because they are typically eliminated after a ground model is created and the point cloud is normalized. Noise points and artifacts occurring at the tops of tree crowns are much more of a concern. The “mild” option for depth map filtering is the recommended setting, achieving a balance between elimination of erroneous outliers and flattening of canopy structure. This setting has been shown to perform well for tree detection and height estimates in open-canopy conifer forests <span class="citation">(<a href="#ref-Swayze2021Influence" role="doc-biblioref">Swayze et al. 2021</a>)</span>.</p>
 </div>
 <div id="micasense" class="section level3" number="5.2.7">
 <h3><span class="header-section-number">5.2.7</span> Multispectral (MicaSense)</h3>
@@ -218,6 +246,24 @@
 <p>The algorithms used in image matching are capable of operating between different image types, meaning that key points can be detected in single-band multispectral images and RGB photographs. The two datasets can be processed in separate chunks and aligned using “Align Chunks”; a low or medium accuracy is usually sufficient for this type of alignment. It is also possible to align RGB and MS imagery in a single chunk before exporting the aligned images to a new chunk and proceeding. This method can sometimes allow alignment of problematic image sets with poor geometry or insufficient overlap.</p>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Goodbody2019Digital" class="csl-entry">
+Goodbody, Tristan R. H., Nicholas C. Coops, and Joanne C. White. 2019. <span>“Digital Aerial Photogrammetry for Updating Area-Based Forest Inventories: A Review of Opportunities, Challenges, and Future Directions.”</span> <em>Current Forestry Reports</em>, 55–75. <a href="https://doi.org/10.1007/s40725-019-00087-2">https://doi.org/10.1007/s40725-019-00087-2</a>.
+</div>
+<div id="ref-Goodbody2021Benchmarking" class="csl-entry">
+Goodbody, Tristan R. H., Joanne C. White, Nicholas C. Coops, and Antoine LeBoeuf. 2021. <span>“Benchmarking Acquisition Parameters for Digital Aerial Photogrammetric Data for Forest Inventory Applications: Impacts of Image Overlap and Resolution.”</span> <em>Remote Sensing of Environment</em> 265: 112677. <a href="https://doi.org/10.1016/j.rse.2021.112677">https://doi.org/10.1016/j.rse.2021.112677</a>.
+</div>
+<div id="ref-Iqbal2018Evaluating" class="csl-entry">
+Iqbal, I. A., J. Osborn, C. Stone, A. Lucieer, M. Dell, and C. McCoull. 2018. <span>“Evaluating the Robustness of Point Clouds from Small Format Aerial Photography over a Pinus Radiata Plantation.”</span> <em>Australian Forestry</em> 81 (3): 162–76. <a href="https://doi.org/10.1080/00049158.2018.1482799">https://doi.org/10.1080/00049158.2018.1482799</a>.
+</div>
+<div id="ref-Low2004Distinctive" class="csl-entry">
+Low, David G. 2004. <span>“Distinctive Image Features from Scale-Invariant Keypoints.”</span> <em>International Journal of Computer Vision</em>, 91–110.
+</div>
+<div id="ref-Swayze2021Influence" class="csl-entry">
+Swayze, Neal C., Wade T. Tinkham, Jody C. Vogeler, and Andrew T. Hudak. 2021. <span>“Influence of Flight Parameters on UAS-Based Monitoring of Tree Height, Diameter, and Density.”</span> <em>Remote Sensing of Environment</em> 263: 112540. <a href="https://doi.org/10.1016/j.rse.2021.112540">https://doi.org/10.1016/j.rse.2021.112540</a>.
 </div>
 </div>
             </section>

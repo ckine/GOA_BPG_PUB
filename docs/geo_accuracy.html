@@ -23,6 +23,7 @@
 
 
 
+<meta name="date" content="2022-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +53,35 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
+<script>
+document.write('<div class="logos"><img src="img\logo.png" alt="logo" style="position:absolute; top:100px; right:5%; height:60px; max-width:100%; z-index:3;"/></div>')
+</script>
 
 
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -145,7 +173,7 @@
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="field_data.html"><a href="field_data.html#stem_map_image"><i class="fa fa-check"></i><b>7.2</b> Stem Mapping Method 2: Direct-to-Image</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant University of British Columbia Publications</a></li>
+<li class="chapter" data-level="8" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>8</b> Selected Bibliography of Relevant IRSS Publications</a></li>
 <li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -175,7 +203,7 @@
 <p>In RPAS workflows, geolocation accuracy may be improved through use of new technology which integrates PPK and RTK positions directly with the RPAS, or traditional ground control point (GCP) placement. We first outline the process of using ground control points before revisiting PPK and RTK workflows.</p>
 <div id="GCP" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Ground Control Points (GCP)</h2>
-<p>Traditionally, RPAS surveying at centimetre-level accuracy has relied on the integration of ground control points (GCP), which are used to apply geometric corrections in photogrammetric models. GCP are large (ranging from approximately 30 cm2 to 1 m2 in size), marked targets distributed over the site for which RPAS imagery is collected. Target locations are recorded with a hand-held GPS or GNSS device and are later identified by the user in the imagery during photogrammetric processing. In the case of data collection with a non-RTK RPAS, PPK or RTK processing can be incorporated with GCP location measurements by using the hand-held GPS or GNSS device as a rover. The geometric accuracy of the final model, of which the point cloud and orthomosaic are major products, is highly dependent on the distribution and density of the GCP. Typically, tree-based studies (especially studies focussing on small tree crowns) require models of much higher geometric accuracy than area-based studies. Optimal positioning (i.e. distribution and density) of GCP is dependent on 1) elevation changes, 2) the size of a site, and 3) the camera’s field-of-view. Various guidelines on how to capture GCP are available online, such as DroneDeploy <span class="citation">(<strong>DroneDeploy2021Ground?</strong>)</span>. Note that the integration of GCP adds significant workload to both field data collection, as well as photogrammetric processing. Placing of GCP targets may also cause a degree of trampling and as such, may be considered intrusive.</p>
+<p>Traditionally, RPAS surveying at centimetre-level accuracy has relied on the integration of ground control points (GCP), which are used to apply geometric corrections in photogrammetric models. GCP are large (ranging from approximately 30 cm2 to 1 m2 in size), marked targets distributed over the site for which RPAS imagery is collected. Target locations are recorded with a hand-held GPS or GNSS device and are later identified by the user in the imagery during photogrammetric processing. In the case of data collection with a non-RTK RPAS, PPK or RTK processing can be incorporated with GCP location measurements by using the hand-held GPS or GNSS device as a rover. The geometric accuracy of the final model, of which the point cloud and orthomosaic are major products, is highly dependent on the distribution and density of the GCP. Typically, tree-based studies (especially studies focussing on small tree crowns) require models of much higher geometric accuracy than area-based studies. Optimal positioning (i.e. distribution and density) of GCP is dependent on 1) elevation changes, 2) the size of a site, and 3) the camera’s field-of-view. Various guidelines on how to capture GCP are available online, such as DroneDeploy <span class="citation">(<a href="#ref-DroneDeploy2021Ground" role="doc-biblioref">DroneDeploy 2021</a>)</span>. Note that the integration of GCP adds significant workload to both field data collection, as well as photogrammetric processing. Placing of GCP targets may also cause a degree of trampling and as such, may be considered intrusive.</p>
 <img src="figures/fig1.png" width="100%" style="display: block; margin: auto;" />
 <center>
 <strong>Figure 1.</strong> An overview of PPK (red) and RTK (blue) processes.
@@ -189,17 +217,35 @@
 </div>
 <div id="PPK_wf" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Post-Processing Kinematic Workflows (PPK)</h2>
-<p>The PPK workflow includes an additional processing step to combine data from a base station and the RPA or rover. The base station is typically a third-party nearby base station from which data is gathered in post data acquisition or near real-time through a mobile network. The data includes recorded messages of the satellite’s carrier phase to calculate a difference metric that relates the precise location of the roving unit (or RPA) to the base station. PPK then corrects the positions recorded by the roving unit, after which the positional accuracy of the rover will be similar to the accuracy of the PPK base station. However, some error is likely to be introduced during the transformation of the rover’s positions and accuracy may diminish as a function of distance from the PPK base station. Typically, location data can only be processed using software distributed by the manufacturer of the rover. A good example of this are the Trimble units, which require post-processing with GPS Pathfinder Office <span class="citation">(<strong>Trimble-Inc-2022GPS?</strong>)</span>. However, RTKLIB <span class="citation">(<strong>Takasu2013RTKLIB?</strong>)</span> is a well known free open source alternative to paid PPK software. Note that the distance away from the base station is very important in order to improve geometric accuracy following PPK. In some provinces like British Columbia a continuous network of base stations is operational, whereas this is problematic in large parts of Alberta. PPK position files can then be loaded into the photogrammetry processing software similar to the RTK processing steps above.</p>
+<p>The PPK workflow includes an additional processing step to combine data from a base station and the RPA or rover. The base station is typically a third-party nearby base station from which data is gathered in post data acquisition or near real-time through a mobile network. The data includes recorded messages of the satellite’s carrier phase to calculate a difference metric that relates the precise location of the roving unit (or RPA) to the base station. PPK then corrects the positions recorded by the roving unit, after which the positional accuracy of the rover will be similar to the accuracy of the PPK base station. However, some error is likely to be introduced during the transformation of the rover’s positions and accuracy may diminish as a function of distance from the PPK base station. Typically, location data can only be processed using software distributed by the manufacturer of the rover. A good example of this are the Trimble units, which require post-processing with GPS Pathfinder Office <span class="citation">(<a href="#ref-Trimble-Inc-2022GPS" role="doc-biblioref">Trimble Inc. 2022c</a>)</span>. However, RTKLIB <span class="citation">(<a href="#ref-Takasu2013RTKLIB" role="doc-biblioref">Takasu 2013</a>)</span> is a well known free open source alternative to paid PPK software. Note that the distance away from the base station is very important in order to improve geometric accuracy following PPK. In some provinces like British Columbia a continuous network of base stations is operational, whereas this is problematic in large parts of Alberta. PPK position files can then be loaded into the photogrammetry processing software similar to the RTK processing steps above.</p>
 </div>
 <div id="use_case" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Determining Use-Case</h2>
-<p>PPK- and RTK-enabled GNSS systems are considerably more expensive than conventional GPS/GNSS options. As an example, the Phantom 4 RTK costs $CAD 11,600 while the non-RTK equivalent costs $CAD 2,200 <span class="citation">(<strong>DJI2022DJI?</strong>)</span>. A user needs a subscription to be able to use PPK services, which (at the time of this writing) costs around $CAD 2,625 per year for Trimble CenterPoint RTX rovers <span class="citation">(<strong>Trimble-Inc-2022CenterPoint?</strong>)</span>. To be able to justify the higher costs of PPK and RTK, a decision maker should have a good understanding of the desired use-cases for datasets.</p>
+<p>PPK- and RTK-enabled GNSS systems are considerably more expensive than conventional GPS/GNSS options. As an example, the Phantom 4 RTK costs $CAD 11,600 while the non-RTK equivalent costs $CAD 2,200 <span class="citation">(<a href="#ref-DJI2022DJI" role="doc-biblioref">DJI 2022</a>)</span>. A user needs a subscription to be able to use PPK services, which (at the time of this writing) costs around $CAD 2,625 per year for Trimble CenterPoint RTX rovers <span class="citation">(<a href="#ref-Trimble-Inc-2022CenterPoint" role="doc-biblioref">Trimble Inc. 2022a</a>)</span>. To be able to justify the higher costs of PPK and RTK, a decision maker should have a good understanding of the desired use-cases for datasets.</p>
 <p>The use-case determines the necessary geometric accuracy level, thus whether GCPPPK/RTK is required. A DAP dataset that is going to be used solely for applications such as tree identification and classification of vegetation types does not require high geometric accuracy, nor does a dataset that is going to be used in combination with large (~ 9 m radius) sample plots or sample plots easily identifiable in the imagery. For any other use case, data acquisition likely requires the use of GCPPPK/RTK. Note that not using GCP/PPK/RTK can lead to increases in horizontal and vertical error and error in geolocation will correspond to error in tree height measurements from photogrammetric products. When the DAP dataset is going to be used in combination with other datasets, it is important that the DAP dataset does not include any irregular random distortions (i.e. high local accuracy) and is positioned correctly (i.e. high global accuracy). Decision makers and end-users should refer to Figure 2 to assess whether the use of more accurate GNSS technology is required.</p>
 <img src="figures/fig2.png" width="100%" style="display: block; margin: auto;" />
 <center>
 <strong>Figure 2.</strong> Decision chart to determine required geometric accuracy.
 </center>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-DJI2022DJI" class="csl-entry">
+DJI. 2022. <span>“DJI.”</span> <a href="https://www.dji.com/ca">https://www.dji.com/ca</a>.
+</div>
+<div id="ref-DroneDeploy2021Ground" class="csl-entry">
+DroneDeploy. 2021. <span>“Ground Control Points.”</span> <a href="https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points">https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points</a>.
+</div>
+<div id="ref-Takasu2013RTKLIB" class="csl-entry">
+Takasu, T. 2013. <span>“RTKLIB.”</span>
+</div>
+<div id="ref-Trimble-Inc-2022CenterPoint" class="csl-entry">
+Trimble Inc. 2022a. <span>“CenterPoint RTX.”</span> <a href="https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB">https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB</a>.
+</div>
+<div id="ref-Trimble-Inc-2022GPS" class="csl-entry">
+———. 2022c. <span>“GPS Pathfinder Office.”</span>
 </div>
 </div>
             </section>
