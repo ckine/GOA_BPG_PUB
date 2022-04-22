@@ -3,8 +3,8 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [ref-extracts.bib]
-biblio-style: "apalike"
-link-citations: true
+biblio-style: apalike
+link-citations: yes
 output:
   bookdown::gitbook:
     includes:
