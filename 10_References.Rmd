@@ -5,39 +5,37 @@
 <div id="refs"></div>
 
 ## Works Referenced
-<ol>
 
-<li>Alberta Reforestation Standards Science Coucil, Linking Regeneration Stands to Growth and Yield and Forest Management Objectives. Sustainable Resource Development (2001-2006, 2006-2013), 2001.</li>
-<li>Alberta Agriculture and Forestry, “Reforestation Standard of Alberta,” Edmonton, Alberta, 2020.</li>
-<li>S. Puliti, S. Solberg, and A. Granhus, “Use of UAV photogrammetric data for estimation of biophysical properties in forest stands under regeneration,” Remote Sens., vol. 11, no. 3, 2019, doi: 10.3390/rs11030233.</li>
-<li>Alberta Sustainable Resource Development, “Alberta Forest Management Planning Standard Version 4.1.,” Edmonton, Alberta, 2006.</li>
-<li>J. D. Beckingham, I. G. W. Corns, and J. H. Archibald, “Field guide to ecosites of west-central Alberta,” Edmonton, Alberta, 1996.</li>
-<li>O. Burggraaff et al., “Standardized spectral and radiometric calibration of consumer cameras,” arXiv, vol. 27, no. 14, pp. 19075–19101, 2019, doi: 10.1364/oe.27.019075.</li>
-<li>MicaSense, “What is the center wavelength and bandwidth of each filter for MicaSense sensors?,” 2021. https://support.micasense.com/hc/en-us/articles/214878778-What-is-the-center-wavelength-and-bandwidth-of-each-filter-on-the-RedEdge-camera-.</li>
-<li>“Pix4D,” 2020. https://cloud.pix4d.com (accessed Aug. 18, 2020).</li>
-<li>A. Khosravipour, A. K. Skidmore, M. Isenburg, T. Wang, and Y. A. Hussin, “Generating pit-free canopy height models from airborne lidar,” Photogramm. Eng. Remote Sensing, vol. 80, no. 9, pp. 863–872, 2014, doi: 10.14358/PERS.80.9.863.</li>
-<li>“Agisoft Metashape Professional.” [Online]. Available: https://www.agisoft.com/downloads/installer/.</li>
-<li>M. Imangholiloo et al., “Characterizing seedling stands using leaf-off and leaf-on photogrammetric point clouds and hyperspectral imagery acquired from unmanned aerial vehicle,” Forests, vol. 10, no. 5, pp. 1–17, 2019, doi: 10.3390/f10050415.</li>
-<li>T. Kattenborn, J. Eichel, and F. E. Fassnacht, “Convolutional Neural Networks enable efficient, accurate and fine-grained segmentation of plant species and communities from high-resolution UAV imagery,” Sci. Rep., vol. 9, no. 1, pp. 1–9, 2019, doi: 10.1038/s41598-019-53797-9.</li>
-<li>S. Kentsch, M. L. L. Caceres, D. Serrano, F. Roure, and Y. Diez, “Computer vision and deep learning techniques for the analysis of drone-acquired forest images, a transfer learning study,” Remote Sens., vol. 12, no. 8, pp. 1–19, 2020, doi: 10.3390/RS12081287.</li>
-<li>A. Waleed, “Mask R-CNN for object detection and instance segmentation on Keras and TensorFlow,” GitHub Repository, 2017. https://github.com/matterport/Mask_RCNN (accessed Sep. 03, 2022).</li>
-<li>W. Zhang, C. Witharana, A. K. Liljedahl, and M. Kanevskiy, “Deep convolutional neural networks for automated characterization of arctic ice-wedge polygons in very high spatial resolution aerial imagery,” Remote Sens., vol. 10, no. 9, 2018, doi: 10.3390/rs10091487.</li>
-<li>M. Fromm, M. Schubert, G. Castilla, J. Linke, and G. McDermid, “Automated detection of conifer seedlings in drone imagery using convolutional neural networks,” Remote Sens., vol. 11, no. 21, 2019, doi: 10.3390/rs11212585.</li>
-<li>N. Chinchor, “MUC-4 evaluation metrics,” p. 22, 1992, doi: 10.3115/1072064.1072067.</li>
-<li>D. Armit, “Silvics and silviculture of lodgepole pine in the north central interior of British Columbia: A Problem analysis,” no. Research Notes No. 40, pp. 1–50, 1966.</li>
-<li>K. He, G. Gkioxari, P. Dollár, and R. Girshick, “Mask R-CNN,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 42, no. 2, pp. 386–397, 2018, doi: 10.1109/TPAMI.2018.2844175.</li>
-<li>Jia Deng, Wei Dong, R. Socher, Li-Jia Li, Kai Li, and Li Fei-Fei, “ImageNet: A large-scale hierarchical image database,” pp. 248–255, 2009, doi: 10.1109/cvprw.2009.5206848.</li>
-<li>T. Y. Lin et al., “Microsoft COCO: Common objects in context,” in Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 2014, vol. 8693 LNCS, no. PART 5, pp. 740–755, doi: 10.1007/978-3-319-10602-1_48.</li>
-<li>C. Lanaras, J. Bioucas-Dias, S. Galliani, E. Baltsavias, and K. Schindler, “Super-resolution of Sentinel-2 images: Learning a globally applicable deep neural network,” ISPRS J. Photogramm. Remote Sens., vol. 146, pp. 305–319, 2018, doi: 10.1016/j.isprsjprs.2018.09.018.</li>
-<li>S. Huang, S. X. Meng, and Y. Yuquing, “A Growth and Yield Projection System ( GYPSY ) for Natural and Post-harvest Stands in Alberta,” 2009.</li>
-<li>E. Naesset, “Airborne laser scanning as a method in operational forest inventory: Status of accuracy assessments accomplished in Scandinavia,” Scand. J. For. Res., vol. 22, no. 5, pp. 433–442, 2007, doi: 10.1080/02827580701672147.</li>
-<li>M. Penner, D. G. Pitt, and M. E. Woods, “Parametric vs. nonparametric LiDAR models for operational forest inventory in boreal Ontario,” Can. J. Remote Sens., vol. 39, no. 5, pp. 426–443, 2013, doi: 10.5589/m13-049.</li>
-<li>P. Tompalski, N. C. Coops, J. C. White, and M. A. Wulder, “Enhancing forest growth and yield predictions with airborne laser scanning data: Increasing spatial detail and optimizing yield curve selection through template matching,” Forests, vol. 7, no. 11, pp. 1–20, 2016, doi: 10.3390/f7110255.</li>
-<li>P. Tompalski, N. C. Coops, P. L. Marshall, J. C. White, M. A. Wulder, and T. Bailey, “Combining multi-date airborne laser scanning and digital aerial photogrammetric data for forest growth and yield modelling,” Remote Sens., vol. 10, no. 2, pp. 1–21, 2018, doi: 10.3390/rs10020347.</li>
-<li>P. Tompalski et al., “Estimating Changes in Forest Attributes and Enhancing Growth Projections: a Review of Existing Approaches and Future Directions Using Airborne 3D Point Cloud Data (Current Forestry Reports, (2021), 7, 1, (1-24), 10.1007/s40725-021-00,” Curr. For. Reports, vol. 7, no. 1, pp. 25–30, 2021, doi: 10.1007/s40725-021-00139-6.</li>
-<li>T. Gobakken, O. M. Bollandsås, and E. Næsset, “Comparing biophysical forest characteristics estimated from photogrammetric matching of aerial images and airborne laser scanning data,” Scand. J. For. Res., vol. 30, no. 1, pp. 73–86, 2015, doi: 10.1080/02827581.2014.961954.</li>
-<li>S. Puliti, T. Gobakken, H. O. Ørka, and E. Næsset, “Assessing 3D point clouds from aerial photographs for species-specific forest inventories,” Scand. J. For. Res., vol. 32, no. 1, pp. 68–79, 2017, doi: 10.1080/02827581.2016.1186727.</li>
-<li>I. Bjelanovic, P. G. Comeau, and B. White, “High resolution site index prediction in boreal forests using topographic and wet areas mapping attributes,” Forests, vol. 9, no. 3, 2018, doi: 10.3390/f9030113.</li>
-<li>S. Huang and S. J. Titus, “An index of site productivity for uneven-aged or mixed species stands,” Can. J. For. Res., vol. 23, no. 3, 1993.</li>
 
-</ol>
+Alberta Reforestation Standards Science Coucil, Linking Regeneration Stands to Growth and Yield and Forest Management Objectives. Sustainable Resource Development (2001-2006, 2006-2013), 2001.
+Alberta Agriculture and Forestry, “Reforestation Standard of Alberta,” Edmonton, Alberta, 2020.
+S. Puliti, S. Solberg, and A. Granhus, “Use of UAV photogrammetric data for estimation of biophysical properties in forest stands under regeneration,” Remote Sens., vol. 11, no. 3, 2019, doi: 10.3390/rs11030233.
+Alberta Sustainable Resource Development, “Alberta Forest Management Planning Standard Version 4.1.,” Edmonton, Alberta, 2006.
+J. D. Beckingham, I. G. W. Corns, and J. H. Archibald, “Field guide to ecosites of west-central Alberta,” Edmonton, Alberta, 1996.
+O. Burggraaff et al., “Standardized spectral and radiometric calibration of consumer cameras,” arXiv, vol. 27, no. 14, pp. 19075–19101, 2019, doi: 10.1364/oe.27.019075.
+MicaSense, “What is the center wavelength and bandwidth of each filter for MicaSense sensors?,” 2021. https://support.micasense.com/hc/en-us/articles/214878778-What-is-the-center-wavelength-and-bandwidth-of-each-filter-on-the-RedEdge-camera-.
+“Pix4D,” 2020. https://cloud.pix4d.com (accessed Aug. 18, 2020).
+A. Khosravipour, A. K. Skidmore, M. Isenburg, T. Wang, and Y. A. Hussin, “Generating pit-free canopy height models from airborne lidar,” Photogramm. Eng. Remote Sensing, vol. 80, no. 9, pp. 863–872, 2014, doi: 10.14358/PERS.80.9.863.
+“Agisoft Metashape Professional.” [Online]. Available: https://www.agisoft.com/downloads/installer/.
+M. Imangholiloo et al., “Characterizing seedling stands using leaf-off and leaf-on photogrammetric point clouds and hyperspectral imagery acquired from unmanned aerial vehicle,” Forests, vol. 10, no. 5, pp. 1–17, 2019, doi: 10.3390/f10050415.
+T. Kattenborn, J. Eichel, and F. E. Fassnacht, “Convolutional Neural Networks enable efficient, accurate and fine-grained segmentation of plant species and communities from high-resolution UAV imagery,” Sci. Rep., vol. 9, no. 1, pp. 1–9, 2019, doi: 10.1038/s41598-019-53797-9.
+S. Kentsch, M. L. L. Caceres, D. Serrano, F. Roure, and Y. Diez, “Computer vision and deep learning techniques for the analysis of drone-acquired forest images, a transfer learning study,” Remote Sens., vol. 12, no. 8, pp. 1–19, 2020, doi: 10.3390/RS12081287.
+A. Waleed, “Mask R-CNN for object detection and instance segmentation on Keras and TensorFlow,” GitHub Repository, 2017. https://github.com/matterport/Mask_RCNN (accessed Sep. 03, 2022).
+W. Zhang, C. Witharana, A. K. Liljedahl, and M. Kanevskiy, “Deep convolutional neural networks for automated characterization of arctic ice-wedge polygons in very high spatial resolution aerial imagery,” Remote Sens., vol. 10, no. 9, 2018, doi: 10.3390/rs10091487.
+M. Fromm, M. Schubert, G. Castilla, J. Linke, and G. McDermid, “Automated detection of conifer seedlings in drone imagery using convolutional neural networks,” Remote Sens., vol. 11, no. 21, 2019, doi: 10.3390/rs11212585.
+N. Chinchor, “MUC-4 evaluation metrics,” p. 22, 1992, doi: 10.3115/1072064.1072067.
+D. Armit, “Silvics and silviculture of lodgepole pine in the north central interior of British Columbia: A Problem analysis,” no. Research Notes No. 40, pp. 1–50, 1966.
+K. He, G. Gkioxari, P. Dollár, and R. Girshick, “Mask R-CNN,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 42, no. 2, pp. 386–397, 2018, doi: 10.1109/TPAMI.2018.2844175.
+Jia Deng, Wei Dong, R. Socher, Li-Jia Li, Kai Li, and Li Fei-Fei, “ImageNet: A large-scale hierarchical image database,” pp. 248–255, 2009, doi: 10.1109/cvprw.2009.5206848.
+T. Y. Lin et al., “Microsoft COCO: Common objects in context,” in Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 2014, vol. 8693 LNCS, no. PART 5, pp. 740–755, doi: 10.1007/978-3-319-10602-1_48.
+C. Lanaras, J. Bioucas-Dias, S. Galliani, E. Baltsavias, and K. Schindler, “Super-resolution of Sentinel-2 images: Learning a globally applicable deep neural network,” ISPRS J. Photogramm. Remote Sens., vol. 146, pp. 305–319, 2018, doi: 10.1016/j.isprsjprs.2018.09.018.
+S. Huang, S. X. Meng, and Y. Yuquing, “A Growth and Yield Projection System ( GYPSY ) for Natural and Post-harvest Stands in Alberta,” 2009.
+E. Naesset, “Airborne laser scanning as a method in operational forest inventory: Status of accuracy assessments accomplished in Scandinavia,” Scand. J. For. Res., vol. 22, no. 5, pp. 433–442, 2007, doi: 10.1080/02827580701672147.
+M. Penner, D. G. Pitt, and M. E. Woods, “Parametric vs. nonparametric LiDAR models for operational forest inventory in boreal Ontario,” Can. J. Remote Sens., vol. 39, no. 5, pp. 426–443, 2013, doi: 10.5589/m13-049.
+P. Tompalski, N. C. Coops, J. C. White, and M. A. Wulder, “Enhancing forest growth and yield predictions with airborne laser scanning data: Increasing spatial detail and optimizing yield curve selection through template matching,” Forests, vol. 7, no. 11, pp. 1–20, 2016, doi: 10.3390/f7110255.
+P. Tompalski, N. C. Coops, P. L. Marshall, J. C. White, M. A. Wulder, and T. Bailey, “Combining multi-date airborne laser scanning and digital aerial photogrammetric data for forest growth and yield modelling,” Remote Sens., vol. 10, no. 2, pp. 1–21, 2018, doi: 10.3390/rs10020347.
+P. Tompalski et al., “Estimating Changes in Forest Attributes and Enhancing Growth Projections: a Review of Existing Approaches and Future Directions Using Airborne 3D Point Cloud Data (Current Forestry Reports, (2021), 7, 1, (1-24), 10.1007/s40725-021-00,” Curr. For. Reports, vol. 7, no. 1, pp. 25–30, 2021, doi: 10.1007/s40725-021-00139-6.
+T. Gobakken, O. M. Bollandsås, and E. Næsset, “Comparing biophysical forest characteristics estimated from photogrammetric matching of aerial images and airborne laser scanning data,” Scand. J. For. Res., vol. 30, no. 1, pp. 73–86, 2015, doi: 10.1080/02827581.2014.961954.
+S. Puliti, T. Gobakken, H. O. Ørka, and E. Næsset, “Assessing 3D point clouds from aerial photographs for species-specific forest inventories,” Scand. J. For. Res., vol. 32, no. 1, pp. 68–79, 2017, doi: 10.1080/02827581.2016.1186727.
+I. Bjelanovic, P. G. Comeau, and B. White, “High resolution site index prediction in boreal forests using topographic and wet areas mapping attributes,” Forests, vol. 9, no. 3, 2018, doi: 10.3390/f9030113.
+S. Huang and S. J. Titus, “An index of site productivity for uneven-aged or mixed species stands,” Can. J. For. Res., vol. 23, no. 3, 1993.
