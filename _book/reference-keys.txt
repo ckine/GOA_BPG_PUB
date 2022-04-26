@@ -63,3 +63,5 @@ start
 fig:unnamed-chunk-2
 cover
 cover--title
+works-cited
+works-referenced

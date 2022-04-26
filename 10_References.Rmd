@@ -1,51 +1,12 @@
 # References {#references}
 
+## Works Cited
+
+<div id="refs"></div>
+
+## Works Referenced
 <ol>
-<li>Transport Canada, “Get permission for special drone operations,” 2020. https://tc.canada.ca/en/aviation/drone-safety/drone-pilot-licensing/get-permission-special-drone-operations (accessed Sep. 03, 2022).</li>
-<li>RPAS Governance Committee, “Remotely Piloted Aircraft System (RPAS) Directive,” Edmonton, Alberta, 2020.</li>
-<li>F. Nex and F. Remondino, “UAV for 3D mapping applications: A review,” Appl. Geomatics, vol. 6, no. 1, pp. 1–15, 2014, doi: 10.1007/s12518-013-0120-x.</li>
-<li>Drones Made Easy, “Map Pilot Pro.” https://dronesmadeeasy.com/map-pilot (accessed Feb. 02, 2022).</li>
-<li>Agisoft LLC, “Agisoft Metashape Hardware Requirements.” https://www.agisoft.com/downloads/system-requirements/ (accessed Feb. 02, 2022).</li>
-<li>W. George, “Metashape Benchmark,” Puget Systems, 2019. https://www.pugetsystems.com/labs/articles/Metashape-Benchmark-1457/ (accessed Feb. 02, 2022).</li>
-<li>DroneDeploy, “Ground Control Points,” 2021. https://help.dronedeploy.com/hc/en-us/articles/1500004965282-Ground-Control-Points#:~:text=DroneDeploy requires a minimum of,see the standard example below). (accessed Feb. 02, 2022).</li>
-<li>Trimble Inc., “GPS Pathfinder Office.” 2022, [Online]. Available: https://geospatial.trimble.com/products-and-solutions/gps-pathfinder-office.</li>
-<li>T. Takasu, “RTKLIB.” 2013, [Online]. Available: http://www.rtklib.com/.</li>
-<li>DJI, “DJI,” 2022. https://www.dji.com/ca (accessed Feb. 02, 2022).</li>
-<li>Trimble Inc., “CenterPoint RTX,” 2022. https://positioningservices.trimble.com/services/rtx/centerpoint-rtx/?gclid=Cj0KCQiA9OiPBhCOARIsAI0y71D5fg76iVAi0aJ3uyKjXK1w24U8cmWZUZB0Qcwophzf0XD21A108_oaAlmIEALw_wcB (accessed Feb. 02, 2022).</li>
-<li>G. of A. Information and Data Provisioning Services, Informatics Branch, Corporate Services Division, Alberta Environment and Sustainable Resource Development, “Access,” 2022. https://maps.alberta.ca/genesis/rest/services/Access/Latest/MapServer (accessed Feb. 02, 2022).</li>
-<li>Government of Canada, “Northern Alberta Forest Industry,” 2018. https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11095.html (accessed Feb. 02, 2022).</li>
-<li>G. of A. Alberta Environment and Parks, “Alberta Provincial Digital Elevation Model,” 2017. https://open.alberta.ca/opendata/gda-c16469a2-5541-455c-bba0-63a24c0ff08a#summary (accessed Feb. 02, 2022).</li>
-<li>ESRI, “Project (ArcMap),” 2016. https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/project.htm (accessed Feb. 02, 2022).</li>
-<li>ESRI, “Project (ArcGIS Pro),” 2022. https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm (accessed Feb. 02, 2022).</li>
-<li>QGIS, “Working with Projections,” 2022. https://docs.qgis.org/2.8/en/docs/user_manual/working_with_projections/working_with_projections.html (accessed Feb. 02, 2022).</li>
-<li>ESRI, “ArcGIS Desktop 10.8.2 Geographic and Vertical Transformation Tables,” 2021. https://desktop.arcgis.com/en/arcmap/latest/map/projections/pdf/geographic_transformations.pdf.</li>
-<li>ODM, “OpenDroneMap.” 2020, [Online]. Available: https://www.opendronemap.org/.</li>
-<li>Pix4D SA, “Pix4D.” 2022, [Online]. Available: https://www.pix4d.com/.</li>
-<li>DroneDeploy, “DroneDeploy.” 2022, [Online]. Available: https://www.dronedeploy.com/.</li>
-<li>V. Agafonkin, “SunCalc,” 2018. http://suncalc.net/ (accessed Sep. 03, 2022).</li>
-<li>D. G. Low, “Distinctive image features from scale-invariant keypoints,” Int. J. Comput. Vis., pp. 91–110, 2004.</li>
-<li>T. R. H. Goodbody, J. C. White, N. C. Coops, and A. LeBoeuf, “Benchmarking acquisition parameters for digital aerial photogrammetric data for forest inventory applications: Impacts of image overlap and resolution,” Remote Sens. Environ., vol. 265, no. August, p. 112677, 2021, doi: 10.1016/j.rse.2021.112677.</li>
-<li>I. A. Iqbal, J. Osborn, C. Stone, A. Lucieer, M. Dell, and C. McCoull, “Evaluating the robustness of point clouds from small format aerial photography over a Pinus radiata plantation,” Aust. For., vol. 81, no. 3, pp. 162–176, 2018, doi: 10.1080/00049158.2018.1482799.</li>
-<li>N. C. Swayze, W. T. Tinkham, J. C. Vogeler, and A. T. Hudak, “Influence of flight parameters on UAS-based monitoring of tree height, diameter, and density,” Remote Sens. Environ., vol. 263, no. December 2020, p. 112540, 2021, doi: 10.1016/j.rse.2021.112540.</li>
-<li>M. Isenburg, “LAStools.” 2020, Accessed: Aug. 18, 2020. [Online]. Available: http://lastools.org.</li>
-<li>J.-R. Roussel, T. R. H. Goodbody, and P. Tompalski, “lidR.” 2021, [Online]. Available: https://jean-romain.github.io/lidRbook/.</li>
-<li>M. Isenburg, “LASzip.” 2019, [Online]. Available: https://laszip.org/.</li>
-<li>T. R. H. Goodbody, N. C. Coops, and J. C. White, “Digital Aerial Photogrammetry for Updating Area-Based Forest Inventories: A Review of Opportunities, Challenges, and Future Directions,” Curr. For. Reports, pp. 55–75, 2019, doi: 10.1007/s40725-019-00087-2.</li>
-<li>J. R. Roussel et al., “lidR: An R package for analysis of Airborne Laser Scanning (ALS) data,” Remote Sens. Environ., vol. 251, no. September, p. 112061, 2020, doi: 10.1016/j.rse.2020.112061.</li>
-<li>J. C. White et al., A best practices guide for generating forest inventory attributes from airborne laser scanning data using an area-based approach, vol. 89, no. 6. 2013.</li>
-<li>I. Laser Technology, “TruPulse 360 R Laser Rangefinder,” 2021. TruPulse 360 R Laser Rangefinder (accessed Feb. 02, 2022).</li>
-<li>C. Cansel, “TruPulse LTI 360R Rangefinder,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285 (accessed Feb. 02, 2022).</li>
-<li>C. Cansel, “Trupulse LTI Foliage Filter,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360 (accessed Feb. 02, 2022).</li>
-<li>C. Cansel, “TruPulse 360R 200X Mounting Bracket,” 2022. https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835 (accessed Feb. 02, 2022).</li>
-<li>Trimble Inc., “Geo 7X Handheld Data Collector,” 2022. https://www.geospatial.trimble.com/products-and-solutions/geo-7x (accessed Feb. 02, 2022).</li>
-<li>Trimble Inc., “Trimble Tornado,” 2022. https://www.geospatial.trimble.com/products-and-solutions/trimble-tornado (accessed Feb. 02, 2022).</li>
-<li>Forestry Suppliers Inc., “Haglöf Vertex 5 Hypsometer,” 2022. https://www.forestry-suppliers.com/product_pages/products.php?mi=1377 (accessed Feb. 02, 2022).</li>
-<li>Deakin Industries Ltd., “LUFKIN C106TPMN DIAMETER TAPE 6.5M,” 2022. https://www.deakin.com/products/Details.aspx?p=641534&c=1343&g=5496 (accessed Feb. 02, 2022).</li>
-<li>Home Depot International Inc., “STANLEY FATMAX,” 2022. https://www.homedepot.ca/product/stanley-fatmax-fatmax-8m-26-ft-x-1-1-4-inch-tape-measure-metric-english-scale-/1000185066 (accessed Feb. 02, 2022).</li>
-<li>Amazon.com Inc., “Ricoh 910725 Theta V camera, Metallic Gray,” 2022. https://www.amazon.ca/Ricoh-Theta-camera-Metallic-Gray/dp/B074W5BKYS?th=1 (accessed Feb. 02, 2022).</li>
-<li>Home Depot International Inc., “Energizer 123 Batteries,” 2022. https://www.homedepot.ca/product/energizer-energizer-123-batteries-2-pack/1000731277 (accessed Feb. 02, 2022).</li>
-<li>Deakin Industries Ltd., “TELESCOPIC SURVEY ROD ALUM 5 METER,” 2022. https://www.deakin.com/products/Details.aspx?p=640782&c=1356&g=5561 (accessed Feb. 02, 2022).</li>
-<li>Avenza Systems Inc., “Avenza Maps.” 2022, [Online]. Available: https://www.avenzamaps.com/.</li>
+
 <li>Alberta Reforestation Standards Science Coucil, Linking Regeneration Stands to Growth and Yield and Forest Management Objectives. Sustainable Resource Development (2001-2006, 2006-2013), 2001.</li>
 <li>Alberta Agriculture and Forestry, “Reforestation Standard of Alberta,” Edmonton, Alberta, 2020.</li>
 <li>S. Puliti, S. Solberg, and A. Granhus, “Use of UAV photogrammetric data for estimation of biophysical properties in forest stands under regeneration,” Remote Sens., vol. 11, no. 3, 2019, doi: 10.3390/rs11030233.</li>

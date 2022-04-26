@@ -783,8 +783,7 @@
             "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Measuring-Tools/Range-Finders/TruPulse-LTI-360R-Rangefinder/p/510285",
             "author": [
                 {
-                    "family": "Cansel",
-                    "given": "Canada"
+                    "literal": "Cansel, Canada"
                 }
             ],
             "id": "Cansel2022TruPulse",
@@ -803,8 +802,7 @@
             "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Mapping-and-GIS/Accessories/Trupulse-LTI-Foliage-Filter/p/510360",
             "author": [
                 {
-                    "family": "Cansel",
-                    "given": "Canada"
+                    "literal": "Cansel, Canada"
                 }
             ],
             "id": "Cansel2022Trupulse2",
@@ -823,8 +821,7 @@
             "URL": "https://www.cansel.ca/store/cansel/en/Industries/Geospatial-%26-Engineering/Field-Supplies-%26-Safety/Measuring-and-Marking-Supplies/TruPulse-360R-200X-Mounting-Bracket/p/516835",
             "author": [
                 {
-                    "family": "Cansel",
-                    "given": "Canada"
+                    "literal": "Cansel, Canada"
                 }
             ],
             "id": "Cansel2022TruPulse3",

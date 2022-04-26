@@ -45,3 +45,5 @@ methods
 stem_map_image
 bibliography
 references
+works-cited
+works-referenced
