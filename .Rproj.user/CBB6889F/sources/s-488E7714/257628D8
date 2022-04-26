@@ -3,7 +3,7 @@
     "path": "D:/Andrew/GOA_BPG/10_References.Rmd",
     "project_path": "10_References.Rmd",
     "type": "r_markdown",
-    "hash": "1852730413",
+    "hash": "1687155815",
     "contents": "",
     "dirty": false,
     "created": 1650659315148.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "9,192",
+        "cursorPosition": "2,23",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1651015564,
+    "lastKnownWriteTime": 1651016206,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1651015564347,
+    "last_content_update": 1651016206947,
     "read_only": false,
     "read_only_alternatives": []
 }
